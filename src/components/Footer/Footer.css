@@ -9,6 +9,11 @@
     align-items: center;
     text-align: center;
     gap: 40px;
+    z-index: 0;
+}
+
+.Footer .Logo {
+    z-index: 0;
 }
 
 .Footer .PageLinks {
@@ -19,6 +24,7 @@
     align-items: center;
     gap: 20px;
     margin-bottom: 20px;
+    z-index: 0;
 }
 
 .Footer .PageLinks a {

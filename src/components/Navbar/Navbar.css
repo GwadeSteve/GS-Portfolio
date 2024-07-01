@@ -67,7 +67,7 @@
 
 .Navbar .Mobile.Open {
     width: 90%;
-    transform: translateY(220px);
+    transform: translateY(240px);
     border-radius: 5px;
     border: 1px solid var(--white-30);
     position: absolute;
@@ -77,6 +77,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 9999999;
 }
 
 .Navbar .Mobile a {
@@ -159,6 +160,7 @@
     }
     .Navbar .Toggle {
         display: block;
+        z-index: 9999999;
     }
 }
 
@@ -174,5 +176,6 @@
         transform: translate(-120px, -30px);
         opacity: 0.7;
         filter: blur(100px);
+        z-index: -1;
     }
 }
