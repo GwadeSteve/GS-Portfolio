@@ -15,14 +15,17 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    transform: translate(-120px, -30px);
+    transform: translate(-120px, 100px);
+    border-radius: 100%;
+    filter: blur(100px);
     z-index: 0;
 }
 
 .Logo {
     width: 60px;
     height: 60px;
-    z-index: 2;
+    z-index: 99999;
+    cursor: pointer;
 }
 
 .Navbar .Toggle {

@@ -1,0 +1,115 @@
+@import '../../index.css';
+.LoadingPage {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.LoadingPage .Loader {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.LoadingPage .Loader .Logo {
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+}
+
+.LoadingPage .Loader .Gradient {
+    border-radius: 50%;
+    position: absolute;
+    filter: blur(30px);
+    animation: Blink infinite ease-in-out;
+    opacity: 0;
+}
+
+.LoadingPage .Loader .Gradient-1 {
+    width: 100px;
+    height: 100px;
+    animation-duration: 1.5s;
+    animation-delay: 0s;
+}
+
+.LoadingPage .Loader .Gradient-2 {
+    width: 150px;
+    height: 150px;
+    animation-duration: 1.6s;
+    animation-delay: 0.1s;
+}
+
+.LoadingPage .Loader .Gradient-3 {
+    width: 250px;
+    height: 250px;
+    animation-duration: 1.75s;
+    animation-delay: 0.25s;
+}
+
+.LoadingPage .Loader .Gradient-4 {
+    width: 300px;
+    height: 300px;
+    animation-duration: 1.9s;
+    animation-delay: 0.35s;
+}
+
+.LoadingPage .Loader .Gradient-5 {
+    width: 400px;
+    height: 400px;
+    animation-duration: 2s;
+    animation-delay: 0.5s;
+}
+
+@keyframes Blink {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+
+@media only screen and (max-width: 465px) {
+    .LoadingPage {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .LoadingPage .Loader {
+        height: 100vh;
+    }
+    .LoadingPage .Loader .Gradient-1 {
+        width: 60px;
+        height: 60px;
+    }
+    .LoadingPage .Loader .Gradient-2 {
+        width: 90px;
+        height: 90px;
+    }
+    .LoadingPage .Loader .Gradient-3 {
+        width: 150px;
+        height: 150px;
+    }
+    .LoadingPage .Loader .Gradient-4 {
+        width: 200px;
+        height: 200px;
+    }
+    .LoadingPage .Loader .Gradient-5 {
+        width: 250px;
+        height: 250px;
+    }
+}
