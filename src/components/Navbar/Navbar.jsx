@@ -13,6 +13,7 @@ const Navbar = () => {
 
   return (
     <nav className='Navbar'>
+      <Gradient className='Gradient'/>
       <NavLink to='/'><Logo className="Logo"/></NavLink>
       <div className={`Mobile ${menuOpen ? 'Open' : ''}`}>
         <NavLink to='/' exact className='ss-font' activeClassName='active'>Home</NavLink>
