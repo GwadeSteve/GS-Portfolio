@@ -172,5 +172,7 @@
         z-index: -99;
         pointer-events: none;
         transform: translate(-120px, -30px);
+        opacity: 0.7;
+        filter: blur(100px);
     }
 }
