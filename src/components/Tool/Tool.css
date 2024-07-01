@@ -1,0 +1,15 @@
+@import '../../index.css';
+.Tool {
+    padding: 8px 15px;
+    max-width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: var(--background-blacktiles);
+    border-radius: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}

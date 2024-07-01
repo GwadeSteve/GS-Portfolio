@@ -1,0 +1,221 @@
+@import '../../index.css';
+.HomePage {
+    padding: var(--padding-lr);
+    margin-top: 50px;
+    margin-bottom: var(--intersection-mg);
+}
+
+.Home-1 p.xxl-font {
+    margin-bottom: 30px;
+}
+
+.Home-1 p.m-font {
+    margin-bottom: 60px;
+}
+
+.Home-1 .socials {
+    display: flex;
+    align-items: center;
+}
+
+.Home-1 .socials .Line svg {
+    margin-right: 50px;
+}
+
+.icos {
+    display: flex
+}
+
+.icos a {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: var(--white-5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    transition: 0.5s;
+}
+
+.icos a:hover {
+    box-shadow: 1px 3px 100px 10px rgba(118, 60, 231, 1);
+}
+
+.Home-1 .socials a svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Home-2 {
+    margin: var(--intersection-mg) 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.Home-2 .Home-Img {
+    flex: 1;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.Home-2 .Home-Img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Home-2 .Home-Abt {
+    flex: 1.5;
+    padding-left: 100px;
+}
+
+.Home-2 .Home-Abt>svg {
+    transform: translateX(-75px);
+}
+
+.Home-2 .Home-Abt p.l-font {
+    margin-bottom: 30px;
+}
+
+.Home-2 .Home-Abt p.s-font a {
+    color: var(--bluehighlights);
+    font-weight: bold;
+}
+
+@media only screen and ( width<=800px) {
+    .Home-2 {
+        margin-top: var(--intersection-mg);
+        display: flex;
+        flex-direction: column;
+    }
+    .Home-2 .Home-Img {
+        max-width: 100%;
+        height: 200px;
+        margin: 30px auto;
+    }
+    .Home-2 .Home-Img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .Home-2 .Home-Abt {
+        flex: 1;
+        width: 100%;
+        padding-left: 0px;
+    }
+    .Home-2 .Home-Abt>svg {
+        transform: translateX(0);
+        width: 100%;
+        height: 100px;
+    }
+}
+
+@media only screen and ( width<=560px) {
+    .Home-1 p.m-font {
+        margin-bottom: 40px;
+    }
+    .Home-1 .socials {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    .Home-1 .socials .Line svg {
+        margin-right: 0px;
+        margin-bottom: 30px;
+    }
+    .icos a {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.Home-3 {
+    margin: var(--intersection-mg) 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.Home-3 p.xl-font {
+    margin-bottom: var(--intertext-space);
+}
+
+.Home-3 p.s-font {
+    padding: 0 20%;
+    margin-bottom: 80px;
+}
+
+.Home-3>svg {
+    width: 70%;
+    height: auto;
+}
+
+@media only screen and ( width<=768px) {
+    .Home-3 p.s-font {
+        padding: 0 5%;
+        margin-bottom: 80px;
+    }
+    .Home-3>svg {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and ( width<=500px) {
+    .Home-3 p.s-font {
+        padding: 0%;
+        margin-bottom: 80px;
+    }
+    .Home-3>svg {
+        width: 500px;
+        height: auto;
+    }
+    .Home-4 p.s-font {
+        margin-bottom: 30px;
+    }
+    .Listing {
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+    }
+    .Home-5 {
+        transform: translateY(-50px);
+    }
+}
+
+.Home-4 {
+    margin: var(--intersection-mg) 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Home-4 p.xl-font {
+    margin-bottom: var(--intertext-space);
+}
+
+.Home-4 p.s-font {
+    margin-bottom: 100px;
+}
+
+.Listing {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.Home-5 {
+    margin-top: -80px;
+}

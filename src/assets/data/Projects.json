@@ -1,0 +1,19 @@
+[{
+        "type": "Personal Project",
+        "title": "FoodHub",
+        "description": "FoodHub is a platform where people share excess food for others for buy. The platform aims at reducing food wastage and hunger by providing food to those in need at relatively low cost. The platform features a facial recognition system for payment authentication, all built with python.",
+        "link_live": "http://example.com/foodhub",
+        "link_github": "http://github.com/username/foodhub",
+        "image": "/images/logo192.png",
+        "tools": ["React", "Django", "REST API"]
+    },
+    {
+        "type": "Open Source Project",
+        "title": "PolyApps",
+        "description": "Enhancing activities hosted by the AI Club at the National Higher Polytechnic School of Douala.",
+        "link_live": "http://example.com/polyapps",
+        "link_github": "http://github.com/username/polyapps",
+        "image": "/images/logo192.png",
+        "tools": ["HTML5", "CSS", "JavaScript", "NodeJS", "Express"]
+    }
+]

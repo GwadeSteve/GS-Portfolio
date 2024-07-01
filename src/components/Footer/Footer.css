@@ -1,0 +1,65 @@
+@import '../../index.css';
+.Footer {
+    width: 100%;
+    padding: var(--padding-lr);
+    margin: 20px 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 40px;
+}
+
+.Footer .PageLinks {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.Footer .PageLinks a {
+    transition: 0.5s;
+}
+
+.Footer .PageLinks a:hover {
+    color: var(--bluehighlights);
+}
+
+.Footer .Line {
+    margin-bottom: 30px;
+}
+
+.Footer .Bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media only screen and ( width <=663px) {
+    .Footer .Bottom {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+@media only screen and ( width <=347px) {
+    .Footer .PageLinks {
+        flex-direction: column;
+        margin-top: 30px;
+        width: 100%;
+    }
+    .Footer .PageLinks a {
+        padding: 15px 0;
+        border-radius: 10px;
+        width: 100%;
+        border: 1px solid var(--glasstilecolor);
+    }
+    .Footer .PageLinks a:hover {
+        background: var(--glasstilecolor);
+    }
+}

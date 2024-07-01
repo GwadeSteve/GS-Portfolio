@@ -1,0 +1,141 @@
+@import '../../index.css';
+.ProjectTile {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.ProjectTile .Img-Description {
+    padding: 10px;
+    flex: 1;
+    height: 100%;
+    background: var(--background-blacktiles);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ProjectTile .Img-Description .Img-box {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: var(--backgrounddark);
+}
+
+.ProjectTile .Img-Description .Img-box img {
+    object-fit: cover;
+}
+
+.ProjectTile .Description {
+    padding: 50px 20px 50px 40px;
+    flex: 1;
+    height: 100%;
+    background: var(--glasstilecolor);
+}
+
+.ProjectTile .Description p.sss-font {
+    margin-bottom: 40px;
+}
+
+.ProjectTile .Description p.l-font {
+    margin-bottom: 25px;
+}
+
+.ProjectTile .Description p.s-font {
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+.ProjectTile .Description .project-links {
+    display: flex;
+    gap: 30px;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+.ProjectTile .Description .project-links a {
+    background: var(--bluegradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% 100%;
+    animation: textGradient 2s infinite linear;
+    transition: 0.5s;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ProjectTile .Description .project-links a:hover {
+    color: var(--bluehighlights);
+    text-decoration: underline;
+}
+
+.ProjectTile .Description .project-links a svg {
+    transition: 0.3s;
+    margin-left: 5px;
+}
+
+.ProjectTile .Description .project-links a:hover svg {
+    transform: rotate(45deg);
+}
+
+.ProjectTile .Description .tools {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+@media only screen and ( width<=875px) {
+    .ProjectTile {
+        width: 100%;
+        height: 700px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 100px;
+    }
+    .ProjectTile .Img-Description {
+        width: 100%;
+        height: 320px;
+        padding: 30px;
+    }
+    .ProjectTile .Img-Description .Img-box {
+        width: 100%;
+    }
+    .ProjectTile .Img-Description .Img-box img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+@media only screen and ( width<=506px) {
+    .ProjectTile {
+        width: 100%;
+        height: 800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 80px;
+    }
+}
+
+@media only screen and ( width<=398px) {
+    .ProjectTile {
+        margin-bottom: 130px;
+    }
+}
+
+@media only screen and ( width<=361px) {
+    .ProjectTile {
+        margin-bottom: 180px;
+    }
+}
