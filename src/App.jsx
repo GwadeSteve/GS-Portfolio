@@ -17,7 +17,7 @@ function App() {
       const timer = setTimeout(() => {
         setLoading(false);
       }, 2000); 
-
+      document.body.classList.remove('body-scroll-lock');
       return () => clearTimeout(timer);
     }, [location]);
 
@@ -33,7 +33,7 @@ function App() {
             {!hideNavbarFooter && <Navbar />}
             <Routes>
               <Route exact path='/' element={<HomePage/>}/>
-              <Route path='/about' element={<AboutPage/>}/>
+              <Route exact path='/about' element={<AboutPage/>}/>
             </Routes>
             {!hideNavbarFooter && <Footer />}
           </>
