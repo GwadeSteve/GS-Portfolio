@@ -82,9 +82,6 @@ button.empty:hover {
 }
 
 @media only screen and ( width<=449px) {
-    .CallToAttention {
-        height: 100vh;
-    }
     .CallToAttention .call-btns {
         flex-direction: column;
     }
