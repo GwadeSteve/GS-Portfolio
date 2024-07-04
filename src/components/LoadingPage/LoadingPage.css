@@ -23,6 +23,7 @@
     width: 60px;
     height: 60px;
     z-index: 10;
+    animation: Reveal 2s infinite ease-in-out;
 }
 
 .LoadingPage .Loader .Gradient {
@@ -66,6 +67,17 @@
     height: 400px;
     animation-duration: 2s;
     animation-delay: 0.5s;
+}
+
+@keyframes Reveal {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes Blink {
