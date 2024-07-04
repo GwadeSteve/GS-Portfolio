@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px 5% 40px 5%;
+    padding: 50px 6% 40px 6%;
     margin-bottom: 75px;
     position: relative;
     z-index: 1;
@@ -15,10 +15,10 @@
     top: 0;
     left: 0;
     overflow: hidden;
-    transform: translate(-120px, 100px);
+    transform: translate(-160px, -120px);
     border-radius: 100%;
     filter: blur(100px);
-    z-index: 0;
+    z-index: -99;
 }
 
 .Logo {
@@ -69,8 +69,9 @@
 }
 
 .Navbar .Mobile.Open {
-    width: 90%;
-    transform: translateY(240px);
+    width: 95%;
+    height: 110vh;
+    transform: translate(-13px, 250px);
     border-radius: 5px;
     border: 1px solid var(--white-30);
     position: absolute;
@@ -81,6 +82,7 @@
     justify-content: center;
     align-items: center;
     z-index: 9999999;
+    overflow-y: hidden;
 }
 
 .Navbar .Mobile a {

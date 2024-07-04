@@ -9,6 +9,11 @@ const Navbar = () => {
 
   const handleToggle = () => {
     setMenuOpen(!menuOpen);
+    if (!menuOpen) {
+      document.body.classList.add('body-scroll-lock');
+    } else {
+      document.body.classList.remove('body-scroll-lock');
+    }
   };
 
   return (

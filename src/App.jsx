@@ -5,6 +5,7 @@ import LoadingPage from './components/LoadingPage/LoadingPage';
 import Navbar from './components/Navbar/Navbar'; 
 import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage/HomePage';
+import AboutPage from './pages/AboutPage/AboutPage/AboutPage';
 import './App.css';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
             {!hideNavbarFooter && <Navbar />}
             <Routes>
               <Route exact path='/' element={<HomePage/>}/>
+              <Route path='/about' element={<AboutPage/>}/>
             </Routes>
             {!hideNavbarFooter && <Footer />}
           </>

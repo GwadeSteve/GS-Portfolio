@@ -20,7 +20,7 @@
     --pagetext16: 1rem;
     --big36frosmallscreens: 2.25rem;
     --line-height: 1.6;
-    --padding-lr: 0 6.1%;
+    --padding-lr: 0 6%;
     --intertext-space: 30px;
     --intersection-mg: 200px;
     --intersection-mobile: 150px;
@@ -81,6 +81,10 @@ body {
     overflow-x: hidden;
 }
 
+.body-scroll-lock {
+    overflow: hidden;
+}
+
 ::-webkit-scrollbar {
     width: 4px;
 }
@@ -108,7 +112,13 @@ body {
     background-clip: text;
     color: transparent;
     background-size: 200% 100%;
-    animation: textGradient 2s infinite linear;
+    animation: textGradient 3s infinite linear;
+    z-index: 0;
+}
+
+p span.gradient-text,
+span.gradient-text {
+    z-index: -9;
 }
 
 @keyframes textGradient {
