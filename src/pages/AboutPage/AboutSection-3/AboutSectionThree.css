@@ -1,0 +1,42 @@
+@import '../../../index.css';
+.AboutSectionThree {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: var(--intersection-mg);
+}
+
+.AboutSectionThree p.xl-font {
+    margin-bottom: 20px;
+}
+
+.AboutSectionThree p.s-font {
+    margin-bottom: 50px;
+}
+
+.AboutSectionThree .Awards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+}
+
+@media (max-width: 542px) {
+    .AboutSectionThree .Awards {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        padding: 0;
+    }
+}
+
+@media (max-width: 301px) {
+    .AboutSectionThree .Awards {
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        padding: 0;
+    }
+}
