@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import HomePage from './pages/HomePage/HomePage';
 import AboutPage from './pages/AboutPage/AboutPage/AboutPage';
 import Work from './pages/Work/Work';
+import Request from './pages/Request/Request';
 import './App.css';
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
       return () => clearTimeout(timer);
     }, [location]);
 
-    const hideNavbarFooter = location.pathname === '/loading';
+    const hideNavbarFooter = location.pathname === '/loading' || location.pathname === '/request';
 
     return (
       <div className="App">
@@ -36,6 +37,7 @@ function App() {
               <Route exact path='/' element={<HomePage/>}/>
               <Route exact path='/about' element={<AboutPage/>}/>
               <Route exact path='/work' element={<Work/>}/>
+              <Route exact path='/request' element={<Request/>}/>
             </Routes>
             {!hideNavbarFooter && <Footer />}
           </>
