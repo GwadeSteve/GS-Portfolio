@@ -1,0 +1,65 @@
+@import '../../index.css';
+.Work {
+    padding: var(--padding-lr);
+    margin-top: 50px;
+    margin-bottom: var(--intersection-mg);
+    width: 100%;
+    z-index: 0;
+}
+
+.Work .Work-Head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.Work .Work-Head p.xl-font {
+    flex: 0 0 30%;
+    z-index: 0;
+}
+
+.Work .Work-Head p.s-font {
+    flex: 0 0 65%;
+    z-index: 0;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 80px 0;
+}
+
+.filters button {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+@media (max-width: 547px) {
+    .Work .Work-Head {
+        flex-direction: column;
+    }
+    .Work .Work-Head p.xl-font {
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+    }
+    .Work .Work-Head p.s-font {
+        flex: 0 0 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .filters {
+        justify-content: center;
+    }
+    .filters button {
+        flex: 1 1 auto;
+        margin: 5px;
+        min-width: calc(50% - 10px);
+    }
+}
+
+.Work .Listing {
+    margin: 0 0 100px 0;
+}
