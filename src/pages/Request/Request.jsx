@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Request.css';
 import { ReactComponent as Gradient } from '../../assets/Gradient.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Request = () => {
     const [fullName, setFullName] = useState('');
@@ -8,21 +9,39 @@ const Request = () => {
     const [projectDescription, setProjectDescription] = useState('');
     const [isSending, setIsSending] = useState(false);
     const [requestStatus, setRequestStatus] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSending(true);
-        setTimeout(() => {
-            const isSuccess = Math.random() < 0.5; 
 
-            if (isSuccess) {
-                setRequestStatus('success');
+        const requestBody = {
+            fullName,
+            email,
+            projectDescription
+        };
+        console.log(requestBody);
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/sendmail/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (response.ok) {
+                alert('Request sent successfully!');
+                navigate('/'); 
             } else {
                 setRequestStatus('failure');
             }
+        } catch (error) {
+            setRequestStatus('failure');
+        }
 
-            setIsSending(false);
-        }, 1500); 
+        setIsSending(false);
     };
 
     return (
@@ -38,6 +57,7 @@ const Request = () => {
                             placeholder="Full Name"
                             value={fullName}
                             onChange={(e) => setFullName(e.target.value)}
+                            disabled={isSending}
                             required
                         />
                         <input
@@ -45,6 +65,7 @@ const Request = () => {
                             placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            disabled={isSending}
                             required
                         />
                     </div>
@@ -53,12 +74,14 @@ const Request = () => {
                         rows="5"
                         value={projectDescription}
                         onChange={(e) => setProjectDescription(e.target.value)}
+                        disabled={isSending}
                         required
                     ></textarea>
-                    <button type="submit" disabled={isSending || requestStatus === 'success'}>
-                        {isSending ? 'Sending Request...' : requestStatus === 'success' ? 'Request Sent!' : 'Send Request'}
+                    <button type="submit" disabled={isSending}>
+                        {isSending ? 'Sending Request...' : 'Send Request'}
                     </button>
                 </form>
+                {requestStatus === 'failure' && <p className="error-message">There was an error sending your request. Please try again.</p>}
             </div>
         </div>
     );
