@@ -1,11 +1,11 @@
 [{
         "type": "Personal",
         "title": "FoodHub",
-        "description": "FoodHub is a platform designed to minimize food waste and combat hunger by enabling individuals to share their surplus food at an affordable cost. By connecting those with excess food to those in need, FoodHub fosters a community of resourcefulness and compassion. The platform incorporates a secure facial recognition system for payment authentication, ensuring a safe and seamless transaction experience. FoodHub is built using Python and React. It leverages modern web technologies to provide a robust and user-friendly service.",
+        "description": "FoodHub is a platform designed to minimize food waste and combat hunger by enabling individuals to share their surplus food at an affordable cost. By connecting those with excess food to those in need, FoodHub fosters a community of resourcefulness and compassion. The platform incorporates a secure facial recognition system for payment authentication.",
         "link_live": "https://foodhub-0qpy.onrender.com",
         "link_github": "https://github.com/GwadeSteve/FrontEnd-FoodHub",
         "image": "/images/Experience/FoodHub.jpg",
-        "tools": ["React", "Django", "REST API", "Face Recognition", "Postgresql"]
+        "tools": ["React", "Django", "API", "Face Recognition"]
     },
     {
         "type": "Personal",
@@ -19,17 +19,25 @@
     {
         "type": "Open Source",
         "title": "PolyApps",
-        "description": "PolyApps is a suite of applications developed to enhance the activities of the AI Club at the National Higher Polytechnic School of Douala. It includes two main components; PolyTyping: A real-time typing multiplayer speed game that challenges participants to improve their typing skills through competitive gameplay and PolyCoding: A robust coding platform designed to host coding contests, encouraging learning and collaboration among students. PolyApps aims to foster a dynamic learning environment, promoting skill development and engagement within the AI community.",
+        "description": "PolyApps is a suite of applications developed to enhance the activities of the AI Club at the National Higher Polytechnic School of Douala. It includes PolyTyping: A real-time typing multiplayer speed game that challenges participants to improve their typing skills through competitive gameplay and PolyCoding, A robust coding platform designed to host coding contests, encouraging learning and collaboration among students.",
         "image": "/images/Experience/PolyApps.png",
-        "tools": ["HTML5", "CSS", "JavaScript", "NodeJS", "Express", "Django", "Postgresql"]
+        "tools": ["HTML5", "CSS", "NodeJS", "Django"]
     },
     {
         "type": "Personal",
         "title": "Spoof Detector",
-        "description": "Built a sophisticated Spoof Detector as a Deep learning model designed to differentiate between real and fake faces, this enhances the security of facial recognition systems. Trained on a diverse dataset with faces of various races, this model ensures robust performance across different demographics. The Spoof Detector is accessible via a RESTful API, allowing seamless integration into various applications. Built using PyTorch, the model leverages advanced neural networks to provide accurate spoof detection, making it a crucial tool for authentication and security systems.",
+        "description": "Built a Spoof Detector as a Deep learning model designed to differentiate between real and fake faces, to enhance the security of facial recognition systems. Trained on a diverse dataset with faces of various races, this model ensures robust performance across different demographics. The Spoof Detector is accessible via a RESTful API, allowing easy integration into various applications.",
         "link_github": "https://github.com/GwadeSteve/spoof-detect-service",
         "image": "/images/Experience/Spoof.png",
-        "tools": ["PyTorch", "REST API", "Python", "Deep Learning", "Face Recognition"]
+        "tools": ["PyTorch", "API", "Deep Learning"]
+    },
+    {
+        "type": "Academic",
+        "title": "Mathematical Morphology",
+        "description": "Implemented Mathematical Morphology concepts from scratch using numpy and matplotlib for academic study. Explored advanced techniques such as erosion, dilation, and feature extraction. Conducted rigorous performance evaluations and optimizations to improve efficiency and accuracy of operations. The project aimed to deepen understanding of morphological operations and their application in digital image processing.",
+        "link_github": "https://github.com/GwadeSteve/Mathematical-Morphology-Image-Processing/tree/feature-dev",
+        "image": "/images/Experience/Morphology.png",
+        "tools": ["Numpy", "Matplotlib", "Image Processing"]
     }
 
 ]

@@ -1,9 +1,18 @@
 @import '../../index.css';
 .ProjectTile {
     width: 100%;
-    height: 80vh;
+    height: 85vh;
     display: flex;
     align-items: center;
+}
+
+@media (width>=1250px) {
+    .ProjectTile {
+        width: 100%;
+        height: 70vh;
+        display: flex;
+        align-items: center;
+    }
 }
 
 .ProjectTile .Img-Description {
@@ -14,8 +23,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
 }
 
 .ProjectTile .Img-Description .Img-box {
@@ -93,18 +100,18 @@
 .ProjectTile .Description .tools {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 7px;
     flex-wrap: wrap;
 }
 
-@media only screen and ( width<=875px) {
+@media only screen and ( width<=987px) {
     .ProjectTile {
         width: 100%;
         height: 700px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 100px;
+        margin-bottom: 150px;
     }
     .ProjectTile .Img-Description {
         width: 100%;
@@ -128,7 +135,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 80px;
+        margin-bottom: 100px;
     }
 }
 

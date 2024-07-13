@@ -10,12 +10,12 @@ const CallToAttention = () => {
         <p className="xxl-font"><span className="gradient-text">Collaborate </span>With Me</p>
         <p className="s-font">Interested in discussing a project or initiating a professional collaboration, I'm eager to connect with you.</p>
         <div className="call-btns">
-            <button className="ss-font full">
+            <a href="/request" className="ss-font full">
                 Project Request
-            </button>
-            <button className="ss-font empty">
+            </a>
+            <a href="/request" className="ss-font empty">
                 Contact Me
-            </button>
+            </a>
         </div>
     </div>
   )

@@ -1,7 +1,6 @@
 @import '../../index.css';
 .Tool {
     padding: 8px 15px;
-    max-width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
