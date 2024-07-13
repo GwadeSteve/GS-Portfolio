@@ -23,7 +23,7 @@ const ProjectTile = ({ type, title, description, link_live, link_github, image, 
                     }
                     {
                         link_github && (
-                            <a href={link_github} className='gradient-text bold-text s-font'>Github</a>
+                            <a href={link_github} className='gradient-text bold-text s-font'>View on Github</a>
                         )
                     }
                 </div>
