@@ -32,7 +32,7 @@ const Request = () => {
             });
 
             if (response.ok) {
-                alert('Request sent successfully!');
+                alert('Your request has been sent successfully! Please check your email (including your spam/junk folder) for further instructions or updates.');
                 navigate('/'); 
             } else {
                 setRequestStatus('failure');
