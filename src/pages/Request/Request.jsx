@@ -23,7 +23,7 @@ const Request = () => {
         console.log(requestBody);
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/sendmail/', {
+            const response = await fetch('https://emailbackend-portfolio.onrender.com/api/sendmail/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ const Request = () => {
                         {isSending ? 'Sending Request...' : 'Send Request'}
                     </button>
                 </form>
-                {requestStatus === 'failure' && <p className="error-message">There was an error sending your request. Please try again.</p>}
+                {requestStatus === 'failure' && <p className="error-message sss-font">There was an error sending your request. Please try again.</p>}
             </div>
         </div>
     );

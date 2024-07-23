@@ -96,6 +96,11 @@
     color: var(--darkbackground);
 }
 
+p.error-message {
+    margin-top: 20px;
+    color: rgb(254, 72, 72);
+}
+
 @media (max-width: 600px) {
     .Request .content {
         width: 100%;

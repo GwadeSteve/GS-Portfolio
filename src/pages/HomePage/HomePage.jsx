@@ -66,7 +66,7 @@ const HomePage = () => {
                 <p className="xl-font">Some of <span className="gradient-text">My Projects</span></p>
                 <p className="s-font">A selection of projects that highlight my expertise in software development, data science, and computer vision.</p>
                 <div className="Listing">
-                {projectsData.map((project, index) => (
+                {projectsData.slice(0,3).map((project, index) => (
                         <ProjectTile
                             key={index}
                             type={project.type}
