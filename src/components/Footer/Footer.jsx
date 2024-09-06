@@ -3,10 +3,10 @@ import './Footer.css'
 import { ReactComponent as Logo } from '../../assets/Logo.svg';
 import { ReactComponent as Line } from '../../assets/Line.svg';
 import {ReactComponent as GitHub} from '../../assets/github.svg'
-import {ReactComponent as LinkedIn} from '../../assets/linkedin-circle.svg'
-import {ReactComponent as FaceBook} from '../../assets/facebook-circle.svg'
-import {ReactComponent as Instagram} from '../../assets/instagram-circle.svg'
-import {ReactComponent as WhatsApp} from '../../assets/whatsapp-circle.svg'
+import {ReactComponent as LinkedIn} from '../../assets/linkedin-circle-mono.svg'
+import {ReactComponent as FaceBook} from '../../assets/facebook-circle-mono.svg'
+import {ReactComponent as Instagram} from '../../assets/instagram-circle-mono.svg'
+import {ReactComponent as WhatsApp} from '../../assets/whatsapp-circle-mono.svg'
 import { NavLink, Link } from 'react-router-dom';
 
 
