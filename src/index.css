@@ -5,8 +5,11 @@
     --white-100: rgba(217, 217, 217, 1);
     --white-80: rgba(217, 217, 217, 0.8);
     --white-60: rgba(217, 217, 217, 0.6);
+    --black-100: rgba(0, 0, 0, 1);
+    --black-80: rgba(0, 0, 0, 0.8);
+    --black-60: rgba(0, 0, 0, 0.6);
     --bluehighlights: #207ce7;
-    --bluegradient: linear-gradient(90deg, #58a5ff 0%, #7276c5 86.5%);
+    --bluegradient: linear-gradient(90deg, #4c9ffe 0%, #656bd8 86.5%);
     --background-blacktiles: #10141b;
     --glasstilecolor: rgba(217, 217, 217, 0.05);
     --white-30: rgba(217, 217, 217, 0.3);
@@ -76,9 +79,21 @@ html {
 
 body {
     background: var(--backgrounddark);
+    transition: background-color 0.3s, color 0.3s;
     width: 100%;
     z-index: -9999;
     overflow-x: hidden;
+}
+
+.xxl-font,
+.xl-font,
+.l-font,
+.m-font,
+.s-font,
+.ss-font,
+.sss-font,
+.gradient-text {
+    transition: color 0.3s;
 }
 
 .body-scroll-lock {

@@ -18,7 +18,6 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: var(--intersection-mg);
 }
 
 .AboutSectionTwo .Journey .AboutMe-3 {

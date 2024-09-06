@@ -39,7 +39,11 @@
     width: 150px;
 }
 
-a.full {
+
+/* Full Button */
+
+a.full,
+button.full {
     padding: 12px 0px;
     color: var(--darkbackground);
     background: var(--white-80);
@@ -54,43 +58,15 @@ a.full {
     align-items: center;
 }
 
-button.full {
-    padding: 12px 0px;
-    color: var(--darkbackground);
-    font-weight: 600;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-a.full:hover {
-    background: var(--white-60);
-}
-
+a.full:hover,
 button.full:hover {
     background: var(--white-60);
 }
 
-a.empty {
-    padding: 12px 0;
-    color: var(--white-80);
-    background: transparent;
-    font-weight: 600;
-    outline: 1px solid var(--white-30);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
+/* Empty Button */
+
+a.empty,
 button.empty {
     padding: 12px 0;
     color: var(--white-80);
@@ -106,12 +82,31 @@ button.empty {
     align-items: center;
 }
 
-a.empty:hover {
+a.empty:hover,
+button.empty:hover {
     background: var(--glasstilecolor);
 }
 
-button.empty:hover {
-    background: var(--glasstilecolor);
+
+/* Dark Mode */
+
+:root {
+    --darkbackground: #0a0e14;
+    --white-80: rgba(217, 217, 217, 0.8);
+    --white-60: rgba(217, 217, 217, 0.6);
+    --white-30: rgba(217, 217, 217, 0.3);
+    --glasstilecolor: rgba(217, 217, 217, 0.05);
+}
+
+
+/* Light Mode */
+
+[data-theme='light'] {
+    --darkbackground: #ffffff;
+    --white-80: rgba(0, 0, 0, 0.8);
+    --white-60: rgba(0, 0, 0, 0.6);
+    --white-30: rgba(0, 0, 0, 0.3);
+    --glasstilecolor: rgba(0, 0, 0, 0.05);
 }
 
 @media only screen and ( width<=520px) {

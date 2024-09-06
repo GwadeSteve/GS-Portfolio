@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage/HomePage';
 import AboutPage from './pages/AboutPage/AboutPage/AboutPage';
 import Work from './pages/Work/Work';
 import Request from './pages/Request/Request';
+import ThemeToggle from './components/ThemeToggle/ThemeToggle';
 import './App.css';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         ) : (
           <>
             {!hideNavbarFooter && <Navbar />}
+            <ThemeToggle/>
             <Routes>
               <Route exact path='/' element={<HomePage/>}/>
               <Route exact path='/about' element={<AboutPage/>}/>

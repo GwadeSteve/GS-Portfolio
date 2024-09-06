@@ -2,11 +2,6 @@ import React from 'react'
 import './AboutSectionTwo.css'
 import {ReactComponent as Download} from '../../../assets/download.svg'
 import {ReactComponent as Gradient} from '../../../assets/Gradient.svg'
-import {ReactComponent as Names} from '../../../assets/GreatName.svg'
-import {ReactComponent as Coursera} from '../../../assets/coursera.svg'
-import {ReactComponent as Microsoft} from '../../../assets/Microsoft.svg'
-import {ReactComponent as Codesee} from '../../../assets/codesee.svg'
-import {ReactComponent as DeepLearning} from '../../../assets/DeepLearningAi.svg'
 import Experience from '../../../components/Experience/Experience'
 
 const AboutSectionTwo = () => {
@@ -55,15 +50,6 @@ const AboutSectionTwo = () => {
                             />
                         ))}
                     </div>
-            </div>
-            <div className="GreatNames">
-                < Names/>
-                <div className="Company-Logos">
-                    <DeepLearning/>
-                    <Codesee/>
-                    <Microsoft/>
-                    <Coursera/>
-                </div>
             </div>
         </div>
     )
