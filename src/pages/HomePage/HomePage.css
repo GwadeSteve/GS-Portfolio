@@ -70,6 +70,13 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: 0.5s;
+    filter: grayscale(0.8);
+}
+
+.Home-2 .Home-Img img:hover {
+    cursor: pointer;
+    filter: none;
 }
 
 .Home-2 .Home-Abt {
@@ -78,7 +85,7 @@
 }
 
 .Home-2 .Home-Abt>svg {
-    transform: translateX(-75px);
+    transform: translateX(-25px);
 }
 
 .Home-2 .Home-Abt p.l-font {

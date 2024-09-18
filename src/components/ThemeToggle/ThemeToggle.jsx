@@ -15,7 +15,6 @@ const ThemeToggle = () => {
       document.documentElement.style.setProperty('--bluehighlights', '#207ce7');
       document.documentElement.style.setProperty('--black-100', 'rgba(0, 0, 0, 1)');
       document.documentElement.style.setProperty('--black-80', 'rgba(0, 0, 0, 0.8)');
-      document.documentElement.style.setProperty('--pagetext', '1.125rem');
       document.documentElement.style.setProperty('--background-blacktiles', '#10141b');
       document.documentElement.style.setProperty('--glasstilecolor', 'rgba(217, 217, 217, 0.05)');
       document.documentElement.style.setProperty('--white-30', 'rgba(217, 217, 217, 0.3)');
@@ -30,7 +29,6 @@ const ThemeToggle = () => {
       document.documentElement.style.setProperty('--bluehighlights', '#207ce7');
       document.documentElement.style.setProperty('--black-100', 'rgba(255, 255, 255, 1)');
       document.documentElement.style.setProperty('--black-80', 'rgba(255, 255, 255, 0.8)');
-      document.documentElement.style.setProperty('--pagetext', '1rem');
       document.documentElement.style.setProperty('--background-blacktiles', '#e0e0e0');
       document.documentElement.style.setProperty('--glasstilecolor', 'rgba(0, 0, 0, 0.05)');
       document.documentElement.style.setProperty('--white-30', 'rgba(0, 0, 0, 0.3)');
