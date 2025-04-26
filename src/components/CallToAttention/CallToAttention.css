@@ -1,128 +1,369 @@
 @import '../../index.css';
 .CallToAttention {
     width: 100%;
-    height: 80vh;
+    margin: 50px 0 100px 0;
+    padding: calc(var(--space-3xl) + 2rem) calc(var(--space-2xl) + 1rem);
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: var(--glasstilecolor);
-    border: 2px solid var(--white-5);
-    border-radius: 50px;
-    padding: 40px;
-    margin-bottom: var(--intersection-mg);
+    background: linear-gradient( 135deg, rgba(var(--color-surface-rgb), 0.85) 0%, rgba(var(--color-surface-rgb), 0.95) 100%);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: 0 20px 40px -10px rgba(var(--color-shadow-rgb), 0.25), 0 1px 3px rgba(var(--color-shadow-rgb), 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    isolation: isolate;
+    border: 1px solid rgba(var(--color-border-rgb), 0.2);
+    backdrop-filter: blur(10px);
+    transform: translateZ(0);
 }
 
-.CallToAttention>svg {
+.geometric-elements {
     position: absolute;
-    filter: blur(100px);
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
-    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    transform: translateZ(0);
 }
 
-.CallToAttention p.s-font {
-    margin: 30px 0 50px 0;
+.geo-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid rgba(var(--color-primary-rgb), 0.15);
+    top: -150px;
+    right: -100px;
+    transform: translateZ(0);
 }
 
-.CallToAttention .call-btns {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+.geo-dots {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: radial-gradient(rgba(var(--color-accent-rgb), 0.3) 1px, transparent 1px);
+    background-size: 18px 18px;
+    border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
+    bottom: -80px;
+    left: 15%;
+    opacity: 0.5;
+    transform: translateZ(0);
 }
 
-.CallToAttention .call-btns>* {
-    width: 150px;
+.geo-square {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 2px solid rgba(var(--color-accent-rgb), 0.15);
+    top: 20%;
+    left: -60px;
+    transform: rotate(45deg) translateZ(0);
+}
+
+.geo-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent 0%, rgba(var(--color-primary-rgb), 0.2) 50%, transparent 100%);
+    transform: translateZ(0);
+}
+
+.geo-line.horizontal {
+    width: 80%;
+    height: 1px;
+    top: 40px;
+    left: 10%;
+}
+
+.geo-line.vertical {
+    width: 1px;
+    height: 50%;
+    right: 80px;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(var(--color-accent-rgb), 0.2) 50%, transparent 100%);
 }
 
 
-/* Full Button */
+/* Content Styles */
 
-a.full,
-button.full {
-    padding: 12px 0px;
-    color: var(--darkbackground);
-    background: var(--white-80);
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.spark-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(var(--color-primary-rgb), 0.1);
+    color: var(--color-primary);
+    border-radius: 50px;
+    font-size: var(--fs-sm);
     font-weight: 600;
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.5s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.spark-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( to right, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+    animation: sparkle 3s infinite;
+}
+
+@keyframes sparkle {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.heading-container {
+    margin-bottom: var(--space-xl);
+    position: relative;
+}
+
+.CallToAttention h2 {
+    font-size: var(--fs-5xl);
+    font-weight: 800;
+    margin-bottom: var(--space-sm);
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.CallToAttention .text-gradient {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientPulse 8s ease infinite;
+    display: inline-block;
+}
+
+@keyframes gradientPulse {
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.CallToAttention p {
+    font-size: var(--fs-xl);
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto var(--space-2xl);
+    line-height: 1.6;
+}
+
+
+/* Button Styles */
+
+.cta-buttons {
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: var(--space-lg);
+    position: relative;
 }
 
-a.full:hover,
-button.full:hover {
-    background: var(--white-60);
-}
-
-
-/* Empty Button */
-
-a.empty,
-button.empty {
-    padding: 12px 0;
-    color: var(--white-80);
-    background: transparent;
-    font-weight: 600;
-    outline: 1px solid var(--white-30);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
+.CallToAttention .button-primary,
+.CallToAttention .button-secondary {
     display: flex;
-    justify-content: center;
     align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    font-size: var(--fs-md);
+    transition: all 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    position: relative;
+    overflow: hidden;
 }
 
-a.empty:hover,
-button.empty:hover {
-    background: var(--glasstilecolor);
+.CallToAttention .button-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    color: white;
+    box-shadow: 0 10px 20px -10px rgba(var(--color-primary-rgb), 0.5), 0 0 0 1px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.CallToAttention .button-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( to right, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+    transition: left 0.6s ease;
+}
+
+.CallToAttention .button-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 30px -10px rgba(var(--color-primary-rgb), 0.6), 0 0 0 1px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.CallToAttention .button-primary:hover::before {
+    left: 100%;
+}
+
+.CallToAttention .button-primary svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.CallToAttention .button-primary:hover svg {
+    transform: translateX(4px);
+}
+
+.CallToAttention .button-secondary {
+    background-color: rgba(var(--color-surface-variant-rgb), 0.5);
+    color: var(--color-text-primary);
+    border: 1px solid rgba(var(--color-border-rgb), 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.CallToAttention .button-secondary:hover {
+    background-color: var(--color-surface-variant);
+    transform: translateY(-3px) scale(1.02);
+    border-color: rgba(var(--color-border-rgb), 0.5);
+}
+
+.CallToAttention .button-secondary .icon {
+    width: 20px;
+    height: 20px;
 }
 
 
-/* Dark Mode */
+/* Animated Highlights */
 
-:root {
-    --darkbackground: #0a0e14;
-    --white-80: rgba(217, 217, 217, 0.8);
-    --white-60: rgba(217, 217, 217, 0.6);
-    --white-30: rgba(217, 217, 217, 0.3);
-    --glasstilecolor: rgba(217, 217, 217, 0.05);
+.cta-highlights {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.highlight-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.4;
+    transform: translateZ(0);
+}
+
+.highlight-blob.one {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle at center, rgba(var(--color-primary-rgb), 0.3) 0%, rgba(var(--color-primary-rgb), 0) 70%);
+    top: -200px;
+    right: -100px;
+    animation: blobFloat 20s infinite alternate ease-in-out;
+}
+
+.highlight-blob.two {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle at center, rgba(var(--color-accent-rgb), 0.3) 0%, rgba(var(--color-accent-rgb), 0) 70%);
+    bottom: -150px;
+    left: -100px;
+    animation: blobFloat 15s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes blobFloat {
+    0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-20px) scale(1.05) rotate(5deg);
+    }
+}
+
+.highlight-effect {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(var(--color-border-rgb), 0.05) 100%);
 }
 
 
-/* Light Mode */
+/* Subtle Grid Pattern */
 
-[data-theme='light'] {
-    --darkbackground: #ffffff;
-    --white-80: rgba(0, 0, 0, 0.8);
-    --white-60: rgba(0, 0, 0, 0.6);
-    --white-30: rgba(0, 0, 0, 0.3);
-    --glasstilecolor: rgba(0, 0, 0, 0.05);
+.cta-grid-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(var(--color-border-rgb), 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(var(--color-border-rgb), 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: -1;
+    opacity: 0.6;
 }
 
-@media only screen and ( width<=520px) {
+
+/* Responsive styles */
+
+@media (max-width: 768px) {
     .CallToAttention {
-        padding: 10px 20px;
+        padding: var(--space-2xl) var(--space-lg);
+    }
+    .CallToAttention h2 {
+        font-size: var(--fs-4xl);
+    }
+    .CallToAttention p {
+        font-size: var(--fs-lg);
+    }
+    .geo-circle {
+        width: 200px;
+        height: 200px;
+        top: -100px;
+        right: -50px;
+    }
+    .geo-square {
+        width: 80px;
+        height: 80px;
+        left: -40px;
+    }
+    .geo-line.horizontal {
+        width: 70%;
     }
 }
 
-@media only screen and ( width<=449px) {
-    .CallToAttention .call-btns {
+@media (max-width: 480px) {
+    .CallToAttention {
+        padding: var(--space-xl) var(--space-md);
+    }
+    .CallToAttention h2 {
+        font-size: var(--fs-3xl);
+    }
+    .CallToAttention p {
+        font-size: var(--fs-base);
+    }
+    .cta-buttons {
         flex-direction: column;
+        width: 100%;
+        gap: var(--space-md);
     }
-    .CallToAttention button.full {
-        width: 200px;
-    }
-    .CallToAttention button.empty {
-        width: 200px;
+    .CallToAttention .button-primary,
+    .CallToAttention .button-secondary {
+        width: 100%;
+        justify-content: center;
     }
 }

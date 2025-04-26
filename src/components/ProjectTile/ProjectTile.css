@@ -1,151 +1,371 @@
 @import '../../index.css';
 .ProjectTile {
     width: 100%;
-    height: 85vh;
-    display: flex;
-    align-items: center;
-}
-
-@media (width>=1250px) {
-    .ProjectTile {
-        width: 100%;
-        height: 70vh;
-        display: flex;
-        align-items: center;
-    }
-}
-
-.ProjectTile .Img-Description {
-    padding: 10px;
-    flex: 1;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ProjectTile .Img-Description .Img-box {
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border-radius: var(--radius-xl);
     overflow: hidden;
-    background: var(--backgrounddark);
+    background-color: var(--color-surface);
+    border: 1px solid rgba(var(--color-border-rgb), 0.2);
+    transition: all 0.4s var(--ease-default);
+    position: relative;
 }
 
-.ProjectTile .Img-Description .Img-box img {
+.ProjectTile-inner {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) 1.2fr;
+    min-height: 360px;
+}
+
+.ProjectTile-image {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.ProjectTile-image .Img-box {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.ProjectTile-image .Img-box img {
     object-fit: cover;
     height: 100%;
     width: 100%;
+    transition: transform 0.8s var(--ease-smooth);
+    display: block;
 }
 
-.ProjectTile .Description {
-    padding: 50px 20px 50px 40px;
-    flex: 1;
+.ProjectTile:hover .Img-box img {
+    transform: scale(1.05);
+}
+
+.ProjectTile-image .Img-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    background: var(--glasstilecolor);
+    background: linear-gradient( to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4));
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-default);
 }
 
-.ProjectTile .Description p.sss-font {
-    margin-bottom: 40px;
+.ProjectTile:hover .Img-box::after {
+    opacity: 1;
 }
 
-.ProjectTile .Description p.l-font {
-    margin-bottom: 25px;
-}
-
-.ProjectTile .Description p.s-font {
-    margin-bottom: 30px;
-    padding: 0;
-}
-
-.ProjectTile .Description .project-links {
+.ProjectTile .Img-box .type-badge {
+    position: absolute;
+    top: var(--space-md);
+    left: var(--space-md);
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-md);
     display: flex;
-    gap: 30px;
-    text-decoration: underline;
-    margin-bottom: 30px;
+    align-items: center;
+    gap: var(--space-xs);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+    z-index: 2;
 }
 
-.ProjectTile .Description .project-links a {
-    background: var(--bluegradient);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    background-size: 200% 100%;
-    animation: textGradient 2s infinite linear;
-    transition: 0.5s;
-    margin-right: 10px;
+.ProjectTile .badge-icon {
     display: flex;
+    align-items: center;
+}
+
+.ProjectTile .badge-text {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ProjectTile-content {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-xl);
+    position: relative;
+}
+
+.ProjectTile-content::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 4px;
+    background: var(--gradient-primary);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    opacity: 0.6;
+    transform: scaleY(0.3);
+    transform-origin: center;
+    transition: transform 0.5s var(--ease-smooth), opacity 0.5s var(--ease-smooth);
+}
+
+.ProjectTile:hover .ProjectTile-content::before {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.ProjectTile .content-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+/* Project Header */
+
+.ProjectTile .project-header {
+    margin-bottom: var(--space-md);
+}
+
+.ProjectTile .project-type-container {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-xs);
+}
+
+.ProjectTile .project-type-icon {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
+    color: var(--color-primary);
 }
 
-.ProjectTile .Description .project-links a:hover {
-    color: var(--bluehighlights);
-    text-decoration: underline;
+.ProjectTile .project-type {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-primary);
+    position: relative;
+    display: inline-block;
+    margin: 0;
 }
 
-.ProjectTile .Description .project-links a svg {
-    transition: 0.3s;
-    margin-left: 5px;
+.ProjectTile .project-title {
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-bold);
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    max-width: 95%;
+    margin-bottom: 0;
+    position: relative;
+    transition: color 0.3s var(--ease-default);
 }
 
-.ProjectTile .Description .project-links a:hover svg {
-    transform: rotate(45deg);
+
+/* Project Body */
+
+.ProjectTile .project-body {
+    flex-grow: 1;
+    margin-bottom: var(--space-lg);
 }
 
-.ProjectTile .Description .tools {
+.ProjectTile .project-description {
+    font-size: var(--fs-base);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+}
+
+
+/* Project Meta Section */
+
+.ProjectTile .project-meta {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+
+/* Tools Section */
+
+.ProjectTile .tools-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.ProjectTile .tools-header {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: var(--space-xs);
+    font-size: var(--fs-xs);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-xxs);
+}
+
+.ProjectTile .tools {
+    display: flex;
     flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
 }
 
-@media only screen and ( width<=987px) {
-    .ProjectTile {
-        width: 100%;
-        height: 700px;
-        display: flex;
+
+/* Link Buttons */
+
+.ProjectTile .project-links {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.ProjectTile .link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    transition: all 0.3s var(--ease-default);
+}
+
+.ProjectTile .link-button.live-link {
+    background-color: rgba(var(--color-primary-rgb), 0.1);
+    color: var(--color-primary);
+    border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+    transition: all var(--transition-normal);
+}
+
+.ProjectTile .link-button.live-link:hover {
+    background-color: var(--color-primary);
+    color: white;
+    border: 1px solid var(--color-primary);
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.25);
+}
+
+.ProjectTile .link-button.github-link {
+    background-color: rgba(var(--color-text-tertiary-rgb), 0.1);
+    color: var(--color-text-secondary);
+    border: 1px solid rgba(var(--color-border-rgb), 0.6);
+    transition: all var(--transition-normal);
+}
+
+.ProjectTile .link-button.github-link:hover {
+    background-color: rgba(var(--color-surface-variant-rgb), 0.9);
+    color: var(--color-text-primary);
+    box-shadow: 0 4px 12px rgba(var(--color-shadow-rgb), 0.15);
+}
+
+.ProjectTile .link-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s var(--ease-default);
+}
+
+
+/* Project Type-Specific Styling */
+
+.ProjectTile[data-type="personal"] .type-badge {
+    border-color: rgba(var(--color-primary-rgb), 0.5);
+}
+
+.ProjectTile[data-type="academic"] .type-badge {
+    border-color: rgba(var(--color-secondary-rgb), 0.5);
+}
+
+.ProjectTile[data-type="open source"] .type-badge {
+    border-color: rgba(var(--color-accent-rgb), 0.5);
+}
+
+.ProjectTile[data-type="professional"] .type-badge {
+    border-color: rgba(var(--color-success-rgb), 0.5);
+}
+
+
+/* Even/Odd Alternating Layout */
+
+.project-item:nth-child(even) .ProjectTile-inner {
+    grid-template-columns: 1.2fr minmax(300px, 1fr);
+}
+
+.project-item:nth-child(even) .ProjectTile-image {
+    order: 2;
+}
+
+.project-item:nth-child(even) .ProjectTile-content {
+    order: 1;
+}
+
+.project-item:nth-child(even) .ProjectTile-content::before {
+    left: auto;
+    right: 0;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+
+/* Responsive Adjustments */
+
+@media (max-width: 1024px) {
+    .ProjectTile-inner,
+    .project-item:nth-child(even) .ProjectTile-inner {
+        grid-template-columns: 1fr 1fr;
+        min-height: 320px;
+    }
+    .ProjectTile .project-title {
+        font-size: var(--fs-xl);
+    }
+    .ProjectTile .project-description {
+        font-size: var(--fs-sm);
+    }
+}
+
+@media (max-width: 768px) {
+    .ProjectTile-inner,
+    .project-item:nth-child(even) .ProjectTile-inner {
+        grid-template-columns: 1fr;
+    }
+    .ProjectTile-image,
+    .project-item:nth-child(even) .ProjectTile-image {
+        order: 1;
+        height: 240px;
+    }
+    .ProjectTile-content,
+    .project-item:nth-child(even) .ProjectTile-content {
+        order: 2;
+    }
+    .ProjectTile-content::before,
+    .project-item:nth-child(even) .ProjectTile-content::before {
+        left: var(--space-xl);
+        right: auto;
+        top: 0;
+        bottom: auto;
+        height: 3px;
+        width: 60px;
+        transform: scaleX(0.3);
+        transform-origin: left center;
+    }
+    .ProjectTile:hover .ProjectTile-content::before {
+        transform: scaleX(1);
+    }
+}
+
+@media (max-width: 480px) {
+    .ProjectTile-content {
+        padding: var(--space-lg) var(--space-md);
+    }
+    .ProjectTile-image {
+        height: 200px;
+    }
+    .ProjectTile .project-links {
         flex-direction: column;
-        align-items: center;
-        margin-bottom: 150px;
-    }
-    .ProjectTile .Img-Description {
-        width: 100%;
-        height: 320px;
-        padding: 30px;
-    }
-    .ProjectTile .Img-Description .Img-box {
         width: 100%;
     }
-    .ProjectTile .Img-Description .Img-box img {
-        object-fit: cover;
-        height: 100%;
+    .ProjectTile .link-button {
         width: 100%;
+        justify-content: center;
     }
-}
-
-@media only screen and ( width<=506px) {
-    .ProjectTile {
-        width: 100%;
-        height: 800px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 100px;
-    }
-}
-
-@media only screen and ( width<=398px) {
-    .ProjectTile {
-        margin-bottom: 130px;
-    }
-}
-
-@media only screen and ( width<=361px) {
-    .ProjectTile {
-        margin-bottom: 180px;
+    .ProjectTile-content::before {
+        left: var(--space-md);
     }
 }

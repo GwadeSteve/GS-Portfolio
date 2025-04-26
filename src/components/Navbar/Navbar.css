@@ -2,12 +2,27 @@
 .Navbar {
     width: 100%;
     display: flex;
+    justify-content: center;
+    padding: 18px 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 1s ease;
+}
+
+.Navbar.scrolled {
+    padding: 10px 0;
+    background: rgba(var(--color-background), 0.5);
+}
+
+.navbar-container {
+    width: 100%;
+    max-width: var(--container-xl);
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px 6% 40px 6%;
-    margin-bottom: 75px;
+    padding: 0 var(--space-lg);
     position: relative;
-    z-index: 1;
 }
 
 .Navbar .Gradient {
@@ -21,35 +36,34 @@
     z-index: -99;
 }
 
-.Logo {
-    width: 50px;
-    height: 50px;
-    z-index: 99999;
+.logo-container {
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.Logo {
+    width: 40px;
+    height: 40px;
+    z-index: 99999;
 }
 
 .Navbar .Toggle {
     display: none;
     z-index: 2;
-}
-
-.Navbar .Toggle.open {
-    width: 50px;
-    height: auto;
     cursor: pointer;
 }
 
 .Navbar .Toggle .Bar {
     width: 30px;
-    height: 4px;
-    margin: 5px;
+    height: 3px;
+    margin: 6px;
     border-radius: 5px;
-    background: var(--bluehighlights);
+    background: var(--color-primary);
     transition: all 0.3s ease-in-out;
 }
 
 .Navbar .Toggle.open .Bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: rotate(45deg) translate(6px, 6px);
 }
 
 .Navbar .Toggle.open .Bar:nth-child(2) {
@@ -57,11 +71,21 @@
 }
 
 .Navbar .Toggle.open .Bar:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+
+/* Fix for links appearing active when they're not */
+
+.Navbar .nav-link {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
 .Navbar a.active {
-    color: var(--bluehighlights);
+    color: var(--color-primary);
 }
 
 .Navbar .Mobile {
@@ -69,57 +93,53 @@
 }
 
 .Navbar .Mobile.Open {
-    width: 95%;
-    height: 110vh;
-    transform: translate(-15px, 250px);
-    border-radius: 5px;
-    border: 1px solid var(--white-30);
-    position: absolute;
-    background: var(--backgrounddark);
-    padding: 40px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--color-background);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 9999999;
-    overflow-y: hidden;
+    z-index: 99;
 }
 
 .Navbar .Mobile a {
-    font-size: 16px;
+    font-size: var(--fs-xl);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 15px 0;
+    padding: 20px 0;
     margin: 10px 0;
     position: relative;
     font-weight: 500;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
 .Navbar .Mobile a::after {
     content: '';
     position: absolute;
-    width: 100%;
+    width: 100px;
     height: 2px;
     bottom: -2px;
-    left: 0;
-    background-color: var(--bluehighlights);
-    transform: scaleX(0);
-    transform-origin: bottom right;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    background-color: var(--color-primary);
     transition: transform 0.3s ease-out;
-    color: var(--bluehighlights);
+    transform-origin: center;
 }
 
 .Navbar .Mobile a:hover {
-    color: var(--bluehighlights);
+    color: var(--color-primary);
 }
 
-.Navbar .Mobile a:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+.Navbar .Mobile a:hover::after,
+.Navbar .Mobile a.active::after {
+    transform: translateX(-50%) scaleX(1);
 }
 
 .Navbar .Links {
@@ -128,12 +148,17 @@
     align-items: center;
 }
 
+.nav-link-wrapper {
+    margin: 0 20px;
+}
+
 .Navbar .Links a {
     position: relative;
-    margin: 0 12px;
     font-weight: 500;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
+    padding: 8px 0;
+    color: var(--color-text-primary);
 }
 
 .Navbar .Links a::after {
@@ -141,20 +166,20 @@
     position: absolute;
     width: 100%;
     height: 2px;
-    bottom: -2px;
+    bottom: 0;
     left: 0;
-    background-color: var(--bluehighlights);
+    background-color: var(--color-primary);
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s ease-out;
-    color: var(--bluehighlights);
 }
 
 .Navbar .Links a:hover {
-    color: var(--bluehighlights);
+    color: var(--color-primary);
 }
 
-.Navbar .Links a:hover::after {
+.Navbar .Links a:hover::after,
+.Navbar .Links a.active::after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }

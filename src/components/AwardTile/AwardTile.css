@@ -1,54 +1,161 @@
 @import '../../index.css';
 .AwardTile {
-    width: 100%;
-    max-width: 450px;
-    margin: 0 auto;
+    position: relative;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     text-align: center;
-    outline: 0.5px solid var(--white-5);
-    background: var(--white-5);
-    transition: 0.3s;
-    padding: 20px;
-    border-radius: 15px;
+    transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67), box-shadow 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    max-width: 450px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    height: 100%;
 }
 
-.AwardTile:hover {
-    background: var(--white-5);
-    outline: 0.5px solid var(--glasstilecolor);
-    box-shadow: 3px 2px 100px rgba(73, 35, 103, 0.1);
+.AwardTile:hover,
+.AwardTile.hovered {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-variant);
 }
 
-.AwardTile .Comp-Icon {
-    width: 150px;
-    height: auto;
+.AwardTile::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient( 135deg, rgba(var(--color-primary-rgb, 37, 99, 235), 0.05) 0%, rgba(var(--color-accent-rgb, 139, 92, 246), 0.05) 100%);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.AwardTile:hover::before,
+.AwardTile.hovered::before {
+    opacity: 1;
+}
+
+.AwardTile .award-icon-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    margin: 30px 0;
+    margin-bottom: var(--space-lg);
+    z-index: 1;
 }
 
-.AwardTile .Comp-Icon img {
+.AwardTile .award-icon-container img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: contain;
+    transition: transform 0.5s ease;
 }
 
-.AwardTile .Details {
-    margin-bottom: 30px;
+.AwardTile:hover .award-icon-container img {
+    transform: scale(1.08);
+}
+
+.AwardTile .award-glow {
+    position: absolute;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-bottom: 20px;
-    border-bottom: 0.5px solid var(--glasstilecolor);
+    height: 100%;
+    background: radial-gradient( circle at center, rgba(var(--color-primary-rgb, 37, 99, 235), 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: -1;
 }
 
-@media (max-width: 301px) {
+.AwardTile:hover .award-glow,
+.AwardTile.hovered .award-glow {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.AwardTile .award-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.AwardTile .award-title {
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+    color: var(--color-text-primary);
+    font-family: var(--font-heading);
+}
+
+.AwardTile .award-position {
+    font-size: var(--fs-base);
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.AwardTile:hover .award-position,
+.AwardTile.hovered .award-position {
+    color: var(--color-accent);
+    border-color: var(--color-primary-variant);
+}
+
+.AwardTile .award-description {
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 0;
+}
+
+.AwardTile .award-badge {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 24px;
+    height: 24px;
+    color: var(--color-warning);
+    opacity: 0.7;
+    transform: rotate(0deg);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+.AwardTile:hover .award-badge,
+.AwardTile.hovered .award-badge {
+    transform: rotate(360deg) scale(1.2);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
     .AwardTile {
-        padding: 0px;
+        padding: var(--space-lg);
+    }
+    .AwardTile .award-icon-container {
+        width: 100px;
+        height: 100px;
+    }
+    .AwardTile .award-title {
+        font-size: var(--fs-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .AwardTile {
+        padding: var(--space-md);
+    }
+    .AwardTile .award-icon-container {
+        width: 80px;
+        height: 80px;
+        margin-bottom: var(--space-md);
     }
 }

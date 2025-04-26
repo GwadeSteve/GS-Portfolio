@@ -1,56 +1,150 @@
 @import '../../index.css';
 .Experience {
-    padding: 30px;
-    border-radius: 10px;
-    transition: 0.5s;
-    background: var(--white-5);
+    position: relative;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    transition: transform 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67), box-shadow 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
     display: flex;
     flex-direction: column;
-    cursor: pointer;
-    outline: 1px solid var(--white-5);
+    height: 100%;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
 }
 
-.Experience:hover {
-    background: var(--glasstilecolor);
-    outline: 1px solid var(--white-30);
-    transform: translateY(-1px);
+.Experience:hover,
+.Experience.hovered {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-variant);
 }
 
-.Experience .header {
+.Experience::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: var(--gradient-primary);
+    transition: height 0.6s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.Experience:hover::before,
+.Experience.hovered::before {
+    height: 100%;
+}
+
+.Experience .experience-header {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
+    margin-bottom: var(--space-md);
 }
 
 .Experience .logo-container {
-    width: 50px;
-    height: 50px;
-    font-display: flex;
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-right: var(--space-md);
+    flex-shrink: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    margin-right: 15px;
+    background-color: white;
+    box-shadow: var(--shadow-sm);
+    z-index: 1;
 }
 
 .Experience .logo-container img {
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.Experience:hover .logo-container img,
+.Experience.hovered .logo-container img {
+    transform: scale(1.1);
+}
+
+.Experience .logo-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    background: radial-gradient( circle at center, rgba(var(--color-primary-rgb, 37, 99, 235), 0.1) 0%, rgba(var(--color-accent-rgb, 139, 92, 246), 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
 }
 
-.Experience .header p {
+.Experience:hover .logo-backdrop,
+.Experience.hovered .logo-backdrop {
+    opacity: 1;
+}
+
+.Experience .company-name {
+    font-size: var(--fs-lg);
     font-weight: 600;
-    color: var(--white-100);
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.3;
+    font-family: var(--font-heading);
 }
 
-.Experience p.period {
-    margin-bottom: 20px;
+.Experience .experience-period {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-md);
+    color: var(--color-primary);
+    font-size: var(--fs-sm);
     font-weight: 500;
-    color: var(--bluehighlights);
 }
 
-@media ( max-width: 379px) {
+.Experience .period-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: var(--space-xs);
+    display: flex;
+    align-items: center;
+}
+
+.Experience .experience-role {
+    color: var(--color-text-secondary);
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin: 0;
+}
+
+.Experience .experience-decoration {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient( 135deg, transparent 0%, rgba(var(--color-primary-rgb, 37, 99, 235), 0.05) 100%);
+    border-radius: 100% 0 0 0;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translate(20px, 20px);
+}
+
+.Experience:hover .experience-decoration,
+.Experience.hovered .experience-decoration {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+@media (max-width: 768px) {
     .Experience {
-        padding: 20px 15px;
+        padding: var(--space-md);
+    }
+    .Experience .company-name {
+        font-size: var(--fs-base);
     }
 }
