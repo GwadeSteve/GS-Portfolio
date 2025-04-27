@@ -44,7 +44,7 @@ const HomePage = () => {
                 <div className="glass-effect tech-badge">
                   <div className="badge-pulse pulsing"></div>
                   <p>
-                    <span className="bold-text">Gwade Steve</span>, MSc at NHPSD Cameroon
+                    MSc at NHPSD
                   </p>
                 </div>
               </div>
@@ -90,14 +90,10 @@ const HomePage = () => {
       </section>
 
       <section className="section full-bleed-section about-section section-visible">
-        <div className="about-background">
-          <div className="about-topography"></div>
-          <div className="glowing-lines"></div>
-          <div className="about-accent-circle"></div>
-        </div>
+        
         
         <div className="section-content">
-          <div className="about-content">
+          <div className="about-home">
             <div className="about-image reveal-element">
               <div className="image-frame">
                 <div className="image-container">

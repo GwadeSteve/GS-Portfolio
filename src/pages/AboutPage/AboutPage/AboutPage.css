@@ -1,7 +1,268 @@
 @import '../../../index.css';
-.AboutPage {
+.about-container {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: var(--padding-lr);
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: var(--space-2xl) 0;
+}
+
+.about-container .section {
+    position: relative;
+    padding: var(--space-4xl) 0;
+    overflow: hidden;
+}
+
+.about-container .section-content {
+    width: 100%;
+    max-width: var(--container-xl);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    font-size: var(--fs-4xl);
+    font-weight: var(--fw-bold);
+    margin-bottom: var(--space-3xl);
+    line-height: var(--lh-tight);
+    letter-spacing: var(--letter-tight);
+}
+
+.about-container .about-hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.about-container .hero-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(var(--color-border-rgb), 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--color-border-rgb), 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+.about-container .accent-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.2;
+    transform: translateZ(0);
+}
+
+.about-container .accent-circle.left {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient( circle at center, rgba(var(--color-primary-rgb), 0.3) 0%, rgba(var(--color-primary-rgb), 0) 70%);
+    top: -10%;
+    left: -10%;
+}
+
+.accent-circle.right {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient( circle at center, rgba(var(--color-accent-rgb), 0.3) 0%, rgba(var(--color-accent-rgb), 0) 70%);
+    bottom: -20%;
+    right: -20%;
+}
+
+.geometric-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.element {
+    position: absolute;
+    transform: translateZ(0);
+}
+
+.element.circle {
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+    border-radius: 50%;
+    top: 20%;
+    right: 10%;
+    opacity: 0.7;
+}
+
+.element.rectangle {
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(var(--color-accent-rgb), 0.2);
+    transform: rotate(45deg);
+    bottom: 15%;
+    left: 10%;
+    opacity: 0.7;
+}
+
+.element.dots {
+    width: 250px;
+    height: 250px;
+    background-image: radial-gradient(rgba(var(--color-text-tertiary-rgb), 0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+    border-radius: 50%;
+    top: 60%;
+    right: 15%;
+    opacity: 0.4;
+}
+
+.journey-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.topography-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-radial-gradient( circle at 25% 25%, rgba(var(--color-border-rgb), 0.1) 0, rgba(var(--color-border-rgb), 0.03) 1px, transparent 1px, transparent 100%);
+    background-size: 40px 40px;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.glowing-lines {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient( 90deg, transparent 0%, rgba(var(--color-primary-rgb), 0.2) 50%, transparent 100%);
+    top: 30%;
+    transform: translateZ(0);
+}
+
+.achievements-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.circuit-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    background-image: linear-gradient(rgba(var(--color-primary-rgb), 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+.floating-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.shape.dot-grid {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-image: radial-gradient(rgba(var(--color-accent-rgb), 0.2) 1px, transparent 1px);
+    background-size: 15px 15px;
+    bottom: 10%;
+    left: 5%;
+    opacity: 0.5;
+    transform: translateZ(0);
+}
+
+.shape.light-beam {
+    position: absolute;
+    width: 150px;
+    height: 500px;
+    background: linear-gradient( 180deg, rgba(var(--color-primary-rgb), 0.1), rgba(var(--color-accent-rgb), 0));
+    top: -10%;
+    right: 20%;
+    transform: rotate(45deg);
+    opacity: 0.3;
+    filter: blur(50px);
+}
+
+.cta-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.neural-network {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 15px 15px, rgba(var(--color-border-rgb), 0.15) 2px, transparent 0), radial-gradient(circle at 45px 45px, rgba(var(--color-border-rgb), 0.15) 2px, transparent 0);
+    background-size: 60px 60px;
+    opacity: 0.4;
+    z-index: -1;
+}
+
+.glowing-lines-horizontal {
+    position: absolute;
+    width: 80%;
+    height: 1px;
+    left: 10%;
+    background: linear-gradient( 90deg, transparent 0%, rgba(var(--color-accent-rgb), 0.2) 50%, transparent 100%);
+    top: 65%;
+    transform: translateZ(0);
+}
+
+.section.full-bleed-section.about-hero-section {
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: var(--space-2xl) 0;
+    }
+    .accent-circle.left,
+    .accent-circle.right {
+        width: 300px;
+        height: 300px;
+    }
+    .element.circle,
+    .element.rectangle,
+    .element.dots {
+        transform: scale(0.7);
+    }
+}
+
+@media (max-width: 480px) {
+    .section-content {
+        padding: 0 var(--space-md);
+    }
+    .accent-circle.left,
+    .accent-circle.right {
+        width: 200px;
+        height: 200px;
+    }
 }

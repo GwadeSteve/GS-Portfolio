@@ -129,12 +129,16 @@
     filter: brightness(100);
 }
 
-.about-content {
+.about-home {
     display: grid;
     grid-template-columns: 1fr 1.3fr;
     gap: var(--space-3xl);
     margin: 50px 0;
     align-items: center;
+}
+
+.about-text .section-title {
+    text-align: start;
 }
 
 .image-frame {
@@ -274,14 +278,14 @@
 }
 
 @media (max-width: 1024px) {
-    .about-content {
+    .about-home {
         grid-template-columns: 1fr 1.2fr;
         gap: var(--space-xl);
     }
 }
 
 @media (max-width: 900px) {
-    .about-content {
+    .about-home {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -293,6 +297,9 @@
     .about-image {
         max-width: 450px;
         margin: 0 auto;
+    }
+    .about-text .section-title {
+        text-align: center;
     }
 }
 
