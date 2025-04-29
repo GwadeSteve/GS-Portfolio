@@ -27,6 +27,8 @@ const HomePage = () => {
             <div className="shape triangle"></div>
           </div>
         </div>
+
+        
         
         <div className="container">
           <div className="hero-content">
@@ -116,7 +118,7 @@ const HomePage = () => {
               </h2>
 
               <p className="about-description combined-about reveal-element delay-2">
-                I'm currently in a Research Master's (Data Science & AI) at the National Polytechnic School of Douala, Cameroon. For me, technology is a tool for solving problems, and I'm really into building smart solutions by combining software development and data science, with a big focus on pushing the boundaries of AI, especially in <p className="gradient-text">computer vision</p>.
+                I'm currently in a Research Master's (Data Science & AI) at the National Polytechnic School of Douala, Cameroon. For me, technology is a tool for solving problems, and I'm really into building smart solutions by combining software development and data science, with a big focus on pushing the boundaries of AI, especially in <p className="gradient-text">computer vision</p>
               </p>
               
               <NavLink to="/about" className="button secondary reveal-element delay-4">
@@ -174,13 +176,14 @@ const HomePage = () => {
                 className={`project-item reveal-element delay-${index + 2}`}
               >
                 <ProjectTile
-                  type={project.type}
-                  title={project.title}
-                  description={project.description}
-                  link_live={project.link_live}
-                  link_github={project.link_github}
-                  image={project.image}
-                  tools={project.tools}
+                   type={project.type}
+                   title={project.title}
+                   description={project.description}
+                   link_live={project.link_live}
+                   link_github={project.link_github}
+                   image={project.image}
+                   tools={project.tools}
+                   status={project.status}
                 />
               </div>
             ))}

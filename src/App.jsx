@@ -14,25 +14,62 @@ import './App.css';
 function App() {
     const location = useLocation();
     const [initialLoading, setInitialLoading] = useState(true);
+    const [pageLoading, setPageLoading] = useState(false);
+    const [previousLocation, setPreviousLocation] = useState('');
     const [pageTransitioning, setPageTransitioning] = useState(false);
 
     useEffect(() => {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      
+      document.body.style.overflow = 'hidden';
+      
       const timer = setTimeout(() => {
         setInitialLoading(false);
-      }, 2000); 
+        document.body.style.overflow = '';
+      }, 5000);
       
-      document.body.classList.remove('body-scroll-lock');
-      return () => clearTimeout(timer);
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = '';
+      };
     }, []);
 
     useEffect(() => {
-      setPageTransitioning(true);
-      const timer = setTimeout(() => {
-        setPageTransitioning(false);
-      }, 50);
+      if (previousLocation === '') {
+        setPreviousLocation(location.pathname);
+        return;
+      }
       
-      return () => clearTimeout(timer);
-    }, [location.pathname]);
+      if (previousLocation.split('#')[0] === location.pathname.split('#')[0]) {
+        setPreviousLocation(location.pathname);
+        return;
+      }
+      
+      setPageLoading(true);
+      document.body.style.overflow = 'hidden';
+      
+      const timer = setTimeout(() => {
+        setPageLoading(false);
+        document.body.style.overflow = '';
+        setPreviousLocation(location.pathname);
+      }, 2500);
+      
+      return () => {
+        clearTimeout(timer);
+      };
+    }, [location.pathname, previousLocation]);
+
+    useEffect(() => {
+      if (!initialLoading && !pageLoading) {
+        setPageTransitioning(true);
+        const timer = setTimeout(() => {
+          setPageTransitioning(false);
+        }, 0);
+        
+        return () => clearTimeout(timer);
+      }
+    }, [location.pathname, initialLoading, pageLoading]);
 
     useEffect(() => {
       const handleLinkClick = (e) => {
@@ -68,26 +105,24 @@ function App() {
 
     const hideNavbarFooter = location.pathname === '/request';
 
+    if (initialLoading || pageLoading) {
+      return <LoadingPage />;
+    }
+
     return (
       <div className="App">
-        <ScrollToTop/>
-        {initialLoading ? (
-          <LoadingPage />
-        ) : (
-          <>
-            {!hideNavbarFooter && <Navbar />}
-            <ThemeToggle/>
-            <main className={`main-content ${pageTransitioning ? 'page-transitioning' : ''}`}>
-              <Routes location={location}>
-                <Route path='/' element={<HomePage/>}/>
-                <Route path='/about' element={<AboutPage/>}/>
-                <Route path='/work' element={<Work/>}/>
-                <Route path='/request' element={<Request/>}/>
-              </Routes>
-            </main>
-            {!hideNavbarFooter && <Footer />}
-          </>
-        )}
+        <ScrollToTop />
+        {!hideNavbarFooter && <Navbar />}
+        <ThemeToggle />
+        <main className={`main-content ${pageTransitioning ? 'page-transitioning' : ''}`}>
+          <Routes location={location}>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/about' element={<AboutPage />} />
+            <Route path='/work' element={<Work />} />
+            <Route path='/request' element={<Request />} />
+          </Routes>
+        </main>
+        {!hideNavbarFooter && <Footer />}
       </div>
     );
 }

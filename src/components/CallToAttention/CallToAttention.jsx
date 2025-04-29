@@ -31,7 +31,7 @@ const CallToAttention = () => {
             </svg>
           </Link>
             
-          <Link to="/request" className="button-secondary">
+          <Link to="/request" className="button secondary">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="icon">
               <path fillRule="evenodd" d="M2 10c0-3.967 3.69-7 8-7 4.31 0 8 3.033 8 7s-3.69 7-8 7a9.165 9.165 0 01-1.504-.123 5.976 5.976 0 01-1.825 1.025.75.75 0 01-.589-.022L5.09 16.47A.75.75 0 014.52 16a16.46 16.46 0 001.22-1.607c.226-.35.432-.7.621-1.066A6.993 6.993 0 012 10zm6.5 0c0-.828.559-1.5 1.25-1.5S11 9.172 11 10c0 .828-.559 1.5-1.25 1.5S8.5 10.828 8.5 10zm4.5 0c0-.828.56-1.5 1.25-1.5.689 0 1.25.672 1.25 1.5 0 .828-.561 1.5-1.25 1.5-.69 0-1.25-.672-1.25-1.5z" clipRule="evenodd" />
             </svg>

@@ -1,60 +1,183 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react'
+import { useLocation } from 'react-router-dom';
 import './LoadingPage.css'
-import { ReactComponent as Gradient } from '../../assets/Gradient.svg'
 import { ReactComponent as Logo } from '../../assets/Logo.svg'
 
 const LoadingPage = () => {
+  const [mounted, setMounted] = useState(false);
+  const [loadingPhase, setLoadingPhase] = useState(0);
+  const [loadingMessage, setLoadingMessage] = useState('Initializing system');
+  const location = useLocation();
+  const messageRef = useRef(null);
+  
+  const routeMessages = useMemo(() => ({
+    '/': ['Preparing showcase', 'Loading portfolio elements', 'Rendering homepage'],
+    '/about': ['Loading personal journey', 'Preparing experience timeline', 'Assembling biography'],
+    '/work': ['Curating projects', 'Processing project previews', 'Setting up work gallery'],
+    '/request': ['Setting up contact form', 'Initializing messaging system', 'Preparing communication systems'],
+    'default': ['Loading content', 'Preparing visuals', 'Optimizing experience']
+  }), []); 
 
-    const [isDarkMode, setIsDarkMode] = useState(() => {
-        const savedTheme = localStorage.getItem('theme');
-        return savedTheme ? savedTheme === 'dark' : true;
-      });
+  const getRouteMessages = useCallback(() => {
+    const pathname = location.pathname;
+    return routeMessages[pathname] || routeMessages.default;
+  }, [location.pathname, routeMessages]);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body.style.overflow = 'hidden';
     
-      useEffect(() => {
-        if (isDarkMode) {
-          document.documentElement.style.setProperty('--backgrounddark', '#0a0e14');
-          document.documentElement.style.setProperty('--white-100', 'rgba(217, 217, 217, 1)');
-          document.documentElement.style.setProperty('--white-80', 'rgba(217, 217, 217, 0.8)');
-          document.documentElement.style.setProperty('--bluehighlights', '#207ce7');
-          document.documentElement.style.setProperty('--black-100', 'rgba(0, 0, 0, 1)');
-          document.documentElement.style.setProperty('--black-80', 'rgba(0, 0, 0, 0.8)');
-          document.documentElement.style.setProperty('--pagetext', '1.125rem');
-          document.documentElement.style.setProperty('--background-blacktiles', '#10141b');
-          document.documentElement.style.setProperty('--glasstilecolor', 'rgba(217, 217, 217, 0.05)');
-          document.documentElement.style.setProperty('--white-30', 'rgba(217, 217, 217, 0.3)');
-          document.documentElement.style.setProperty('--white-5', 'rgba(217, 217, 217, 0.01)');
-          document.documentElement.style.setProperty('--bluegradient', 'linear-gradient(90deg, #58a5ff 0%, #7276c5 86.5%)');
-          localStorage.setItem('theme', 'dark');
-        } else {
-          document.documentElement.style.setProperty('--backgrounddark', '#f5f5f5');
-          document.documentElement.style.setProperty('--white-100', '#000000');
-          document.documentElement.style.setProperty('--white-80', 'rgba(0, 0, 0, 0.8)');
-          document.documentElement.style.setProperty('--bluehighlights', '#00397a');
-          document.documentElement.style.setProperty('--black-100', 'rgba(255, 255, 255, 1)');
-          document.documentElement.style.setProperty('--black-80', 'rgba(255, 255, 255, 0.8)');
-          document.documentElement.style.setProperty('--pagetext', '1rem');
-          document.documentElement.style.setProperty('--background-blacktiles', '#e0e0e0');
-          document.documentElement.style.setProperty('--glasstilecolor', 'rgba(0, 0, 0, 0.05)');
-          document.documentElement.style.setProperty('--white-30', 'rgba(0, 0, 0, 0.3)');
-          document.documentElement.style.setProperty('--white-5', 'rgba(0, 0, 0, 0.01)');
-          document.documentElement.style.setProperty('--bluegradient', 'linear-gradient(90deg, #4c9ffe 0%, #656bd8 86.5%)');
-          localStorage.setItem('theme', 'light');
-          setIsDarkMode(isDarkMode);
+    requestAnimationFrame(() => {
+      setMounted(true);
+    });
+    
+    const messages = getRouteMessages();
+    
+    const phaseInterval = setInterval(() => {
+      setLoadingPhase(prev => {
+        const next = prev + 1;
+        if (next < messages.length) {
+          setLoadingMessage(messages[next]);
+          return next;
         }
-      }, [isDarkMode]);
+        clearInterval(phaseInterval);
+        return prev;
+      });
+    }, 1500);
+    
+    return () => {
+      document.body.style.overflow = '';
+      clearInterval(phaseInterval);
+    };
+  }, [getRouteMessages]);
 
-    return (
-        <div className='LoadingPage'>
-            <div className="Loader">
-                <Gradient className='Gradient Gradient-1'/>
-                <Gradient className='Gradient Gradient-2'/>
-                <Gradient className='Gradient Gradient-3'/>
-                <Gradient className='Gradient Gradient-4'/>
-                <Gradient className='Gradient Gradient-5'/>
-                <Logo className='Logo'/>
-            </div>
+  const createGlyphs = (count) => {
+    const glyphs = [];
+    for (let i = 0; i < count; i++) {
+      const animDelay = Math.random() * 5;
+      const size = Math.random() * 15 + 10;
+      const posX = Math.random() * 100;
+      const posY = Math.random() * 100;
+      const opacity = Math.random() * 0.4 + 0.1;
+      
+      glyphs.push(
+        <div 
+          className="cyber-glyph" 
+          key={i}
+          style={{
+            top: `${posY}%`,
+            left: `${posX}%`,
+            opacity,
+            fontSize: `${size}px`,
+            animationDelay: `${animDelay}s`
+          }}
+        >
+          {['⌘', '⌥', '⌤', '⎔', '◉', '◎', '◇', '◈', '◐', '◨', '◧', '▣', '▤', '▥', '▦'][Math.floor(Math.random() * 15)]}
         </div>
-    )
+      );
+    }
+    return glyphs;
+  };
+
+  if (!mounted) return <div className="loading-page-preload" style={{ backgroundColor: 'var(--color-background)' }}></div>;
+
+  const phaseStyles = {
+    transform: `scale(${1 + loadingPhase * 0.05})`,
+    opacity: 1 - loadingPhase * 0.1
+  };
+
+  return (
+    <div className="loading-page">
+      <div className="nebula-background"></div>
+      <div className="stars-layer"></div>
+      <div className="cyber-pattern">{createGlyphs(40)}</div>
+      <div className="glowing-grid"></div>
+      
+      <div className="hologram-container" style={phaseStyles}>
+        <div className="core-element">
+          <div className="logo-container">
+            <div className="logo-scanlines"></div>
+            <Logo className="loader-logo" />
+          </div>
+        </div>
+        
+        <div className="energy-rings-container">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className={`energy-ring ring-${i+1}`}>
+              <div className="ring-accent"></div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="particles-container">
+          {[...Array(30)].map((_, i) => (
+            <div key={i} className={`particle particle-${i+1}`}></div>
+          ))}
+        </div>
+        
+        <div className="data-lines">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className={`data-line line-${i+1}`}>
+              <div className="data-point"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div className="loading-interface">
+        <div className="progress-wrapper">
+          <div className="progress-bar">
+            <div 
+              className="progress-fill" 
+              style={{
+                animationDuration: `${5 - loadingPhase * 0.5}s`
+              }}
+            ></div>
+            <div className="progress-glow"></div>
+          </div>
+          <div className="progress-percentage">
+            <span className="percentage-number"></span>
+            <span className="percentage-symbol">%</span>
+          </div>
+        </div>
+        
+        <div className="status-text">
+          <span className="status-message" ref={messageRef}>{loadingMessage}</span>
+          <span className="status-dots">
+            <span className="dot"></span>
+            <span className="dot"></span>
+            <span className="dot"></span>
+          </span>
+        </div>
+      </div>
+      
+      <div className="corner-frames">
+        <div className="corner top-left">
+          <span className="frame-line horizontal"></span>
+          <span className="frame-line vertical"></span>
+        </div>
+        <div className="corner top-right">
+          <span className="frame-line horizontal"></span>
+          <span className="frame-line vertical"></span>
+        </div>
+        <div className="corner bottom-left">
+          <span className="frame-line horizontal"></span>
+          <span className="frame-line vertical"></span>
+        </div>
+        <div className="corner bottom-right">
+          <span className="frame-line horizontal"></span>
+          <span className="frame-line vertical"></span>
+        </div>
+      </div>
+      
+      <div className="system-info">
+        <div className="info-item">Route: {location.pathname || '/'}</div>
+        <div className="info-item">Theme: {document.documentElement.getAttribute('data-theme')}</div>
+        <div className="info-item">Status: Phase {loadingPhase + 1}/3</div>
+      </div>
+    </div>
+  )
 }
 
 export default LoadingPage

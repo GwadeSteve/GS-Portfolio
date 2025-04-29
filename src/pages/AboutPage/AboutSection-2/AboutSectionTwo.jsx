@@ -1,19 +1,20 @@
 import React from 'react'
 import './AboutSectionTwo.css'
 import { FiDownload, FiBriefcase, FiCalendar, FiExternalLink } from 'react-icons/fi'
+import TGNixLogo from '../../../assets/experiences/tgnix_n.png'
 
 const AboutSectionTwo = () => {
     const handleDownloadResume = () => {
         const link = document.createElement('a');
-        link.href = '/resume/GwadeSteve-Resume.pdf';
-        link.download = 'GwadeSteve_Resume.pdf';
+        link.href = '/resume/GWADESTEVE_RESUME_LIGHT.pdf';
+        link.download = 'GWADESTEVE-RESUME.pdf';
         link.target = '_blank';
         link.click();
     };
 
     const experiences = [
         {
-            company_logo: '/images/Experience/SmartMove.svg',
+            company_logo: '/Experience/SmartMove.svg',
             company_name: 'SmartMove',
             period: 'January 2024 - Present',
             role: 'Currently in research and development initiatives focused on AI-powered mobility solutions. Working on computer vision algorithms for local problems.',
@@ -23,10 +24,10 @@ const AboutSectionTwo = () => {
             companyUrl: 'https://smartmove.com'
         },
         {
-            company_logo: '/images/Experience/Tgnix.svg',
-            company_name: 'Tgnix.co',
+            company_logo: TGNixLogo,
+            company_name: 'TGNix',
             period: 'March 2023 - December 2024',
-            role: 'Led a team of 4 developers building AI applications for clients. Implemented agile methodologies, and architected scalable solutions using various stacks like MERN and Render.',
+            role: 'Led a team of 4 developers building applications for clients. Implemented agile methodologies, and architected scalable solutions using various stacks like MERN and Render.',
             position: 'Software Developer Team Lead',
             type: 'Part-time',
             skills: ['React', 'Node.js', 'Render', 'Team Leadership'],
@@ -46,7 +47,7 @@ const AboutSectionTwo = () => {
             company_logo: '/images/Experience/CRTV.png',
             company_name: 'CRTV Cameroon',
             period: 'July 2021 - September 2021',
-            role: 'As an intern at Cameroon Radio and Television, I collaborated with the electronics and IT teams, debugging servers and fixing electrical issues. This experience deepened my understanding of electronics.',
+            role: 'As an intern at Cameroon Radio and Television, I collaborated with the electronics and IT teams, i learned to administrate servers and fix some electrical issues with tranmsmission components. This experience deepened my understanding of electronics.',
             position: 'IT Intern',
             type: 'Internship',
             skills: ['Server Administration', 'Electronics', 'Troubleshooting'],

@@ -351,9 +351,6 @@
     margin-bottom: var(--space-lg);
 }
 
-
-/* Improved Highlights Area */
-
 .award-highlights {
     background: rgba(var(--color-surface-variant-rgb), 0.5);
     padding: var(--space-sm);
@@ -452,11 +449,15 @@
 }
 
 @media (max-width: 768px) {
+    div.awards-section {
+        padding-top: 0;
+        padding-bottom: 0;
+        background: none;
+    }
     .awards-filter {
         width: 90%;
         max-width: 450px;
     }
-    /* No sliding pill to adjust width for */
     .filter-btn {
         min-width: auto;
         flex: 1;

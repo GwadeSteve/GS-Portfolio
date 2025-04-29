@@ -13,12 +13,12 @@ const AboutSectionThree = () => {
     const awards = [
         {
             title: 'Cameroon AI Awards',
-            position: '2024 - Winner 🏆',
+            position: '2025 - Winner',
             description: 'Won the Best Prototype award for EatWise - a mobile app companion using AI, computer vision and recommendation systems to strengthen nutrition in Cameroon.',
-            icon: '/images/Awards/IAC Logo.svg',
-            link: 'https://www.iac-cameroon.org/',
+            icon: 'images/Awards/IAC.jpeg',
+            link: 'https://iacameroun.com/',
             category: 'winner',
-            date: '2024-04',
+            date: '2025-04',
             highlights: [
                 'Best AI prototype award',
                 'Innovative nutrition solution',
@@ -26,13 +26,13 @@ const AboutSectionThree = () => {
             ]
         },
         {
-            title: 'JCAI Hackathon',
-            position: '2024 - Winner 🏆',
+            title: 'JCIA Hackathon',
+            position: '2025 - Winner',
             description: 'Winner of the IAC Hackathon challenge to build a solution for automatic plum sorting using AI. Developed the fastest and most accurate real-time plum classification model.',
-            icon: '/images/Awards/IAC Logo.svg',
-            link: 'https://www.iac-cameroon.org/',
+            icon: '/images/Awards/IAC.jpeg',
+            link: 'https://iacameroun.com/',
             category: 'winner',
-            date: '2024-04',
+            date: '2025-04',
             highlights: [
                 'Fastest classification model',
                 'Highest accuracy among participants',
@@ -40,32 +40,28 @@ const AboutSectionThree = () => {
             ]
         },
         {
+            title: 'AIMS Cameroon Hackathon',
+            position: '2024 - 2nd Prize',
+            description: 'Won for prototyping a Federated Learning approach to diagnose malaria on edge devices. The solution uses smartphones mounted on microscopes to perform real-time analysis and inference.',
+            icon: '/images/Awards/AIMS.jpeg',
+            link: 'https://aims-cameroon.org/',
+            category: 'finalist',
+            date: '2024-11',
+            highlights: [
+                'Edge-based malaria diagnosis',
+                'Federated learning implementation',
+                'Mobile microscope integration'
+            ]
+        },
+        {
             title: 'GIZ PADGOF Hackathon',
-            position: '2023 - Finalist 🥈',
+            position: '2024 - Finalist',
             description: 'Proposed an innovative E-governance solution for municipal communication, archiving, and digitalization of municipal services, enhancing efficiency.',
             icon: '/images/Awards/Giz Logo.svg',
             link: 'https://www.giz.de/en/html/index.html',
             category: 'finalist',
-            date: '2023-11'
+            date: '2024-7'
         },
-        {
-            title: 'Google Developer Student Clubs',
-            position: '2023 - Recognition',
-            description: 'Recognized for contributions to student developer community through workshops, code labs, and mentoring on machine learning and web development.',
-            icon: '/images/Awards/Google Logo.svg',
-            link: 'https://developers.google.com/community/gdsc',
-            category: 'recognition',
-            date: '2023-06'
-        },
-        {
-            title: 'Africa AI Accelerator',
-            position: '2022 - Participant',
-            description: 'Selected to participate in the Africa AI Accelerator program, working on computer vision solutions for healthcare accessibility in rural areas.',
-            icon: '/images/Awards/Africa AI Logo.svg',
-            link: '#',
-            category: 'participant',
-            date: '2022-08'
-        }
     ];
     
     const filteredAwards = activeFilter === 'all' 
@@ -84,8 +80,6 @@ const AboutSectionThree = () => {
 
     return (
         <div className='awards-section'>
-            <div className="background-accent"></div>
-            
             <div className="section-container">
                 <div className="section-header reveal-element">
                     <h2>Awards and <span className="gradient-text">Recognition</span></h2>

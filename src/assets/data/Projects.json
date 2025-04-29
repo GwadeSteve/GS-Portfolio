@@ -1,7 +1,42 @@
 [{
         "type": "Personal",
+        "title": "EatWise",
+        "description": "EatWise is a mobile application aimed at promoting healthier eating habits in Cameroon. It offers food and label scanning, personalized meal plans, consultations with dietitians, and a community platform for sharing recipes. The app addresses local dietary challenges and empowers users to achieve their health goals through personalized support.",
+        "status": "In Development",
+        "image": "/images/Experience/EatWise.svg",
+        "tools": ["Computer Vision", "Nutrition", "Recommender System"]
+    },
+    {
+        "type": "Personal",
+        "title": "StudyMate",
+        "description": "StudyMate is a next-gen study companion that allows users to upload PDFs, text files, PowerPoints, Word documents, YouTube links, and audio files. Users can chat with their uploads, generate flashcards, quizzes, summaries, and more, making studying interactive and efficient.",
+        "status": "In Development",
+        "image": "/images/Experience/StudyMate.jpg",
+        "tools": ["Django", "React", "React Native", "NLP", "Generative AI"]
+    },
+    {
+        "type": "Open Source",
+        "title": "PlumVision",
+        "description": "PlumVision is a real-time vision system developed during the JCIA Hackathon. It delivers fast and reliable plum classification with live session analytics, perfect for farmers and medium-to-large-scale businesses. Designed for real-world deployment, PlumVision emphasizes real-time feedback, modular architecture, and operational efficiency.",
+        "status": "Completed",
+        "link_github": "https://github.com/GwadeSteve/JCIA_Plum_Challenge/",
+        "image": "/images/Experience/PlumVision.svg",
+        "tools": ["FastAPI", "Pytorch", "WebSocket", "Docker"]
+    },
+    {
+        "type": "Personal",
+        "title": "Insect Splash",
+        "description": "Insect Splash is an engaging game using Computer Vision and hand-tracking to create an interactive experience where players aim to eliminate insects on the screen within a time limit. It showcases the playful potential of real-time computer vision.",
+        "status": "Completed",
+        "link_github": "https://github.com/GwadeSteve/Insect-Splash",
+        "image": "/images/Experience/Splash.JPG",
+        "tools": ["Python", "MediaPipe", "OpenCV"]
+    },
+    {
+        "type": "Personal",
         "title": "FoodHub",
-        "description": "FoodHub is a platform designed to minimize food waste and combat hunger by enabling individuals to share their surplus food at an affordable cost. By connecting those with excess food to those in need, FoodHub fosters a community of resourcefulness and compassion. The platform incorporates a secure facial recognition system for payment authentication.",
+        "description": "FoodHub is a platform designed to minimize food waste and combat hunger by enabling individuals to share their surplus food at an affordable cost. The platform integrates secure facial recognition for payment authentication, promoting resourcefulness and community impact.",
+        "status": "Suspended",
         "link_live": "https://foodhub-0qpy.onrender.com",
         "link_github": "https://github.com/GwadeSteve/FrontEnd-FoodHub",
         "image": "/images/Experience/FoodHub.jpg",
@@ -9,24 +44,9 @@
     },
     {
         "type": "Personal",
-        "title": "Insect Splash",
-        "description": "Inspect Splash is an engaging game that uses Computer Vision and hand-tracking technology to create an interactive experience where players aim to eliminate insects on the screen within a specified time frame. The game challenges players' speed and accuracy, making it a fun and immersive way to explore the capabilities of Computer Vision in a playful setting.",
-        "link_github": "https://github.com/GwadeSteve/Insect-Splash",
-        "image": "/images/Experience/Splash.JPG",
-        "tools": ["Python", "MediaPipe", "OpenCV"]
-
-    },
-    {
-        "type": "Open Source",
-        "title": "PolyApps",
-        "description": "PolyApps is a suite of applications developed to enhance the activities of the AI Club at the National Higher Polytechnic School of Douala. It includes PolyTyping: A real-time typing multiplayer speed game that challenges participants to improve their typing skills through competitive gameplay and PolyCoding, A robust coding platform designed to host coding contests, encouraging learning and collaboration among students.",
-        "image": "/images/Experience/PolyApps.png",
-        "tools": ["HTML5", "CSS", "NodeJS", "Django"]
-    },
-    {
-        "type": "Personal",
         "title": "Spoof Detector",
-        "description": "Built a Spoof Detector as a Deep learning model designed to differentiate between real and fake faces, to enhance the security of facial recognition systems. Trained on a diverse dataset with faces of various races, this model ensures robust performance across different demographics. The Spoof Detector is accessible via a RESTful API, allowing easy integration into various applications.",
+        "description": "The Spoof Detector is a deep learning model capable of distinguishing between real and fake faces, enhancing facial recognition system security. Trained on diverse datasets for bias mitigation, it is accessible via a RESTful API for easy integration.",
+        "status": "Completed",
         "link_github": "https://github.com/GwadeSteve/spoof-detect-service",
         "image": "/images/Experience/Spoof.png",
         "tools": ["PyTorch", "API", "Deep Learning"]
@@ -34,10 +54,10 @@
     {
         "type": "Academic",
         "title": "Mathematical Morphology",
-        "description": "Implemented Mathematical Morphology concepts from scratch using numpy and matplotlib for academic study. Explored advanced techniques such as erosion, dilation, and feature extraction. Conducted rigorous performance evaluations and optimizations to improve efficiency and accuracy of operations. The project aimed to deepen understanding of morphological operations and their application in digital image processing.",
+        "description": "Implemented Mathematical Morphology concepts from scratch using numpy and matplotlib. Explored techniques such as erosion, dilation, and feature extraction with a focus on optimization and understanding of digital image processing.",
+        "status": "Completed",
         "link_github": "https://github.com/GwadeSteve/Mathematical-Morphology-Image-Processing/tree/feature-dev",
         "image": "/images/Experience/Morphology.png",
         "tools": ["Numpy", "Matplotlib", "Image Processing"]
     }
-
 ]

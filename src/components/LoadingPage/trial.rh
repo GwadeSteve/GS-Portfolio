@@ -1,0 +1,860 @@
+import React, { useEffect, useState } from 'react'
+import './LoadingPage.css'
+import { ReactComponent as Logo } from '../../assets/Logo.svg'
+
+const LoadingPage = () => {
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    // Apply theme before component renders to prevent flash
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    document.body.style.overflow = 'hidden';
+    
+    // Wait for styles to apply before showing content
+    requestAnimationFrame(() => {
+      setMounted(true);
+    });
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
+  if (!mounted) return <div className="loading-page-preload" style={{ backgroundColor: 'var(--color-background)' }}></div>;
+
+  return (
+    <div className="loading-page">
+      <div className="nebula-background"></div>
+      <div className="stars-layer"></div>
+      <div className="glowing-grid"></div>
+      
+      {/* Main hologram effect container */}
+      <div className="hologram-container">
+        {/* Core element */}
+        <div className="core-element">
+          <div className="logo-container">
+            <div className="logo-scanlines"></div>
+            <Logo className="loader-logo" />
+          </div>
+        </div>
+        
+        {/* Energy rings */}
+        <div className="energy-rings-container">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className={`energy-ring ring-${i+1}`}></div>
+          ))}
+        </div>
+        
+        <div className="particles-container">
+          {[...Array(20)].map((_, i) => (
+            <div key={i} className={`particle particle-${i+1}`}></div>
+          ))}
+        </div>
+        
+        <div className="data-lines">
+          {[...Array(8)].map((_, i) => (
+            <div key={i} className={`data-line line-${i+1}`}>
+              <div className="data-point"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <div className="loading-interface">
+        <div className="progress-wrapper">
+          <div className="progress-bar">
+            <div className="progress-fill"></div>
+          </div>
+          <div className="progress-percentage">
+            <span className="percentage-number">0</span>
+            <span>%</span>
+          </div>
+        </div>
+        
+        <div className="status-text">
+          <span className="status-message">System initializing</span>
+          <span className="status-dots">
+            <span className="dot"></span>
+            <span className="dot"></span>
+            <span className="dot"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default LoadingPage
+
+
+@import '../../index.css';
+
+/* Preload style to prevent flash */
+
+.loading-page-preload {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: var(--z-max);
+}
+
+
+/* Main container */
+
+.loading-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-background);
+    z-index: var(--z-max);
+    gap: var(--space-3xl);
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+
+/* Background layers */
+
+.nebula-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient( circle at 50% 50%, rgba(var(--color-primary-rgb), 0.05) 0%, rgba(var(--color-secondary-rgb), 0.02) 40%, rgba(var(--color-background-rgb), 0) 70%);
+    opacity: 0.7;
+    animation: nebulaGlow 15s infinite ease-in-out;
+    z-index: 0;
+}
+
+.stars-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image: radial-gradient(1px 1px at 25px 5px, rgba(var(--color-text-primary-rgb), 0.7), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(1px 1px at 50px 25px, rgba(var(--color-text-primary-rgb), 0.5), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(1px 1px at 125px 20px, rgba(var(--color-text-primary-rgb), 0.6), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(1.5px 1.5px at 50px 75px, rgba(var(--color-text-primary-rgb), 0.7), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(2px 2px at 15px 125px, rgba(var(--color-text-primary-rgb), 0.6), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(2.5px 2.5px at 100px 150px, rgba(var(--color-text-primary-rgb), 0.5), rgba(var(--color-text-primary-rgb), 0));
+    background-size: 200px 200px;
+    animation: starsShimmer 10s infinite linear;
+}
+
+.glowing-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(var(--color-primary-rgb), 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+    opacity: 0.3;
+    animation: gridPulse 10s infinite ease-in-out;
+}
+
+
+/* Main hologram container */
+
+.hologram-container {
+    position: relative;
+    width: min(80vw, 380px);
+    height: min(80vw, 380px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    animation: floatHologram 8s infinite ease-in-out;
+}
+
+
+/* Core element with logo */
+
+.core-element {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    z-index: 2;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container {
+    width: 80px;
+    height: 80px;
+    background: rgba(var(--color-surface-rgb), 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.3), inset 0 0 20px rgba(var(--color-primary-rgb), 0.1);
+    animation: coreGlow 4s infinite alternate ease-in-out;
+}
+
+.logo-scanlines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient( 0deg, rgba(var(--color-primary-rgb), 0.03) 0px, rgba(var(--color-primary-rgb), 0.03) 1px, transparent 1px, transparent 2px);
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0.5;
+    animation: scanlineMove 3s infinite linear;
+}
+
+.loader-logo {
+    width: 40px;
+    height: 40px;
+    filter: drop-shadow(0 0 5px rgba(var(--color-primary-rgb), 0.5));
+    animation: logoGlow 3s infinite alternate ease-in-out;
+    z-index: 2;
+}
+
+
+/* Energy rings */
+
+.energy-rings-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.energy-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.15);
+    box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.ring-1 {
+    width: 150px;
+    height: 150px;
+    animation: ringRotate 25s linear infinite;
+}
+
+.ring-2 {
+    width: 200px;
+    height: 200px;
+    animation: ringRotate 30s linear infinite reverse;
+    border-color: rgba(var(--color-secondary-rgb), 0.15);
+    box-shadow: 0 0 15px rgba(var(--color-secondary-rgb), 0.1);
+}
+
+.ring-3 {
+    width: 250px;
+    height: 250px;
+    animation: ringRotate 35s linear infinite;
+}
+
+.ring-4 {
+    width: 300px;
+    height: 300px;
+    border-color: rgba(var(--color-accent-rgb), 0.15);
+    box-shadow: 0 0 15px rgba(var(--color-accent-rgb), 0.1);
+    animation: ringRotate 40s linear infinite reverse;
+}
+
+.ring-5 {
+    width: 350px;
+    height: 350px;
+    animation: ringRotate 45s linear infinite;
+}
+
+
+/* Particles system */
+
+.particles-container {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+    filter: blur(1px);
+    opacity: 0;
+    animation: particleFloat 15s infinite;
+}
+
+
+/* Generate random positions using nth-child */
+
+.particle-1 {
+    top: 30%;
+    left: 20%;
+    animation-delay: 0.2s;
+}
+
+.particle-2 {
+    top: 40%;
+    left: 80%;
+    animation-delay: 1.3s;
+}
+
+.particle-3 {
+    top: 60%;
+    left: 50%;
+    animation-delay: 2.3s;
+}
+
+.particle-4 {
+    top: 70%;
+    left: 30%;
+    animation-delay: 3.3s;
+}
+
+.particle-5 {
+    top: 20%;
+    left: 65%;
+    animation-delay: 4.3s;
+}
+
+.particle-6 {
+    top: 80%;
+    left: 35%;
+    animation-delay: 5.3s;
+}
+
+.particle-7 {
+    top: 35%;
+    left: 85%;
+    animation-delay: 6.3s;
+}
+
+.particle-8 {
+    top: 45%;
+    left: 15%;
+    animation-delay: 7.3s;
+}
+
+.particle-9 {
+    top: 25%;
+    left: 40%;
+    animation-delay: 8.3s;
+}
+
+.particle-10 {
+    top: 85%;
+    left: 75%;
+    animation-delay: 9.3s;
+}
+
+.particle-11 {
+    top: 15%;
+    left: 25%;
+    animation-delay: 10.3s;
+}
+
+.particle-12 {
+    top: 75%;
+    left: 60%;
+    animation-delay: 11.3s;
+}
+
+.particle-13 {
+    top: 50%;
+    left: 90%;
+    animation-delay: 12.3s;
+}
+
+.particle-14 {
+    top: 10%;
+    left: 50%;
+    animation-delay: 13.3s;
+}
+
+.particle-15 {
+    top: 90%;
+    left: 20%;
+    animation-delay: 14.3s;
+}
+
+.particle-16 {
+    top: 55%;
+    left: 30%;
+    animation-delay: 2.3s;
+}
+
+.particle-17 {
+    top: 65%;
+    left: 85%;
+    animation-delay: 5.3s;
+}
+
+.particle-18 {
+    top: 30%;
+    left: 30%;
+    animation-delay: 8.3s;
+}
+
+.particle-19 {
+    top: 40%;
+    left: 70%;
+    animation-delay: 11.3s;
+}
+
+.particle-20 {
+    top: 85%;
+    left: 45%;
+    animation-delay: 14.3s;
+}
+
+.particle-3,
+.particle-8,
+.particle-13,
+.particle-18 {
+    background-color: var(--color-secondary);
+}
+
+.particle-5,
+.particle-10,
+.particle-15,
+.particle-20 {
+    background-color: var(--color-accent);
+}
+
+.data-lines {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.data-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 1px;
+    background: linear-gradient( 90deg, rgba(var(--color-primary-rgb), 0.7) 0%, rgba(var(--color-primary-rgb), 0.3) 50%, rgba(var(--color-primary-rgb), 0) 100%);
+    transform-origin: 0 0;
+    animation: dataLinePulse 3s infinite ease-in-out;
+}
+
+.data-point {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    top: -2px;
+    right: 0;
+    box-shadow: 0 0 4px var(--color-primary);
+    animation: dataPointMove 3s infinite ease-in-out;
+}
+
+.line-1 {
+    transform: rotate(0deg);
+    width: 120px;
+    animation-delay: 0.1s;
+}
+
+.line-2 {
+    transform: rotate(45deg);
+    width: 100px;
+    animation-delay: 0.4s;
+}
+
+.line-3 {
+    transform: rotate(90deg);
+    width: 140px;
+    animation-delay: 0.7s;
+}
+
+.line-4 {
+    transform: rotate(135deg);
+    width: 110px;
+    animation-delay: 1.0s;
+}
+
+.line-5 {
+    transform: rotate(180deg);
+    width: 130px;
+    animation-delay: 1.3s;
+}
+
+.line-6 {
+    transform: rotate(225deg);
+    width: 90px;
+    animation-delay: 1.6s;
+}
+
+.line-7 {
+    transform: rotate(270deg);
+    width: 150px;
+    animation-delay: 1.9s;
+}
+
+.line-8 {
+    transform: rotate(315deg);
+    width: 105px;
+    animation-delay: 2.2s;
+}
+
+.loading-interface {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    z-index: 3;
+    width: min(90%, 400px);
+}
+
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: var(--space-md);
+}
+
+.progress-bar {
+    height: 4px;
+    flex: 1;
+    background-color: rgba(var(--color-surface-variant-rgb), 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--color-primary);
+    box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.7);
+    border-radius: 4px;
+    animation: progressFilling 5s infinite ease-in-out;
+}
+
+.progress-percentage {
+    font-family: var(--font-heading);
+    font-size: var(--fs-lg);
+    color: var(--color-primary);
+    font-weight: var(--fw-semibold);
+    width: 50px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.percentage-number {
+    animation: percentageCount 5s infinite steps(100);
+    counter-reset: percentage 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.percentage-number::after {
+    content: counter(percentage);
+    animation: percentageCount 5s infinite;
+}
+
+.status-text {
+    font-family: var(--font-heading);
+    font-size: var(--fs-sm);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    letter-spacing: 1px;
+}
+
+.status-message {
+    animation: textFlicker 5s infinite;
+}
+
+.status-dots {
+    display: flex;
+    margin-left: 4px;
+}
+
+.dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--color-text-secondary);
+    margin-left: 4px;
+}
+
+.dot:nth-child(1) {
+    animation: dotPulse 1.5s infinite;
+}
+
+.dot:nth-child(2) {
+    animation: dotPulse 1.5s 0.5s infinite;
+}
+
+.dot:nth-child(3) {
+    animation: dotPulse 1.5s 1s infinite;
+}
+
+@keyframes floatHologram {
+    0%,
+    100% {
+        transform: translateY(0) rotateX(5deg) rotateY(5deg);
+    }
+    50% {
+        transform: translateY(-15px) rotateX(0deg) rotateY(10deg);
+    }
+}
+
+@keyframes nebulaGlow {
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes starsShimmer {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 200px 200px;
+    }
+}
+
+@keyframes gridPulse {
+    0%,
+    100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes coreGlow {
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.2), inset 0 0 10px rgba(var(--color-primary-rgb), 0.1);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(var(--color-primary-rgb), 0.4), inset 0 0 25px rgba(var(--color-primary-rgb), 0.2);
+    }
+}
+
+@keyframes scanlineMove {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(80px);
+    }
+}
+
+@keyframes logoGlow {
+    0% {
+        filter: drop-shadow(0 0 3px rgba(var(--color-primary-rgb), 0.3));
+        transform: scale(0.95) rotate(-5deg);
+    }
+    100% {
+        filter: drop-shadow(0 0 8px rgba(var(--color-primary-rgb), 0.7));
+        transform: scale(1.05) rotate(5deg);
+    }
+}
+
+@keyframes ringRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes particleFloat {
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+    }
+    25%,
+    75% {
+        opacity: 0.8;
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1.5);
+    }
+}
+
+@keyframes dataLinePulse {
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.8;
+    }
+}
+
+@keyframes dataPointMove {
+    0% {
+        transform: translateX(0);
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes progressFilling {
+    0% {
+        width: 0%;
+    }
+    80% {
+        width: 100%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes percentageCount {
+    0% {
+        counter-increment: percentage 0;
+    }
+    80%,
+    100% {
+        counter-increment: percentage 100;
+    }
+}
+
+@keyframes textFlicker {
+    0%,
+    100% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 1;
+    }
+    87% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.95;
+    }
+    92% {
+        opacity: 0.8;
+    }
+    94% {
+        opacity: 0.92;
+    }
+}
+
+@keyframes dotPulse {
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@media (max-width: 768px) {
+    .hologram-container {
+        width: min(85vw, 320px);
+        height: min(85vw, 320px);
+    }
+    .energy-ring.ring-1 {
+        width: 130px;
+        height: 130px;
+    }
+    .energy-ring.ring-2 {
+        width: 170px;
+        height: 170px;
+    }
+    .energy-ring.ring-3 {
+        width: 210px;
+        height: 210px;
+    }
+    .energy-ring.ring-4 {
+        width: 250px;
+        height: 250px;
+    }
+    .energy-ring.ring-5 {
+        width: 290px;
+        height: 290px;
+    }
+    .loading-interface {
+        width: min(90%, 320px);
+    }
+}
+
+@media (max-width: 480px) {
+    .hologram-container {
+        width: min(90vw, 280px);
+        height: min(90vw, 280px);
+    }
+    .core-element {
+        width: 80px;
+        height: 80px;
+    }
+    .logo-container {
+        width: 70px;
+        height: 70px;
+    }
+    .loader-logo {
+        width: 35px;
+        height: 35px;
+    }
+    .energy-ring.ring-1 {
+        width: 110px;
+        height: 110px;
+    }
+    .energy-ring.ring-2 {
+        width: 150px;
+        height: 150px;
+    }
+    .energy-ring.ring-3 {
+        width: 190px;
+        height: 190px;
+    }
+    .energy-ring.ring-4 {
+        width: 230px;
+        height: 230px;
+    }
+    .energy-ring.ring-5 {
+        width: 270px;
+        height: 270px;
+    }
+}

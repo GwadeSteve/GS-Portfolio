@@ -1,215 +1,305 @@
 @import '../../index.css';
-.Navbar {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 18px 0;
-    z-index: 1000;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: all 1s ease;
-}
 
-.Navbar.scrolled {
-    padding: 10px 0;
-    background: rgba(var(--color-background), 0.5);
-}
+/* Body scroll lock for mobile menu */
 
-.navbar-container {
-    width: 100%;
-    max-width: var(--container-xl);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 var(--space-lg);
-    position: relative;
-}
-
-.Navbar .Gradient {
-    position: absolute;
-    top: 0;
-    left: 0;
+body.body-scroll-lock {
     overflow: hidden;
-    transform: translate(-160px, -120px);
-    border-radius: 100%;
-    filter: blur(100px);
-    z-index: -99;
+    touch-action: none;
+}
+
+
+/* Logo in corner - visible on all screen sizes */
+
+.logo-corner {
+    position: fixed;
+    top: var(--space-md);
+    left: var(--space-md);
+    z-index: var(--z-modal);
 }
 
 .logo-container {
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(var(--color-background-rgb), 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(var(--color-border-rgb), 0.1);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-bounce);
+}
+
+.logo-container:hover {
+    transform: scale(1.05);
 }
 
 .Logo {
-    width: 40px;
-    height: 40px;
-    z-index: 99999;
+    width: 28px;
+    height: 28px;
 }
 
-.Navbar .Toggle {
-    display: none;
-    z-index: 2;
-    cursor: pointer;
+
+/* Floating Sidebar Navigation - Desktop Only */
+
+.floating-navbar {
+    position: fixed;
+    top: 50%;
+    right: var(--space-md);
+    transform: translateY(-50%);
+    background: rgba(var(--color-surface-rgb), 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: var(--radius-xl);
+    padding: var(--space-md);
+    z-index: var(--z-overlay);
+    border: 1px solid rgba(var(--color-border-rgb), 0.1);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
 }
 
-.Navbar .Toggle .Bar {
-    width: 30px;
-    height: 3px;
-    margin: 6px;
-    border-radius: 5px;
-    background: var(--color-primary);
-    transition: all 0.3s ease-in-out;
-}
-
-.Navbar .Toggle.open .Bar:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-
-.Navbar .Toggle.open .Bar:nth-child(2) {
+.navbar-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(var(--color-primary-rgb), 0.1), transparent 70%);
+    border-radius: inherit;
     opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: -1;
 }
 
-.Navbar .Toggle.open .Bar:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+.floating-navbar:hover .navbar-glow {
+    opacity: 1;
 }
 
+.floating-navbar .nav-links {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: var(--space-md);
+    margin: 0;
+    padding: 0;
+}
 
-/* Fix for links appearing active when they're not */
-
-.Navbar .nav-link {
-    color: var(--color-text-primary);
+.floating-navbar .nav-link {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-secondary);
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    font-weight: var(--fw-medium);
+    padding: var(--space-sm);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-normal);
 }
 
-.Navbar a.active {
+.floating-navbar .nav-link:hover {
+    background: rgba(var(--color-surface-variant-rgb), 0.5);
+    color: var(--color-text-primary);
+    transform: translateX(-5px);
+}
+
+.floating-navbar .nav-link.active {
     color: var(--color-primary);
+    background: rgba(var(--color-primary-rgb), 0.1);
 }
 
-.Navbar .Mobile {
-    display: none;
+.floating-navbar .nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fs-lg);
+    margin-right: var(--space-sm);
 }
 
-.Navbar .Mobile.Open {
+.floating-navbar .nav-text {
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: all var(--transition-normal);
+}
+
+
+/* Expanded state when hovering */
+
+.floating-navbar:hover .nav-text {
+    opacity: 1;
+    max-width: 150px;
+    margin-left: var(--space-xs);
+}
+
+
+/* Mobile Toggle Button */
+
+.mobile-toggle {
+    position: fixed;
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(var(--color-surface-rgb), 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(var(--color-border-rgb), 0.1);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    z-index: var(--z-toast);
+    font-size: var(--fs-xl);
+    color: var(--color-text-primary);
+    transition: all var(--transition-normal);
+}
+
+.mobile-toggle:hover {
+    background: rgba(var(--color-surface-variant-rgb), 0.7);
+}
+
+.mobile-toggle.open {
+    color: var(--color-primary);
+    background: rgba(var(--color-primary-rgb), 0.1);
+}
+
+
+/* Mobile Full Screen Menu */
+
+.mobile-menu {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: var(--color-background);
+    background: rgba(var(--color-background-rgb), 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: var(--z-modal);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+    transform: translateY(-10px);
+    pointer-events: none;
 }
 
-.Navbar .Mobile a {
-    font-size: var(--fs-xl);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 20px 0;
-    margin: 10px 0;
-    position: relative;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.3s ease;
+.mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
-.Navbar .Mobile a::after {
-    content: '';
+.mobile-gradient {
     position: absolute;
-    width: 100px;
-    height: 2px;
-    bottom: -2px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%) scaleX(0);
-    background-color: var(--color-primary);
-    transition: transform 0.3s ease-out;
-    transform-origin: center;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    z-index: -1;
 }
 
-.Navbar .Mobile a:hover {
-    color: var(--color-primary);
-}
-
-.Navbar .Mobile a:hover::after,
-.Navbar .Mobile a.active::after {
-    transform: translateX(-50%) scaleX(1);
-}
-
-.Navbar .Links {
+.mobile-menu-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: var(--space-xl);
+    width: 80%;
+    max-width: 300px;
+}
+
+.mobile-nav-link {
+    display: flex;
     align-items: center;
-}
-
-.nav-link-wrapper {
-    margin: 0 20px;
-}
-
-.Navbar .Links a {
-    position: relative;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    padding: 8px 0;
     color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: var(--fs-2xl);
+    font-weight: var(--fw-medium);
+    padding: var(--space-md) 0;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-bounce);
+    position: relative;
+    overflow: hidden;
 }
 
-.Navbar .Links a::after {
+.mobile-nav-link::after {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--color-primary);
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-primary);
     transform: scaleX(0);
-    transform-origin: bottom right;
-    transition: transform 0.3s ease-out;
+    transform-origin: right;
+    transition: transform var(--transition-normal);
 }
 
-.Navbar .Links a:hover {
+.mobile-nav-link:hover {
+    color: var(--color-primary);
+    transform: translateX(10px);
+}
+
+.mobile-nav-link:hover::after,
+.mobile-nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.mobile-nav-link.active {
     color: var(--color-primary);
 }
 
-.Navbar .Links a:hover::after,
-.Navbar .Links a.active::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+.mobile-nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--fs-xl);
+    margin-right: var(--space-md);
 }
 
-@media only screen and (max-width: 560px) {
-    .Navbar .Links {
+
+/* Hide desktop navigation on mobile */
+
+@media (max-width: 768px) {
+    .floating-navbar {
         display: none;
     }
-    .Navbar .Toggle {
-        display: block;
-        z-index: 9999999;
-    }
-    .Logo {
-        width: 45px;
-        height: 45px;
+}
+
+
+/* Hide mobile toggle on desktop */
+
+@media (min-width: 769px) {
+    .mobile-toggle {
+        display: none;
     }
 }
 
-@media only screen and (width<=395px) {
-    .Navbar .Gradient {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -99;
-        pointer-events: none;
-        transform: translate(-120px, -30px);
-        opacity: 0.7;
-        filter: blur(100px);
-        z-index: -1;
+
+/* Additional responsive adjustments */
+
+@media (max-width: 480px) {
+    .mobile-nav-link {
+        font-size: var(--fs-xl);
+    }
+    .logo-corner,
+    .mobile-toggle {
+        top: var(--space-sm);
+    }
+    .logo-corner {
+        left: var(--space-sm);
+    }
+    .mobile-toggle {
+        right: var(--space-sm);
     }
 }

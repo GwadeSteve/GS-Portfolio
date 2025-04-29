@@ -462,9 +462,6 @@
     }
 }
 
-
-/* Main card styles */
-
 .experience-card {
     position: relative;
     display: flex;
@@ -473,15 +470,16 @@
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     overflow: hidden;
-    transition: all 0.4s var(--ease-out-expo);
+    transition: all 0.4s ease;
     z-index: 5;
     border: 1px solid rgba(var(--color-border-rgb), 0.1);
 }
 
 .experience-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-1px);
     box-shadow: var(--shadow-xl), 0 10px 25px rgba(var(--color-primary-rgb), 0.2);
     border-color: rgba(var(--color-primary-rgb), 0.2);
+    cursor: pointer;
 }
 
 .experience-card.left {
@@ -491,9 +489,6 @@
 .experience-card.right {
     margin-left: auto;
 }
-
-
-/* Enhanced timeline connector for each card */
 
 .card-timeline-connector {
     position: absolute;
@@ -519,9 +514,6 @@
     box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.7);
     background: linear-gradient( 90deg, rgba(var(--color-accent-rgb), 0.9), rgba(var(--color-primary-rgb), 0.9));
 }
-
-
-/* Ultra-glowing anchor bubbles on timeline */
 
 .timeline-anchor {
     position: absolute;
@@ -620,19 +612,12 @@
 }
 
 .company-logo img {
-    max-width: 85%;
-    max-height: 85%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
     transition: transform 0.3s ease;
 }
-
-.experience-card:hover .company-logo img {
-    transform: scale(1.05);
-}
-
-
-/* Card content styles */
 
 .experience-content {
     padding: var(--space-lg);

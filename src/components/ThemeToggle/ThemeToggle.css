@@ -1,17 +1,192 @@
 @import '../../index.css';
-.ToggleTheme {
+.theme-toggle {
     position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 1rem;
+    bottom: var(--space-md);
+    right: var(--space-md);
+    cursor: pointer;
+    z-index: var(--z-toast);
+    background: var(--color-surface);
+    border: 1px solid rgba(var(--color-border-rgb), 0.2);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xs) var(--space-sm);
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s var(--ease-default);
+}
+
+.theme-toggle:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.toggle-track {
+    position: relative;
+    width: 44px;
+    height: 22px;
+    background-color: var(--color-surface-variant);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 30px;
+    transition: all 0.4s var(--ease-default);
+    overflow: hidden;
+    border: 1px solid rgba(var(--color-border-rgb), 0.2);
+}
+
+.theme-toggle.dark .toggle-track {
+    background-color: var(--color-surface);
+}
+
+.toggle-thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    transition: transform 0.5s var(--ease-bounce);
+    z-index: 2;
+    box-shadow: 0 2px 6px rgba(var(--color-primary-rgb), 0.4);
+}
+
+.theme-toggle.dark .toggle-thumb {
+    transform: translateX(22px);
+}
+
+.toggle-icon {
+    position: absolute;
+    z-index: 1;
+    width: 22px;
+    height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 100%;
-    width: 40px;
-    height: 40px;
-    background: var(--white-100);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 99999999;
+    transition: all 0.3s var(--ease-default);
+    font-size: 12px;
+}
+
+.toggle-icon.sun {
+    left: 0;
+    color: #f9d71c;
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.toggle-icon.moon {
+    right: 0;
+    color: #a2c4ff;
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.theme-toggle.light .toggle-icon.sun {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.theme-toggle.dark .toggle-icon.moon {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.toggle-label {
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-medium);
+    color: var(--color-text-primary);
+}
+
+.toggle-effects {
+    position: absolute;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.theme-toggle.light.animating .particle {
+    background: #ffd75e;
+    width: 3px;
+    height: 3px;
+    box-shadow: 0 0 4px 1px rgba(255, 215, 94, 0.6);
+    animation: particleAnimation 0.6s var(--ease-bounce);
+}
+
+.theme-toggle.dark.animating .particle {
+    background: #a2c4ff;
+    width: 2px;
+    height: 2px;
+    box-shadow: 0 0 4px 1px rgba(162, 196, 255, 0.6);
+    animation: particleAnimation 0.6s var(--ease-bounce);
+}
+
+.particle-0 {
+    top: -10px;
+    left: 10px;
+    animation-delay: 0.1s;
+}
+
+.particle-1 {
+    top: 0px;
+    left: -5px;
+    animation-delay: 0.2s;
+}
+
+.particle-2 {
+    top: -5px;
+    left: 25px;
+    animation-delay: 0.3s;
+}
+
+.particle-3 {
+    top: 30px;
+    left: 40px;
+    animation-delay: 0.1s;
+}
+
+.particle-4 {
+    top: 35px;
+    left: 15px;
+    animation-delay: 0.2s;
+}
+
+.particle-5 {
+    top: 25px;
+    left: -5px;
+    animation-delay: 0.3s;
+}
+
+@keyframes particleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0) translate(0, 0);
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.5) translate(10px, -10px);
+    }
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+    .theme-toggle {
+        bottom: var(--space-sm);
+        right: var(--space-sm);
+        padding: var(--space-xs);
+    }
+    .toggle-label {
+        display: none;
+    }
 }
