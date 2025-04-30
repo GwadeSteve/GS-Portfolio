@@ -1,7 +1,4 @@
 @import '../../index.css';
-
-/* Preload style to prevent flash */
-
 .loading-page-preload {
     position: fixed;
     width: 100vw;

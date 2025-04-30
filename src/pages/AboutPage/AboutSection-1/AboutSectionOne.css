@@ -1,7 +1,7 @@
 @import '../../../index.css';
 .modern-gallery-container {
     position: relative;
-    max-width: 70vw;
+    max-width: 900px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 200px;
