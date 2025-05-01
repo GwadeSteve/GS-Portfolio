@@ -3,11 +3,6 @@ import './AboutSectionOne.css'
 
 const images = [
     {
-      src: process.env.PUBLIC_URL + '/images/Me3.jpg',
-      alt: 'Gwade Collaborating',
-      caption: '2022 - Late night struggles haha!'
-    },
-    {
       src: process.env.PUBLIC_URL + '/images/Me4.png',
       alt: 'Staff AI Club Polytechnic Year 2024',
       caption: '2023 - Staff AI Club Polytechnic Year 2024'
