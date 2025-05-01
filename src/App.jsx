@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import LoadingPage from './components/LoadingPage/LoadingPage'; 
 import Navbar from './components/Navbar/Navbar'; 
@@ -13,11 +13,13 @@ import './App.css';
 
 function App() {
     const location = useLocation();
+    const navigate = useNavigate();
     const [initialLoading, setInitialLoading] = useState(true);
     const [pageLoading, setPageLoading] = useState(false);
-    const [previousLocation, setPreviousLocation] = useState('');
+    const [targetRoute, setTargetRoute] = useState(null);
     const [pageTransitioning, setPageTransitioning] = useState(false);
-
+    
+    // Handle initial app loading
     useEffect(() => {
       const savedTheme = localStorage.getItem('theme') || 'dark';
       document.documentElement.setAttribute('data-theme', savedTheme);
@@ -27,7 +29,7 @@ function App() {
       const timer = setTimeout(() => {
         setInitialLoading(false);
         document.body.style.overflow = '';
-      }, 5000);
+      }, 3000);
       
       return () => {
         clearTimeout(timer);
@@ -35,30 +37,37 @@ function App() {
       };
     }, []);
 
-    useEffect(() => {
-      if (previousLocation === '') {
-        setPreviousLocation(location.pathname);
-        return;
-      }
+    // Custom navigation handler to show loading first
+    const handleNavigate = useCallback((path) => {
+      if (path === location.pathname) return; // Don't navigate to the same route
       
-      if (previousLocation.split('#')[0] === location.pathname.split('#')[0]) {
-        setPreviousLocation(location.pathname);
-        return;
-      }
-      
+      // Show loading first, then navigate
       setPageLoading(true);
+      setTargetRoute(path);
       document.body.style.overflow = 'hidden';
-      
-      const timer = setTimeout(() => {
-        setPageLoading(false);
-        document.body.style.overflow = '';
-        setPreviousLocation(location.pathname);
-      }, 2500);
-      
-      return () => {
-        clearTimeout(timer);
-      };
-    }, [location.pathname, previousLocation]);
+    }, [location.pathname]);
+
+    // Effect to execute navigation after loading screen is shown
+    useEffect(() => {
+      if (pageLoading && targetRoute) {
+        // Wait briefly to ensure loading screen renders fully before navigating
+        const navTimer = setTimeout(() => {
+          navigate(targetRoute);
+        }, 100);
+
+        // Then handle completing the page transition
+        const loadTimer = setTimeout(() => {
+          setPageLoading(false);
+          setTargetRoute(null);
+          document.body.style.overflow = '';
+        }, 2800); // slightly longer than your original timer
+        
+        return () => {
+          clearTimeout(navTimer);
+          clearTimeout(loadTimer);
+        };
+      }
+    }, [pageLoading, targetRoute, navigate]);
 
     useEffect(() => {
       if (!initialLoading && !pageLoading) {
@@ -69,7 +78,7 @@ function App() {
         
         return () => clearTimeout(timer);
       }
-    }, [location.pathname, initialLoading, pageLoading]);
+    }, [initialLoading, pageLoading]);
 
     useEffect(() => {
       const handleLinkClick = (e) => {
@@ -112,7 +121,7 @@ function App() {
     return (
       <div className="App">
         <ScrollToTop />
-        {!hideNavbarFooter && <Navbar />}
+        {!hideNavbarFooter && <Navbar onNavigate={handleNavigate} />}
         <ThemeToggle />
         <main className={`main-content ${pageTransitioning ? 'page-transitioning' : ''}`}>
           <Routes location={location}>

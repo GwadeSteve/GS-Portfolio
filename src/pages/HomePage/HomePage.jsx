@@ -3,8 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { ReactComponent as Line } from '../../assets/Line.svg';
 import { ReactComponent as GitHub } from '../../assets/github.svg';
 import { ReactComponent as LinkedIn } from '../../assets/linkedin-circle-mono.svg';
-import { ReactComponent as FaceBook } from '../../assets/facebook-circle-mono.svg';
-import { ReactComponent as Instagram } from '../../assets/instagram-circle-mono.svg';
 import { ReactComponent as WhatsApp } from '../../assets/whatsapp-circle-mono.svg';
 import { ReactComponent as Tools } from '../../assets/Tools.svg';
 import ImageMe from '../../assets/ArtMe.jpg';
@@ -69,10 +67,8 @@ const HomePage = () => {
               <div className="social-icons">
                 {[
                   { icon: <GitHub />, url: "https://github.com/GwadeSteve", label: "GitHub" },
-                  { icon: <LinkedIn />, url: "https://linkedin.com", label: "LinkedIn" },
-                  { icon: <Instagram />, url: "https://instagram.com", label: "Instagram" },
-                  { icon: <FaceBook />, url: "https://facebook.com", label: "Facebook" },
-                  { icon: <WhatsApp />, url: "https://whatsapp.com", label: "WhatsApp" }
+                  { icon: <LinkedIn />, url: "https://www.linkedin.com/in/gwade-steve-0414b8249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", label: "LinkedIn" },
+                  { icon: <WhatsApp />, url: "https://wa.me/237683647400", label: "WhatsApp" }
                 ].map((social, i) => (
                   <a 
                     key={i}

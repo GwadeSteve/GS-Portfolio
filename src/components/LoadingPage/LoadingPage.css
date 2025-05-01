@@ -1,4 +1,7 @@
 @import '../../index.css';
+
+/* Preload style to prevent flash */
+
 .loading-page-preload {
     position: fixed;
     width: 100vw;
@@ -9,7 +12,7 @@
 }
 
 
-/* Main container */
+/* Main container with enhanced perspective */
 
 .loading-page {
     position: fixed;
@@ -25,173 +28,11 @@
     z-index: var(--z-max);
     gap: var(--space-3xl);
     overflow: hidden;
-    perspective: 1000px;
+    perspective: 1800px;
 }
 
 
-/* Tech-frame corners */
-
-.corner-frames {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 3;
-}
-
-.corner {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    opacity: 0.9;
-}
-
-.frame-line {
-    position: absolute;
-    background-color: var(--color-primary);
-    box-shadow: 0 0 5px var(--color-primary);
-}
-
-.frame-line.horizontal {
-    height: 2px;
-    width: 100%;
-}
-
-.frame-line.vertical {
-    width: 2px;
-    height: 100%;
-}
-
-.top-left {
-    top: 20px;
-    left: 20px;
-}
-
-.top-left .horizontal {
-    top: 0;
-    left: 0;
-}
-
-.top-left .vertical {
-    top: 0;
-    left: 0;
-}
-
-.top-right {
-    top: 20px;
-    right: 20px;
-}
-
-.top-right .horizontal {
-    top: 0;
-    right: 0;
-}
-
-.top-right .vertical {
-    top: 0;
-    right: 0;
-}
-
-.bottom-left {
-    bottom: 20px;
-    left: 20px;
-}
-
-.bottom-left .horizontal {
-    bottom: 0;
-    left: 0;
-}
-
-.bottom-left .vertical {
-    bottom: 0;
-    left: 0;
-}
-
-.bottom-right {
-    bottom: 20px;
-    right: 20px;
-}
-
-.bottom-right .horizontal {
-    bottom: 0;
-    right: 0;
-}
-
-.bottom-right .vertical {
-    bottom: 0;
-    right: 0;
-}
-
-
-/* System info panel */
-
-.system-info {
-    position: absolute;
-    left: 30px;
-    bottom: 30px;
-    color: var(--color-text-secondary);
-    font-family: var(--font-heading);
-    font-size: var(--fs-xs);
-    opacity: 0.7;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    z-index: 4;
-}
-
-.info-item {
-    margin-bottom: 4px;
-    display: flex;
-    align-items: center;
-}
-
-.info-item:before {
-    content: "";
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background-color: var(--color-primary);
-    margin-right: 6px;
-}
-
-
-/* Cyber glyphs pattern */
-
-.cyber-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.4;
-}
-
-.cyber-glyph {
-    position: absolute;
-    color: var(--color-primary);
-    font-family: monospace;
-    animation: glyphFade 8s infinite alternate ease-in-out;
-}
-
-@keyframes glyphFade {
-    0% {
-        opacity: 0.1;
-        transform: rotate(0deg);
-    }
-    50% {
-        opacity: 0.3;
-    }
-    100% {
-        opacity: 0.1;
-        transform: rotate(360deg);
-    }
-}
-
-
-/* Background layers */
+/* Enhanced cosmic background with volumetric nebula effect */
 
 .nebula-background {
     position: absolute;
@@ -203,7 +44,51 @@
     opacity: 0.8;
     animation: nebulaGlow 15s infinite ease-in-out;
     z-index: 0;
+    pointer-events: none;
 }
+
+.nebula-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient( ellipse at 70% 45%, rgba(var(--color-accent-rgb), 0.05) 0%, transparent 60%);
+    animation: nebulaAccent 20s infinite alternate ease-in-out;
+}
+
+.nebula-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient( ellipse at 30% 55%, rgba(var(--color-primary-rgb), 0.03) 0%, transparent 70%);
+    animation: nebulaSecondary 25s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes nebulaAccent {
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(0.9);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2) translate(3%, -3%);
+    }
+}
+
+@keyframes nebulaSecondary {
+    0%,
+    100% {
+        opacity: 0.2;
+        transform: scale(0.95);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.15) translate(-2%, 2%);
+    }
+}
+
+
+/* Enhanced star field with more depth and realistic stars */
 
 .stars-layer {
     position: absolute;
@@ -212,10 +97,71 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    background-image: radial-gradient(1px 1px at 25px 5px, rgba(var(--color-text-primary-rgb), 0.7), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(1px 1px at 50px 25px, rgba(var(--color-text-primary-rgb), 0.5), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(1px 1px at 125px 20px, rgba(var(--color-text-primary-rgb), 0.6), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(1.5px 1.5px at 50px 75px, rgba(var(--color-text-primary-rgb), 0.7), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(2px 2px at 15px 125px, rgba(var(--color-text-primary-rgb), 0.6), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(2.5px 2.5px at 100px 150px, rgba(var(--color-text-primary-rgb), 0.5), rgba(var(--color-text-primary-rgb), 0));
+    background-image: radial-gradient(1px 1px at 25px 5px, rgba(var(--color-text-primary-rgb), 0.9), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(1px 1px at 50px 25px, rgba(var(--color-text-primary-rgb), 0.6), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(1px 1px at 125px 20px, rgba(var(--color-text-primary-rgb), 0.8), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(1.5px 1.5px at 50px 75px, rgba(var(--color-text-primary-rgb), 0.9), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(2px 2px at 15px 125px, rgba(var(--color-text-primary-rgb), 0.7), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(2.5px 2.5px at 100px 150px, rgba(var(--color-text-primary-rgb), 0.6), rgba(var(--color-text-primary-rgb), 0));
     background-size: 200px 200px;
-    animation: starsShimmer 10s infinite linear;
+    animation: starsShimmer 40s infinite linear;
+    pointer-events: none;
 }
+
+.stars-layer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(1.5px 1.5px at 150px 50px, rgba(var(--color-text-primary-rgb), 0.9), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(1px 1px at 200px 120px, rgba(var(--color-text-primary-rgb), 0.8), rgba(var(--color-text-primary-rgb), 0)), radial-gradient(1.2px 1.2px at 300px 300px, rgba(var(--color-text-primary-rgb), 0.7), rgba(var(--color-text-primary-rgb), 0));
+    background-size: 400px 400px;
+    animation: twinkle 8s infinite alternate ease-in-out;
+}
+
+@keyframes twinkle {
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+    50% {
+        opacity: 0.9;
+    }
+}
+
+
+/* Improved cyber glyph pattern */
+
+.cyber-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    transform-style: preserve-3d;
+}
+
+.cyber-glyph {
+    position: absolute;
+    color: var(--color-primary);
+    font-family: monospace;
+    text-shadow: 0 0 5px rgba(var(--color-primary-rgb), 0.7);
+    animation: glyphFade 15s infinite ease-in-out;
+}
+
+@keyframes glyphFade {
+    0% {
+        opacity: 0.1;
+        transform: rotate(0deg) translateZ(0px);
+    }
+    50% {
+        opacity: 0.35;
+        transform: rotate(180deg) translateZ(30px);
+    }
+    100% {
+        opacity: 0.1;
+        transform: rotate(360deg) translateZ(0px);
+    }
+}
+
+
+/* Enhanced grid backdrop with improved perspective */
 
 .glowing-grid {
     position: absolute;
@@ -223,15 +169,18 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(rgba(var(--color-primary-rgb), 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.05) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(var(--color-primary-rgb), 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
     z-index: 0;
-    opacity: 0.3;
+    opacity: 0.35;
     animation: gridPulse 10s infinite ease-in-out;
+    transform: perspective(1000px) rotateX(60deg) scale(2.5) translateY(50px);
+    transform-origin: center center;
+    pointer-events: none;
 }
 
 
-/* Main hologram container */
+/* Enhanced hologram container without rotation */
 
 .hologram-container {
     position: relative;
@@ -241,60 +190,97 @@
     justify-content: center;
     align-items: center;
     transform-style: preserve-3d;
-    animation: floatHologram 8s infinite ease-in-out;
+    /* Removed subtleFloat animation for stability */
 }
 
 
-/* Core element with logo */
+/* Core Element with No Rotation */
 
 .core-element {
     position: relative;
     width: 100px;
     height: 100px;
-    z-index: 2;
+    z-index: 5;
+    /* Increased z-index for better visibility */
     transform-style: preserve-3d;
     display: flex;
     justify-content: center;
     align-items: center;
+    /* Removed rotation animation */
 }
+
+
+/* Stable Logo Container with Subtle Glow */
 
 .logo-container {
     width: 80px;
     height: 80px;
-    background: rgba(var(--color-surface-rgb), 0.15);
+    background: rgba(var(--color-surface-rgb), 0.12);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-radius: var(--radius-lg);
+    border-radius: 50%;
     border: 1px solid rgba(var(--color-primary-rgb), 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.4), inset 0 0 20px rgba(var(--color-primary-rgb), 0.2);
-    animation: coreGlow 4s infinite alternate ease-in-out;
+    box-shadow: 0 0 40px rgba(var(--color-primary-rgb), 0.5), inset 0 0 20px rgba(var(--color-primary-rgb), 0.2);
+    animation: logoGlow 4s infinite alternate ease-in-out;
+    transform: translateZ(30px);
+    /* Subtle 3D effect */
 }
 
-.logo-container:after {
+@keyframes logoGlow {
+    0% {
+        box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.4), inset 0 0 20px rgba(var(--color-primary-rgb), 0.2);
+    }
+    100% {
+        box-shadow: 0 0 50px rgba(var(--color-primary-rgb), 0.6), inset 0 0 30px rgba(var(--color-primary-rgb), 0.3);
+    }
+}
+
+
+/* Enhanced corona effect - subtler and non-moving */
+
+.logo-container::before {
+    content: '';
+    position: absolute;
+    inset: -15px;
+    background: radial-gradient( circle at center, rgba(var(--color-primary-rgb), 0.5) 0%, transparent 70%);
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: subtleCoronaGlow 4s infinite alternate ease-in-out;
+}
+
+@keyframes subtleCoronaGlow {
+    0% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+
+/* Subtle rotating background element that doesn't move the logo */
+
+.logo-container::after {
     content: '';
     position: absolute;
     top: -50%;
     left: -50%;
     width: 200%;
     height: 200%;
-    background: conic-gradient( from 0deg, transparent 0deg, rgba(var(--color-primary-rgb), 0.1) 40deg, transparent 60deg, transparent 360deg);
-    animation: rotateConic 4s linear infinite;
-    opacity: 0.7;
+    background: conic-gradient( from 0deg, transparent 0deg, rgba(var(--color-primary-rgb), 0.08) 40deg, transparent 60deg, transparent 360deg);
+    animation: rotateConic 12s linear infinite;
+    opacity: 0.6;
 }
 
-@keyframes rotateConic {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
+
+/* Static scanlines for texture without movement */
 
 .logo-scanlines {
     position: absolute;
@@ -306,19 +292,32 @@
     pointer-events: none;
     z-index: 3;
     opacity: 0.7;
-    animation: scanlineMove 3s infinite linear;
+    border-radius: 50%;
+    /* Removed animation for stability */
 }
+
+
+/* Stable logo with subtle glow effect */
 
 .loader-logo {
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     filter: drop-shadow(0 0 8px rgba(var(--color-primary-rgb), 0.7));
-    animation: logoGlow 3s infinite alternate ease-in-out;
-    z-index: 2;
+    z-index: 4;
+    animation: logoSubtlePulse 10s infinite alternate ease-in-out;
+}
+
+@keyframes logoSubtlePulse {
+    0% {
+        filter: drop-shadow(0 0 4px rgba(var(--color-primary-rgb), 0.4));
+    }
+    100% {
+        filter: drop-shadow(0 0 12px rgba(var(--color-primary-rgb), 0.8));
+    }
 }
 
 
-/* Energy rings */
+/* Energy rings container - FLAT without perspective tilt */
 
 .energy-rings-container {
     position: absolute;
@@ -330,7 +329,12 @@
     justify-content: center;
     align-items: center;
     z-index: 1;
+    transform-style: preserve-3d;
+    /* Removed rotateX perspective to keep rings flat/horizontal */
 }
+
+
+/* Improved ripple effect for rings that doesn't cause overflow */
 
 .energy-ring {
     position: absolute;
@@ -340,39 +344,156 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transform-style: preserve-3d;
+    animation: ringPulse 3s infinite ease-in-out;
+    box-sizing: content-box;
 }
 
-.ring-accent {
+@keyframes ringPulse {
+    0%,
+    100% {
+        opacity: 0.9;
+        border-color: rgba(var(--color-primary-rgb), 0.3);
+    }
+    50% {
+        opacity: 0.6;
+        border-color: rgba(var(--color-primary-rgb), 0.1);
+    }
+}
+
+.ring-accent::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.05);
+    /* Multiple separate ripples instead of scaling to prevent overflow */
+    animation: none;
+    /* Remove the scaling animation */
+    pointer-events: none;
+}
+
+
+/* Add multiple concentric ripple rings instead of scaling */
+
+.ring-accent::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient( 45deg, rgba(var(--color-surface-variant-rgb), 0.7), rgba(var(--color-primary-rgb), 0.3));
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(var(--color-primary-rgb), 0.4), 0 0 5px rgba(var(--color-primary-rgb), 0.8) inset;
+    transform: translate(-50%, -50%);
+    animation: planetOrbit var(--orbit-speed) infinite linear;
+}
+
+
+/* Ripple circles - each ring gets 3 concentric ripples */
+
+.ring-ripples {
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 1px dashed rgba(var(--color-primary-rgb), 0.3);
-    animation: ringRotateReverse 60s linear infinite;
+    top: 0;
+    left: 0;
+    pointer-events: none;
 }
+
+.ripple-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(var(--color-primary-rgb), 0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.ripple-1 {
+    width: 110%;
+    height: 110%;
+    animation: rippleExpand 4s infinite ease-out;
+    animation-delay: 0s;
+}
+
+.ripple-2 {
+    width: 110%;
+    height: 110%;
+    animation: rippleExpand 4s infinite ease-out;
+    animation-delay: 1.3s;
+}
+
+.ripple-3 {
+    width: 110%;
+    height: 110%;
+    animation: rippleExpand 4s infinite ease-out;
+    animation-delay: 2.6s;
+}
+
+@keyframes rippleExpand {
+    0% {
+        width: 100%;
+        height: 100%;
+        opacity: 0.2;
+        border-width: 1px;
+    }
+    100% {
+        width: 140%;
+        height: 140%;
+        opacity: 0;
+        border-width: 0.5px;
+    }
+}
+
+
+/* Modified individual ring styling for proper ripple effects */
 
 .ring-1 {
     width: 140px;
     height: 140px;
-    animation: ringRotate 25s linear infinite;
+    --orbit-speed: 25s;
+}
+
+.ring-1 .ripple-circle {
+    border-color: rgba(var(--color-primary-rgb), 0.15);
 }
 
 .ring-2 {
     width: 190px;
     height: 190px;
-    animation: ringRotate 30s linear infinite reverse;
     border-color: rgba(var(--color-secondary-rgb), 0.2);
     box-shadow: 0 0 15px rgba(var(--color-secondary-rgb), 0.15);
+    --orbit-speed: 30s;
 }
 
 .ring-2 .ring-accent {
-    border-color: rgba(var(--color-secondary-rgb), 0.3);
+    border-color: rgba(var(--color-secondary-rgb), 0.2);
+}
+
+.ring-2 .ripple-circle {
+    border-color: rgba(var(--color-secondary-rgb), 0.15);
+}
+
+.ring-2 .ring-accent::after {
+    background: linear-gradient( 45deg, rgba(var(--color-surface-variant-rgb), 0.7), rgba(var(--color-secondary-rgb), 0.3));
+    box-shadow: 0 0 15px rgba(var(--color-secondary-rgb), 0.4);
+    animation-delay: -10s;
 }
 
 .ring-3 {
     width: 240px;
     height: 240px;
-    animation: ringRotate 35s linear infinite;
+    --orbit-speed: 35s;
+}
+
+.ring-3 .ring-accent::after {
+    animation-delay: -5s;
 }
 
 .ring-4 {
@@ -380,21 +501,58 @@
     height: 290px;
     border-color: rgba(var(--color-accent-rgb), 0.2);
     box-shadow: 0 0 15px rgba(var(--color-accent-rgb), 0.15);
-    animation: ringRotate 40s linear infinite reverse;
+    --orbit-speed: 40s;
 }
 
 .ring-4 .ring-accent {
-    border-color: rgba(var(--color-accent-rgb), 0.3);
+    border-color: rgba(var(--color-accent-rgb), 0.2);
+}
+
+.ring-4 .ripple-circle {
+    border-color: rgba(var(--color-accent-rgb), 0.15);
+}
+
+.ring-4 .ring-accent::after {
+    background: linear-gradient( 45deg, rgba(var(--color-surface-variant-rgb), 0.7), rgba(var(--color-accent-rgb), 0.3));
+    box-shadow: 0 0 15px rgba(var(--color-accent-rgb), 0.4);
+    animation-delay: -15s;
 }
 
 .ring-5 {
     width: 340px;
     height: 340px;
-    animation: ringRotate 45s linear infinite;
+    --orbit-speed: 45s;
+}
+
+.ring-5 .ring-accent::after {
+    animation-delay: -7s;
+}
+
+@keyframes planetOrbit {
+    0% {
+        left: 0%;
+        top: 50%;
+    }
+    25% {
+        left: 50%;
+        top: 0%;
+    }
+    50% {
+        left: 100%;
+        top: 50%;
+    }
+    75% {
+        left: 50%;
+        top: 100%;
+    }
+    100% {
+        left: 0%;
+        top: 50%;
+    }
 }
 
 
-/* Particles system - enhanced */
+/* Enhanced particles with more ethereal quality */
 
 .particles-container {
     position: absolute;
@@ -402,20 +560,21 @@
     height: 340px;
     pointer-events: none;
     z-index: 2;
+    transform-style: preserve-3d;
 }
 
 .particle {
     position: absolute;
     border-radius: 50%;
-    width: 3px;
-    height: 3px;
+    width: 2px;
+    height: 2px;
     filter: blur(1px);
     opacity: 0;
-    animation: particleFloat 15s infinite;
+    animation: particleFloat 8s infinite;
 }
 
 
-/* Generate 30 particles with varied properties */
+/* Improved particle colors and effects */
 
 .particle-1,
 .particle-6,
@@ -424,7 +583,9 @@
 .particle-21,
 .particle-26 {
     background-color: var(--color-primary);
-    box-shadow: 0 0 4px var(--color-primary);
+    box-shadow: 0 0 6px var(--color-primary);
+    width: 3px;
+    height: 3px;
 }
 
 .particle-2,
@@ -434,7 +595,7 @@
 .particle-22,
 .particle-27 {
     background-color: var(--color-secondary);
-    box-shadow: 0 0 4px var(--color-secondary);
+    box-shadow: 0 0 6px var(--color-secondary);
 }
 
 .particle-3,
@@ -444,7 +605,9 @@
 .particle-23,
 .particle-28 {
     background-color: var(--color-accent);
-    box-shadow: 0 0 4px var(--color-accent);
+    box-shadow: 0 0 6px var(--color-accent);
+    width: 2.5px;
+    height: 2.5px;
 }
 
 .particle-4,
@@ -454,7 +617,9 @@
 .particle-24,
 .particle-29 {
     background-color: #ffffff;
-    box-shadow: 0 0 4px white;
+    box-shadow: 0 0 5px white;
+    width: 1.5px;
+    height: 1.5px;
 }
 
 .particle-5,
@@ -464,17 +629,35 @@
 .particle-25,
 .particle-30 {
     background-color: var(--color-text-primary);
-    box-shadow: 0 0 4px var(--color-text-primary);
+    box-shadow: 0 0 5px var(--color-text-primary);
+}
+
+@keyframes particleFloat {
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateY(0) translateZ(0) scale(0.5);
+    }
+    40%,
+    60% {
+        opacity: 0.8;
+        transform: translateY(-20px) translateZ(20px) scale(1.2);
+    }
+    80% {
+        opacity: 0;
+        transform: translateY(-40px) translateZ(10px) scale(0.5);
+    }
 }
 
 
-/* Data lines */
+/* Data lines - more elegant with improved flow */
 
 .data-lines {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 1;
+    opacity: 0.2;
 }
 
 .data-line {
@@ -489,93 +672,18 @@
 
 .data-point {
     position: absolute;
-    width: 4px;
-    height: 4px;
+    width: 3px;
+    height: 3px;
     border-radius: 50%;
     background-color: var(--color-primary);
-    top: -2px;
+    top: -1.5px;
     right: 0;
     box-shadow: 0 0 4px var(--color-primary);
-    animation: dataPointMove 3s infinite ease-in-out;
+    animation: dataPointMove 2.5s infinite ease-in-out;
 }
 
 
-/* 12 data lines at different angles */
-
-.line-1 {
-    transform: rotate(0deg);
-    width: 120px;
-    animation-delay: 0.1s;
-}
-
-.line-2 {
-    transform: rotate(30deg);
-    width: 100px;
-    animation-delay: 0.3s;
-}
-
-.line-3 {
-    transform: rotate(60deg);
-    width: 140px;
-    animation-delay: 0.5s;
-}
-
-.line-4 {
-    transform: rotate(90deg);
-    width: 110px;
-    animation-delay: 0.7s;
-}
-
-.line-5 {
-    transform: rotate(120deg);
-    width: 130px;
-    animation-delay: 0.9s;
-}
-
-.line-6 {
-    transform: rotate(150deg);
-    width: 90px;
-    animation-delay: 1.1s;
-}
-
-.line-7 {
-    transform: rotate(180deg);
-    width: 150px;
-    animation-delay: 1.3s;
-}
-
-.line-8 {
-    transform: rotate(210deg);
-    width: 105px;
-    animation-delay: 1.5s;
-}
-
-.line-9 {
-    transform: rotate(240deg);
-    width: 125px;
-    animation-delay: 1.7s;
-}
-
-.line-10 {
-    transform: rotate(270deg);
-    width: 135px;
-    animation-delay: 1.9s;
-}
-
-.line-11 {
-    transform: rotate(300deg);
-    width: 115px;
-    animation-delay: 2.1s;
-}
-
-.line-12 {
-    transform: rotate(330deg);
-    width: 95px;
-    animation-delay: 2.3s;
-}
-
-
-/* Loading interface */
+/* Enhanced loading interface with smoother animations */
 
 .loading-interface {
     display: flex;
@@ -592,6 +700,12 @@
     width: 100%;
     gap: var(--space-md);
     position: relative;
+    background: rgba(var(--color-surface-rgb), 0.1);
+    padding: 8px 12px;
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(var(--color-border-rgb), 0.2);
 }
 
 .progress-bar {
@@ -609,8 +723,17 @@
     background: linear-gradient( 90deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-primary) 100%);
     background-size: 200% 100%;
     border-radius: var(--radius-full);
-    animation: progressFilling 5s infinite ease-in-out, shimmerBg 2s infinite linear;
+    animation: progressFilling 3s ease-in-out forwards, shimmerBg 2s infinite linear;
     position: relative;
+}
+
+@keyframes progressFilling {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
 }
 
 .progress-glow {
@@ -620,7 +743,7 @@
     height: 100%;
     width: 30px;
     background: linear-gradient( 90deg, transparent 0%, rgba(255, 255, 255, 0.6) 50%, transparent 100%);
-    animation: progressGlow 5s infinite ease-in-out;
+    animation: progressGlow 3s infinite ease-in-out;
     filter: blur(3px);
 }
 
@@ -637,7 +760,7 @@
 }
 
 .percentage-number {
-    animation: percentageCount 5s infinite steps(100);
+    animation: percentageCount 3s steps(100) forwards;
     counter-reset: percentage 0;
     display: flex;
     align-items: center;
@@ -646,12 +769,24 @@
 
 .percentage-number::after {
     content: counter(percentage);
-    animation: percentageCount 5s infinite;
+    animation: percentageCount 3s forwards;
+}
+
+@keyframes percentageCount {
+    0% {
+        counter-increment: percentage 0;
+    }
+    100% {
+        counter-increment: percentage 100;
+    }
 }
 
 .percentage-symbol {
     margin-left: 2px;
 }
+
+
+/* Enhanced status text with improved visibility */
 
 .status-text {
     font-family: var(--font-heading);
@@ -661,21 +796,46 @@
     align-items: center;
     letter-spacing: 1px;
     position: relative;
-    padding: 4px 10px;
-    border-radius: var(--radius-sm);
-    background-color: rgba(var(--color-surface-rgb), 0.2);
+    padding: 8px 12px;
+    border-radius: var(--radius-lg);
+    background-color: rgba(var(--color-surface-rgb), 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(var(--color-border-rgb), 0.2);
-    min-height: 28px;
+    min-height: 34px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Improved status indicator */
+
+.status-text::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
+    margin-right: var(--space-sm);
+    animation: statusPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes statusPulse {
+    0%,
+    100% {
+        opacity: 0.7;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
 }
 
 .status-message {
-    animation: textFlicker 5s infinite;
-    min-width: 0;
-    opacity: 0;
-    transform: translateY(10px);
     animation: messageEntrance 0.5s forwards ease-in-out;
+    opacity: 1;
+    flex: 1;
 }
 
 .status-dots {
@@ -704,27 +864,240 @@
 }
 
 
-/* Enhanced Animations */
+/* Enhanced corner frames with subtle glow */
 
-@keyframes floatHologram {
-    0%,
-    100% {
-        transform: translateY(0) rotateX(8deg) rotateY(8deg);
+.corner-frames {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.corner {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0.9;
+}
+
+.frame-line {
+    position: absolute;
+    background-color: var(--color-primary);
+    box-shadow: 0 0 5px var(--color-primary);
+}
+
+.frame-line.horizontal {
+    height: 1px;
+    width: 100%;
+}
+
+.frame-line.vertical {
+    width: 1px;
+    height: 100%;
+}
+
+
+/* Enhanced corner dots with pulse effect */
+
+.corner::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
+    animation: cornerPulse 3s infinite alternate ease-in-out;
+}
+
+@keyframes cornerPulse {
+    0% {
+        opacity: 0.6;
+        transform: scale(0.8);
     }
-    50% {
-        transform: translateY(-20px) rotateX(2deg) rotateY(12deg);
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
     }
 }
+
+.top-left {
+    top: 20px;
+    left: 20px;
+}
+
+.top-left .horizontal {
+    top: 0;
+    left: 0;
+}
+
+.top-left .vertical {
+    top: 0;
+    left: 0;
+}
+
+.top-left::after {
+    top: -2.5px;
+    left: -2.5px;
+}
+
+.top-right {
+    top: 20px;
+    right: 20px;
+}
+
+.top-right .horizontal {
+    top: 0;
+    right: 0;
+}
+
+.top-right .vertical {
+    top: 0;
+    right: 0;
+}
+
+.top-right::after {
+    top: -2.5px;
+    right: -2.5px;
+}
+
+.bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+.bottom-left .horizontal {
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-left .vertical {
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-left::after {
+    bottom: -2.5px;
+    left: -2.5px;
+}
+
+.bottom-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+.bottom-right .horizontal {
+    bottom: 0;
+    right: 0;
+}
+
+.bottom-right .vertical {
+    bottom: 0;
+    right: 0;
+}
+
+.bottom-right::after {
+    bottom: -2.5px;
+    right: -2.5px;
+}
+
+
+/* Enhanced system info panel with improved readability */
+
+.system-info {
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+    color: var(--color-text-secondary);
+    font-family: var(--font-heading);
+    font-size: var(--fs-xs);
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 4;
+    background: rgba(var(--color-surface-rgb), 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(var(--color-border-rgb), 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.info-item {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-item:before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--color-primary);
+    margin-right: 6px;
+    border-radius: 50%;
+    box-shadow: 0 0 4px var(--color-primary);
+    animation: infoPulse 3s infinite alternate ease-in-out;
+}
+
+@keyframes infoPulse {
+    0% {
+        opacity: 0.7;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+
+/* Add time display in top right with improved styling */
+
+.loading-page::after {
+    content: attr(data-time);
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-family: var(--font-heading);
+    font-size: var(--fs-sm);
+    color: var(--color-primary);
+    opacity: 0.9;
+    background: rgba(var(--color-surface-rgb), 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    padding: 6px 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(var(--color-border-rgb), 0.1);
+    z-index: 4;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Better animations */
 
 @keyframes nebulaGlow {
     0%,
     100% {
         opacity: 0.5;
         transform: scale(1);
+        filter: hue-rotate(0deg);
     }
     50% {
-        opacity: 0.8;
-        transform: scale(1.2);
+        opacity: 0.7;
+        transform: scale(1.1);
+        filter: hue-rotate(20deg);
     }
 }
 
@@ -747,33 +1120,12 @@
     }
 }
 
-@keyframes coreGlow {
-    0%,
-    100% {
-        box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.3), inset 0 0 15px rgba(var(--color-primary-rgb), 0.15);
-    }
-    50% {
-        box-shadow: 0 0 40px rgba(var(--color-primary-rgb), 0.5), inset 0 0 30px rgba(var(--color-primary-rgb), 0.25);
-    }
-}
-
-@keyframes scanlineMove {
+@keyframes rotateConic {
     0% {
-        transform: translateY(0);
+        transform: rotate(0deg);
     }
     100% {
-        transform: translateY(80px);
-    }
-}
-
-@keyframes logoGlow {
-    0% {
-        filter: drop-shadow(0 0 4px rgba(var(--color-primary-rgb), 0.4));
-        transform: scale(0.95) rotate(-5deg);
-    }
-    100% {
-        filter: drop-shadow(0 0 10px rgba(var(--color-primary-rgb), 0.8));
-        transform: scale(1.05) rotate(5deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -792,22 +1144,6 @@
     }
     100% {
         transform: rotate(0deg);
-    }
-}
-
-@keyframes particleFloat {
-    0%,
-    100% {
-        opacity: 0;
-        transform: translateY(0) scale(0.5);
-    }
-    25%,
-    75% {
-        opacity: 0.8;
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(-40px) scale(1.5);
     }
 }
 
@@ -835,21 +1171,10 @@
     }
 }
 
-@keyframes progressFilling {
-    0% {
-        width: 0%;
-    }
-    80%,
-    100% {
-        width: 100%;
-    }
-}
-
 @keyframes progressGlow {
     0% {
         left: -30px;
     }
-    80%,
     100% {
         left: 100%;
     }
@@ -861,38 +1186,6 @@
     }
     100% {
         background-position: 200% 0%;
-    }
-}
-
-@keyframes percentageCount {
-    0% {
-        counter-increment: percentage 0;
-    }
-    80%,
-    100% {
-        counter-increment: percentage 100;
-    }
-}
-
-@keyframes textFlicker {
-    0%,
-    100% {
-        opacity: 0.9;
-    }
-    50% {
-        opacity: 1;
-    }
-    87% {
-        opacity: 0.8;
-    }
-    90% {
-        opacity: 0.95;
-    }
-    92% {
-        opacity: 0.8;
-    }
-    94% {
-        opacity: 0.92;
     }
 }
 
@@ -920,7 +1213,7 @@
 }
 
 
-/* Media Queries */
+/* Enhanced responsiveness for different devices */
 
 @media (max-width: 768px) {
     .hologram-container {
@@ -958,6 +1251,11 @@
     .corner {
         width: 30px;
         height: 30px;
+    }
+    .loading-page::after {
+        top: 20px;
+        right: 20px;
+        font-size: var(--fs-xs);
     }
 }
 

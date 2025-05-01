@@ -44,7 +44,7 @@ const LoadingPage = () => {
         clearInterval(phaseInterval);
         return prev;
       });
-    }, 1500);
+    }, 900);
     
     return () => {
       document.body.style.overflow = '';
@@ -100,14 +100,6 @@ const LoadingPage = () => {
             <div className="logo-scanlines"></div>
             <Logo className="loader-logo" />
           </div>
-        </div>
-        
-        <div className="energy-rings-container">
-          {[...Array(5)].map((_, i) => (
-            <div key={i} className={`energy-ring ring-${i+1}`}>
-              <div className="ring-accent"></div>
-            </div>
-          ))}
         </div>
         
         <div className="particles-container">

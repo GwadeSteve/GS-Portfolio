@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { ReactComponent as Gradient } from '../../assets/Gradient.svg';
 import { ReactComponent as Logo } from '../../assets/Logo.svg';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './Navbar.css';
 import { FiHome, FiUser, FiBriefcase, FiSend, FiMenu, FiX } from 'react-icons/fi';
 
-const Navbar = () => {
+const Navbar = ({ onNavigate }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Modified approach to avoid dependency issues
   const prevPathRef = React.useRef(location.pathname);
   
   useEffect(() => {
-    // Only close menu when path actually changes
     if (prevPathRef.current !== location.pathname && menuOpen) {
       setMenuOpen(false);
       document.body.classList.remove('body-scroll-lock');
@@ -42,21 +40,35 @@ const Navbar = () => {
       document.body.classList.remove('body-scroll-lock');
     }
   };
-
-  useEffect(() => {
-    return () => {
-      document.body.classList.remove('body-scroll-lock');
+  
+  const CustomNavLink = ({ to, children, className, onClick }) => {
+    const isActive = location.pathname === to;
+    const combinedClassName = isActive ? `${className} active` : className;
+    
+    const handleClick = (e) => {
+      e.preventDefault();
+      onNavigate(to);
+      if (onClick) onClick();
     };
-  }, []);
+    
+    return (
+      <a href={to} className={combinedClassName} onClick={handleClick}>
+        {children}
+      </a>
+    );
+  };
 
   return (
     <>
       <div className="logo-corner">
-        <NavLink to='/'>
+        <a href="/" onClick={(e) => {
+          e.preventDefault();
+          onNavigate('/');
+        }}>
           <div className="logo-container">
             <Logo className="Logo"/>
           </div>
-        </NavLink>
+        </a>
       </div>
       
       <div className={`mobile-toggle ${menuOpen ? 'open' : ''}`} onClick={handleToggle}>
@@ -67,28 +79,28 @@ const Navbar = () => {
         <div className="navbar-glow"></div>
         <ul className="nav-links">
           <li>
-            <NavLink to='/' className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'} end>
+            <CustomNavLink to='/' className="nav-link">
               <span className="nav-icon"><FiHome /></span>
               <span className="nav-text">Home</span>
-            </NavLink>
+            </CustomNavLink>
           </li>
           <li>
-            <NavLink to='/about' className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'}>
+            <CustomNavLink to='/about' className="nav-link">
               <span className="nav-icon"><FiUser /></span>
               <span className="nav-text">About</span>
-            </NavLink>
+            </CustomNavLink>
           </li>
           <li>
-            <NavLink to='/work' className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'}>
+            <CustomNavLink to='/work' className="nav-link">
               <span className="nav-icon"><FiBriefcase /></span>
               <span className="nav-text">Works</span>
-            </NavLink>
+            </CustomNavLink>
           </li>
           <li>
-            <NavLink to='/request' className={({isActive}) => isActive ? 'nav-link active' : 'nav-link'}>
+            <CustomNavLink to='/request' className="nav-link">
               <span className="nav-icon"><FiSend /></span>
               <span className="nav-text">Project Request</span>
-            </NavLink>
+            </CustomNavLink>
           </li>
         </ul>
       </nav>
@@ -96,22 +108,22 @@ const Navbar = () => {
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         <Gradient className='mobile-gradient'/>
         <div className="mobile-menu-container">
-          <NavLink to='/' className={({isActive}) => isActive ? 'mobile-nav-link active' : 'mobile-nav-link'} end onClick={handleToggle}>
+          <CustomNavLink to='/' className="mobile-nav-link" onClick={handleToggle}>
             <span className="mobile-nav-icon"><FiHome /></span>
             <span>Home</span>
-          </NavLink>
-          <NavLink to='/about' className={({isActive}) => isActive ? 'mobile-nav-link active' : 'mobile-nav-link'} onClick={handleToggle}>
+          </CustomNavLink>
+          <CustomNavLink to='/about' className="mobile-nav-link" onClick={handleToggle}>
             <span className="mobile-nav-icon"><FiUser /></span>
             <span>About</span>
-          </NavLink>
-          <NavLink to='/work' className={({isActive}) => isActive ? 'mobile-nav-link active' : 'mobile-nav-link'} onClick={handleToggle}>
+          </CustomNavLink>
+          <CustomNavLink to='/work' className="mobile-nav-link" onClick={handleToggle}>
             <span className="mobile-nav-icon"><FiBriefcase /></span>
             <span>Works</span>
-          </NavLink>
-          <NavLink to='/request' className={({isActive}) => isActive ? 'mobile-nav-link active' : 'mobile-nav-link'} onClick={handleToggle}>
+          </CustomNavLink>
+          <CustomNavLink to='/request' className="mobile-nav-link" onClick={handleToggle}>
             <span className="mobile-nav-icon"><FiSend /></span>
             <span>Project Request</span>
-          </NavLink>
+          </CustomNavLink>
         </div>
       </div>
     </>
