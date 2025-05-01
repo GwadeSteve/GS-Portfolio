@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import './Request.css';
 import { useNavigate, Link } from 'react-router-dom';
 import { 
@@ -7,7 +7,7 @@ import {
     FiLink, FiGlobe, FiHeart, FiList, FiCpu, FiX, FiArrowLeft, FiHome
 } from 'react-icons/fi';
 
-const Request = () => {
+const Request = ({ onNavigate }) => {
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -26,9 +26,10 @@ const Request = () => {
     const [formErrors, setFormErrors] = useState({});
     const [isStepValid, setIsStepValid] = useState(false);
     const navigate = useNavigate();
+    const requestPageRef = useRef(null);
     
+    // All your existing code for options, validation, etc.
     const totalSteps = 5;
-
     const projectTypes = [
         { id: 'web-development', label: 'Web Development' },
         { id: 'mobile-app', label: 'Mobile App' },
@@ -66,6 +67,20 @@ const Request = () => {
         { id: 'other', label: 'Other' }
     ];
 
+    // Force page to be scrollable as soon as it mounts
+    useEffect(() => {
+        // Ensure body is scrollable when this component mounts
+        document.body.style.overflow = '';
+        document.body.classList.remove('body-scroll-lock');
+        
+        // Cleanup function to ensure body is scrollable when component unmounts
+        return () => {
+            document.body.style.overflow = '';
+            document.body.classList.remove('body-scroll-lock');
+        };
+    }, []);
+
+    // Validate the current step - your existing function
     const validateCurrentStep = useCallback(() => {
         const errors = {};
         let valid = true;
@@ -136,7 +151,7 @@ const Request = () => {
         return valid;
     }, [currentStep, formData]);
 
-    // Validate whenever step or form data changes
+    // Validate whenever step or form data changes - your existing function
     useEffect(() => {
         validateCurrentStep();
     }, [validateCurrentStep]);
@@ -152,14 +167,24 @@ const Request = () => {
     const nextStep = () => {
         if (isStepValid && currentStep < totalSteps) {
             setCurrentStep(currentStep + 1);
-            window.scrollTo(0, 0);
+            // Scroll within the component instead of the window
+            if (requestPageRef.current) {
+                requestPageRef.current.scrollTo(0, 0);
+            } else {
+                window.scrollTo(0, 0);
+            }
         }
     };
 
     const prevStep = () => {
         if (currentStep > 1) {
             setCurrentStep(currentStep - 1);
-            window.scrollTo(0, 0);
+            // Scroll within the component instead of the window
+            if (requestPageRef.current) {
+                requestPageRef.current.scrollTo(0, 0);
+            } else {
+                window.scrollTo(0, 0);
+            }
         }
     };
 
@@ -182,7 +207,12 @@ const Request = () => {
             if (response.ok) {
                 setRequestStatus('success');
                 setTimeout(() => {
-                    navigate('/');
+                    // Use onNavigate if available, otherwise use navigate
+                    if (typeof onNavigate === 'function') {
+                        onNavigate('/');
+                    } else {
+                        navigate('/');
+                    }
                 }, 3000);
             } else {
                 console.error('Request failed with status:', response.status);
@@ -196,6 +226,7 @@ const Request = () => {
         }
     };
 
+    // Rest of your component functions
     const progress = (currentStep / totalSteps) * 100;
 
     const getStepClassName = (step) => {
@@ -204,7 +235,6 @@ const Request = () => {
         return "form-step";
     };
 
-    // Get step title
     const getStepTitle = () => {
         switch (currentStep) {
             case 1:
@@ -240,20 +270,32 @@ const Request = () => {
     };
 
     return (
-        <div className="request-page">
+        <div className="request-page" ref={requestPageRef}>
             {/* Enhanced unified navigation */}
             <div className="request-nav">
                 <div className="nav-left">
-                    <Link to="/" className="nav-home-btn">
-                        <FiHome />
-                        <span>Home</span>
-                    </Link>
+                    {typeof onNavigate === 'function' ? (
+                        <button 
+                            className="nav-home-btn"
+                            onClick={() => onNavigate('/')}
+                            type="button"
+                        >
+                            <FiHome />
+                            <span>Home</span>
+                        </button>
+                    ) : (
+                        <Link to="/" className="nav-home-btn">
+                            <FiHome />
+                            <span>Home</span>
+                        </Link>
+                    )}
                     
                     {currentStep > 1 && (
                         <button 
                             className="nav-back-btn"
                             onClick={prevStep}
                             disabled={isSending}
+                            type="button"
                         >
                             <FiArrowLeft />
                             <span>Back</span>
@@ -263,7 +305,17 @@ const Request = () => {
                 
                 <div className="nav-title">Project Request</div>
                 
-                <button className="nav-close-btn" onClick={() => navigate('/')}>
+                <button 
+                    className="nav-close-btn" 
+                    onClick={() => {
+                        if (typeof onNavigate === 'function') {
+                            onNavigate('/');
+                        } else {
+                            navigate('/');
+                        }
+                    }}
+                    type="button"
+                >
                     <FiX />
                 </button>
             </div>

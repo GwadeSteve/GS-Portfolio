@@ -70,7 +70,7 @@ function App() {
 
             navigationTimeoutRef.current = setTimeout(() => {
                 clearNavigationState();
-            }, 1000);
+            }, 2700);
 
         }, 150);
 

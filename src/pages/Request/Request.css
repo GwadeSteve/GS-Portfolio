@@ -4,14 +4,16 @@
     min-height: 100vh;
     width: 100%;
     overflow-x: hidden;
+    overflow-y: auto;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: var(--space-xl) var(--space-md);
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    z-index: var(--z-above);
+    background: var(--color-background);
+    -webkit-overflow-scrolling: touch;
 }
-
-
-/* Enhanced Unified Navigation */
 
 .request-nav {
     position: fixed;
@@ -38,12 +40,14 @@
 }
 
 .nav-home-btn {
+    border: none;
+    background: rgba(var(--color-primary-rgb), 0.1);
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: var(--space-xs);
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--radius-md);
-    background: rgba(var(--color-primary-rgb), 0.1);
     color: var(--color-primary);
     font-weight: var(--fw-medium);
     font-size: var(--fs-sm);
@@ -116,6 +120,8 @@
     height: 100%;
     overflow: hidden;
     z-index: -1;
+    pointer-events: none;
+    /* Ensures clicks pass through */
 }
 
 .animated-grid {
@@ -179,12 +185,14 @@
     -webkit-backdrop-filter: blur(20px);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-lg);
-    overflow: hidden;
+    overflow: visible;
+    /* Changed from hidden to prevent scroll trapping */
     border: 1px solid rgba(var(--color-border-rgb), 0.1);
     z-index: var(--z-above);
     animation: fadeIn 0.6s var(--ease-default);
     margin-top: 80px;
-    /* Adjusted for the unified nav */
+    margin-bottom: 40px;
+    /* Added for better spacing at bottom */
 }
 
 @keyframes fadeIn {
@@ -283,6 +291,8 @@
 
 .form-container {
     padding: var(--space-xl);
+    overflow: visible;
+    position: relative;
 }
 
 .form-step {
@@ -718,53 +728,40 @@ span.optional {
 /* Responsive Styling */
 
 @media (max-width: 768px) {
-    .form-container {
-        padding: 0 var(--space-md);
+    html,
+    body {
+        height: auto;
+        width: 100%;
+        overflow-x: hidden;
     }
     .request-page {
         padding: 0;
+        width: 100%;
+        min-height: 100vh;
+        box-sizing: border-box;
+        touch-action: pan-y;
     }
     .request-container {
         margin-top: 60px;
         border-radius: 0;
         max-width: 100%;
         min-height: calc(100vh - 60px);
+        box-shadow: none;
+        border-left: none;
+        border-right: none;
     }
-    .form-actions {
-        padding-bottom: var(--space-2xl);
-        flex-wrap: wrap;
+    .request-header {
+        padding: var(--space-md);
+        margin-bottom: var(--space-md);
     }
-    .form-actions .button.primary,
-    .form-actions .button.secondary {
-        min-width: 140px;
+    .form-container {
+        padding: 0 var(--space-md) var(--space-xl);
     }
-    .form-actions .button.primary {
-        flex-grow: 1;
-        order: 2;
-    }
-    .form-actions .button.secondary {
-        order: 1;
-        flex-grow: 1;
-    }
-    .step-dot {
-        width: 24px;
-        height: 24px;
-        font-size: 12px;
-    }
-    .request-header h1 {
-        font-size: var(--fs-3xl);
-    }
-    .step-title {
-        font-size: var(--fs-xl);
-    }
-}
-
-@media (max-width: 480px) {
-    .options-grid {
-        grid-template-columns: 1fr;
-    }
-    .nav-home-btn span,
-    .nav-back-btn span {
-        display: none;
+    @supports (-webkit-touch-callout: none) {
+        .request-page {
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+            height: auto;
+        }
     }
 }
