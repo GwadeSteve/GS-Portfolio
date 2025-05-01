@@ -4,8 +4,10 @@ import { useNavigate, Link } from 'react-router-dom';
 import { 
     FiUser, FiMail, FiMessageSquare, FiArrowRight, FiCheck, FiLoader, 
     FiSend, FiPhone, FiBriefcase, FiDollarSign, FiClock, 
-    FiLink, FiGlobe, FiHeart, FiList, FiCpu, FiX, FiArrowLeft, FiHome
+    FiLink, FiGlobe, FiHeart, FiList, FiCpu, FiX, FiArrowLeft, FiHome,
+    FiAlertTriangle, FiRefreshCw
 } from 'react-icons/fi';
+import { sendEmail } from './MailSend';
 
 const Request = ({ onNavigate }) => {
     const [formData, setFormData] = useState({
@@ -25,10 +27,10 @@ const Request = ({ onNavigate }) => {
     const [requestStatus, setRequestStatus] = useState('');
     const [formErrors, setFormErrors] = useState({});
     const [isStepValid, setIsStepValid] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
     const requestPageRef = useRef(null);
     
-    // All your existing code for options, validation, etc.
     const totalSteps = 5;
     const projectTypes = [
         { id: 'web-development', label: 'Web Development' },
@@ -67,20 +69,16 @@ const Request = ({ onNavigate }) => {
         { id: 'other', label: 'Other' }
     ];
 
-    // Force page to be scrollable as soon as it mounts
     useEffect(() => {
-        // Ensure body is scrollable when this component mounts
         document.body.style.overflow = '';
         document.body.classList.remove('body-scroll-lock');
         
-        // Cleanup function to ensure body is scrollable when component unmounts
         return () => {
             document.body.style.overflow = '';
             document.body.classList.remove('body-scroll-lock');
         };
     }, []);
 
-    // Validate the current step - your existing function
     const validateCurrentStep = useCallback(() => {
         const errors = {};
         let valid = true;
@@ -139,7 +137,6 @@ const Request = ({ onNavigate }) => {
                 break;
                 
             case 5: 
-                // This step is optional, so no validation required
                 break;
                 
             default:
@@ -151,7 +148,6 @@ const Request = ({ onNavigate }) => {
         return valid;
     }, [currentStep, formData]);
 
-    // Validate whenever step or form data changes - your existing function
     useEffect(() => {
         validateCurrentStep();
     }, [validateCurrentStep]);
@@ -167,7 +163,6 @@ const Request = ({ onNavigate }) => {
     const nextStep = () => {
         if (isStepValid && currentStep < totalSteps) {
             setCurrentStep(currentStep + 1);
-            // Scroll within the component instead of the window
             if (requestPageRef.current) {
                 requestPageRef.current.scrollTo(0, 0);
             } else {
@@ -179,7 +174,6 @@ const Request = ({ onNavigate }) => {
     const prevStep = () => {
         if (currentStep > 1) {
             setCurrentStep(currentStep - 1);
-            // Scroll within the component instead of the window
             if (requestPageRef.current) {
                 requestPageRef.current.scrollTo(0, 0);
             } else {
@@ -194,39 +188,31 @@ const Request = ({ onNavigate }) => {
         if (!isStepValid) return;
         
         setIsSending(true);
+        setErrorMessage('');
         
         try {
-            const response = await fetch('https://emailbackend-portfolio.onrender.com/api/sendmail/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            });
-            
-            if (response.ok) {
-                setRequestStatus('success');
-                setTimeout(() => {
-                    // Use onNavigate if available, otherwise use navigate
-                    if (typeof onNavigate === 'function') {
-                        onNavigate('/');
-                    } else {
-                        navigate('/');
-                    }
-                }, 3000);
-            } else {
-                console.error('Request failed with status:', response.status);
-                setRequestStatus('failure');
-                setIsSending(false);
+            if (!formData.fullName || !formData.email || !formData.projectType || 
+                !formData.budget || !formData.timeline || !formData.projectDescription) {
+                throw new Error("Please complete all required fields");
             }
+            
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+                throw new Error("Please enter a valid email address");
+            }
+            
+            const result = await sendEmail(formData);
+            console.log(result);
+            
+            setRequestStatus('success');
         } catch (error) {
-            console.error('Request error:', error);
+            console.error('Email sending error:', error);
+            setErrorMessage(error.message || 'Something went wrong when sending your request');
             setRequestStatus('failure');
+        } finally {
             setIsSending(false);
         }
     };
 
-    // Rest of your component functions
     const progress = (currentStep / totalSteps) * 100;
 
     const getStepClassName = (step) => {
@@ -271,7 +257,6 @@ const Request = ({ onNavigate }) => {
 
     return (
         <div className="request-page" ref={requestPageRef}>
-            {/* Enhanced unified navigation */}
             <div className="request-nav">
                 <div className="nav-left">
                     {typeof onNavigate === 'function' ? (
@@ -320,7 +305,6 @@ const Request = ({ onNavigate }) => {
                 </button>
             </div>
             
-            {/* Background Elements */}
             <div className="request-background">
                 <div className="animated-grid"></div>
                 <div className="background-glow"></div>
@@ -340,7 +324,6 @@ const Request = ({ onNavigate }) => {
                 </div>
             </div>
             
-            {/* Main Form Container */}
             <div className="request-container glass-form">
                 <div className="request-header">
                     <h1>Let's Work <span className="gradient-text">Together</span></h1>
@@ -358,6 +341,7 @@ const Request = ({ onNavigate }) => {
                                 </div>
                             ))}
                         </div>
+                    
                     </div>
                     
                     <h2 className="step-title">{getStepTitle()}</h2>
@@ -427,7 +411,6 @@ const Request = ({ onNavigate }) => {
                             </div>
                         </div>
                         
-                        {/* Step 2: Project Type */}
                         <div className={getStepClassName(2)}>
                             <div className="input-group">
                                 <label>
@@ -461,7 +444,6 @@ const Request = ({ onNavigate }) => {
                             </div>
                         </div>
                         
-                        {/* Step 3: Budget and Timeline */}
                         <div className={getStepClassName(3)}>
                             <div className="input-group">
                                 <label>
@@ -516,7 +498,6 @@ const Request = ({ onNavigate }) => {
                             </div>
                         </div>
                         
-                        {/* Step 4: Project Description */}
                         <div className={getStepClassName(4)}>
                             <div className="input-group">
                                 <label htmlFor="projectDescription">
@@ -628,7 +609,7 @@ const Request = ({ onNavigate }) => {
                                         </>
                                     ) : (
                                         <>
-                                            Submit Request <FiSend />
+                                            Submit <FiSend />
                                         </>
                                     )}
                                 </button>
@@ -636,26 +617,97 @@ const Request = ({ onNavigate }) => {
                         </div>
                     </form>
                     
+                    {/* Enhanced Success Message Overlay */}
                     {requestStatus === 'success' && (
-                        <div className="success-message">
-                            <div className="success-icon"><FiCheck /></div>
-                            <h3>Request Sent Successfully!</h3>
-                            <p>Thank you for your interest. I'll review your project details and get back to you soon.</p>
-                            <div className="pulse-rings"></div>
+                        <div className="response-overlay success-overlay">
+                            <div className="response-message success-message">
+                                <button 
+                                    type="button" 
+                                    className="message-close-btn"
+                                    onClick={() => setRequestStatus('')}
+                                    aria-label="Close success message"
+                                >
+                                    <FiX />
+                                </button>
+                                <div className="success-icon">
+                                    <FiCheck />
+                                    <div className="pulse-rings"></div>
+                                </div>
+                                <h3>Request Sent Successfully!</h3>
+                                <p>Thank you for reaching out, {formData.fullName.split(' ')[0]}!</p>
+                                
+                                <div className="success-details">
+                                    <div className="success-detail-item">
+                                        <span className="detail-icon"><FiMail /></span>
+                                        <span>Confirmation email sent to <strong>{formData.email}</strong></span>
+                                    </div>
+                                    <div className="success-detail-item">
+                                        <span className="detail-icon"><FiClock /></span>
+                                        <span>I'll respond within <strong>24-48 hours</strong></span>
+                                    </div>
+                                </div>
+                                
+                                <div className="action-buttons">
+                                    <button 
+                                        type="button"
+                                        className="button primary"
+                                        onClick={() => {
+                                            setRequestStatus('');
+                                            if (typeof onNavigate === 'function') {
+                                                onNavigate('/');
+                                            } else {
+                                                navigate('/');
+                                            }
+                                        }}
+                                    >
+                                        Return to Home <FiHome />
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     )}
-                    
+
+                    {/* Enhanced Error Message Overlay */}
                     {requestStatus === 'failure' && (
-                        <div className="error-notification">
-                            <h3>Something went wrong!</h3>
-                            <p>There was an error sending your request. Please try again or contact me directly.</p>
-                            <button 
-                                type="button" 
-                                className="btn-secondary" 
-                                onClick={() => setRequestStatus('')}
-                            >
-                                Try Again
-                            </button>
+                        <div className="response-overlay error-overlay">
+                            <div className="response-message error-message">
+                                <button 
+                                    type="button" 
+                                    className="message-close-btn"
+                                    onClick={() => setRequestStatus('')}
+                                    aria-label="Close error message"
+                                >
+                                    <FiX />
+                                </button>
+                                <div className="error-icon">
+                                    <FiAlertTriangle />
+                                </div>
+                                <h3>Oops! Something went wrong</h3>
+                                <p>We couldn't send your request at this moment.</p>
+                                
+                                <div className="error-description">
+                                    <div className="error-detail-item">
+                                        <span className="detail-icon alert"><FiAlertTriangle /></span>
+                                        <span>{errorMessage || "There was an error processing your request."}</span>
+                                    </div>
+                                </div>
+                                
+                                <div className="action-buttons">
+                                    <button 
+                                        type="button" 
+                                        className="button secondary" 
+                                        onClick={() => setRequestStatus('')}
+                                    >
+                                        <FiRefreshCw /> Try Again
+                                    </button>
+                                    <a 
+                                        href={`mailto:gwade.steve.dev@gmail.com?subject=Project%20Inquiry%20from%20${encodeURIComponent(formData.fullName || '')}&body=Hello,%0D%0A%0D%0AI'm%20interested%20in%20discussing%20a%20project%20with%20you.%0D%0A%0D%0AProject%20Type:%20${encodeURIComponent(formData.projectType ? getProjectTypeLabel(formData.projectType) : 'Not specified')}%0D%0ABudget:%20${encodeURIComponent(formData.budget ? getBudgetLabel(formData.budget) : 'Not specified')}%0D%0ATimeline:%20${encodeURIComponent(formData.timeline ? getTimelineLabel(formData.timeline) : 'Not specified')}%0D%0A%0D%0ABrief%20description:%20${encodeURIComponent(formData.projectDescription || '')}`}
+                                        className="button primary"
+                                    >
+                                        <FiMail /> Email Me Directly
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>
@@ -668,5 +720,38 @@ const FiSmartphone = () => <FiPhone />;
 const FiBarChart = () => <FiClock />;
 const FiUsers = () => <FiUser />;
 const FiMoreHorizontal = () => <div style={{fontSize: '1.5rem'}}>...</div>;
+
+function getProjectTypeLabel(id) {
+    const types = {
+        'web-development': 'Web Development',
+        'mobile-app': 'Mobile App',
+        'ai-solution': 'AI Solution',
+        'data-analysis': 'Data Analysis',
+        'consulting': 'Consulting',
+        'other': 'Other'
+    };
+    return types[id] || id;
+}
+
+function getBudgetLabel(id) {
+    const budgets = {
+        'small': 'Under $5,000',
+        'medium': '$5,000 - $15,000',
+        'large': '$15,000 - $50,000',
+        'enterprise': 'Over $50,000',
+        'discuss': 'To be discussed'
+    };
+    return budgets[id] || id;
+}
+
+function getTimelineLabel(id) {
+    const timelines = {
+        'urgent': 'Urgent (< 1 month)',
+        'standard': '1-3 months',
+        'relaxed': '3-6 months',
+        'flexible': 'Flexible'
+    };
+    return timelines[id] || id;
+}
 
 export default Request;
