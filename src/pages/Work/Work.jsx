@@ -198,11 +198,10 @@ const Work = () => {
             <div className="work-hero">
                 <div className="hero-content">
                     <h1 className="hero-title">
-                        Crafting <span className="gradient-text">Digital Solutions</span>
+                        I Engineer <span className="gradient-text">Digital Solutions</span>
                     </h1>
                     <p className="hero-description">
-                        Browse my portfolio of projects showcasing my expertise in software development, 
-                        problem-solving, and creating exceptional user experiences.
+                    Browse through my work, which highlights my abilities in software development alongside my increasing involvement in computer vision
                     </p>
                     
                     <div className="typing-container">
