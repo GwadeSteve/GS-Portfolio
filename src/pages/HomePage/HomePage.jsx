@@ -5,7 +5,7 @@ import { ReactComponent as GitHub } from '../../assets/github.svg';
 import { ReactComponent as LinkedIn } from '../../assets/linkedin-circle-mono.svg';
 import { ReactComponent as WhatsApp } from '../../assets/whatsapp-circle-mono.svg';
 import { ReactComponent as Tools } from '../../assets/Tools.svg';
-import ImageMe from '../../assets/BlackandWhite.jpg';
+import ImageMe from '../../assets/Me.jpg';
 import ProjectTile from '../../components/ProjectTile/ProjectTile';
 import projectsData from '../../assets/data/Projects.json';
 import CallToAttention from '../../components/CallToAttention/CallToAttention';
