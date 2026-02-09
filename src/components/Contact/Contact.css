@@ -1,0 +1,55 @@
+.contact-v3 {
+    min-height: 40vh;
+    /* Shorter footprint */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.contact-container-v3 {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    width: 100%;
+}
+
+.contact-minimal-header h2 {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.contact-actions-v3 {
+    display: flex;
+    justify-content: center;
+}
+
+/* Magnetic Button Style */
+.magnetic-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem 2rem;
+    background: var(--text-primary);
+    color: var(--bg-color);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid transparent;
+}
+
+.magnetic-cta:hover {
+    background: transparent;
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+    transform: scale(1.05);
+}
+
+.cta-arrow {
+    transition: transform 0.3s ease;
+}
+
+.magnetic-cta:hover .cta-arrow {
+    transform: rotate(-45deg);
+}

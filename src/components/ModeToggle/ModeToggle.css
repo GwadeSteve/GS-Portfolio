@@ -1,0 +1,51 @@
+.mode-toggle {
+    /* Default relative behavior, fixed only if not unused */
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.4rem 0.8rem 0.4rem 0.4rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    overflow: hidden;
+}
+
+.mode-toggle:hover {
+    border-color: var(--accent-color);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.toggle-track {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    box-shadow: 0 0 10px var(--accent-glow);
+    transition: all var(--transition-fast);
+}
+
+.toggle-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.05em;
+    min-width: 70px;
+    text-align: left;
+}
+
+/* Mode Specifics */
+.mode-toggle.ml .toggle-track {
+    background: rgba(0, 242, 255, 0.1);
+}
+
+.mode-toggle.fullstack .toggle-track {
+    background: rgba(255, 77, 0, 0.1);
+}

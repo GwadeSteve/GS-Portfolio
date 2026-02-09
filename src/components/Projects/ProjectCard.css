@@ -1,0 +1,117 @@
+/* V2 Card Styles */
+.project-card-v2 {
+    height: 100%;
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.project-card-v2:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.card-bg-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+}
+
+.project-card-v2:hover .card-bg-glow {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.v2-tag {
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.card-title-v2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.card-desc-v2 {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.card-footer {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.read-more {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.project-card-v2:hover .read-more {
+    opacity: 1;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.project-card-v2:hover .arrow-icon {
+    transform: translateX(4px);
+}
+
+/* Direct Link Button */
+.direct-link-btn {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    padding: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.direct-link-btn:hover {
+    color: var(--bg-color);
+    background: var(--accent-color);
+    transform: scale(1.1);
+}

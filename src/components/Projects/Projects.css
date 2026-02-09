@@ -1,0 +1,148 @@
+/* Projects V2 - Bento Grid */
+
+.projects-header-v2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 2rem;
+}
+
+.section-title {
+    color: var(--text-primary);
+}
+
+.bento-filters {
+    display: flex;
+    gap: 2rem;
+}
+
+.bento-filter {
+    font-size: 1rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.bento-filter:hover {
+    color: var(--text-primary);
+}
+
+.bento-filter.active {
+    color: var(--accent-color);
+}
+
+.bento-filter.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+/* Bento Grid Layout */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 250px;
+    grid-auto-flow: dense;
+    /* Key for bento packing */
+    gap: 1.5rem;
+}
+
+.bento-cell {
+    position: relative;
+    height: 100%;
+}
+
+.bento-cell.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.bento-cell.wide {
+    grid-column: span 2;
+}
+
+.bento-cell.full {
+    grid-column: 1 / -1;
+    /* Spans entire width */
+}
+
+.bento-cell.standard {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+/* Project Card Override for Bento */
+/* We rely on the internal card styling but ensure it fills the cell */
+.project-card {
+    height: 100%;
+    border: 1px solid var(--bg-card);
+    background: rgba(20, 20, 20, 0.4);
+    /* Improve glass effect */
+    backdrop-filter: blur(20px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .projects-header-v2 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .bento-filters {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 1.5rem;
+        /* Increased spacing for scrollbar */
+        gap: 0.8rem;
+        -webkit-overflow-scrolling: touch;
+        /* Scroll snap for pills */
+    }
+
+    .bento-filter {
+        white-space: nowrap;
+        font-size: 0.85rem;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        font-weight: 500;
+        letter-spacing: 0.05em;
+    }
+
+    .bento-filter.active {
+        background: var(--accent-color);
+        color: var(--bg-color);
+        border-color: var(--accent-color);
+    }
+
+    .bento-filter.active::after {
+        display: none;
+        /* Remove underline style for pills */
+    }
+
+    /* Reset all cells to single column on mobile to prevent weird wrapping */
+    .bento-cell.large,
+    .bento-cell.wide {
+        grid-column: auto;
+        /* Reset to auto flow */
+        grid-row: auto;
+    }
+
+    .bento-grid {
+        grid-template-columns: 1fr;
+        /* Single column stack */
+        grid-auto-rows: 300px;
+        /* fixed height for consistency */
+    }
+}

@@ -1,16 +1,10 @@
-@import './index.css';
+/* App.css */
 .App {
-    width: 100%;
-    min-height: 100dvh;
+    min-height: 100vh;
     position: relative;
-    overflow: hidden;
 }
 
-.main-content {
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.main-content.page-transitioning {
-    opacity: 0;
+main {
+    position: relative;
+    z-index: 10;
 }

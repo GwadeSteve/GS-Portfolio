@@ -1,0 +1,58 @@
+/* Background Manager - V2 Cinematic */
+.background-manager {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    /* Ensure behind everything */
+    overflow: hidden;
+    pointer-events: none;
+    background: #000000;
+    /* Pure Black Base */
+}
+
+/* Gradient Overlay - Removed for pure black feel */
+.bg-overlay {
+    display: none;
+}
+
+.bg-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+}
+
+/* V2 Circuit - Architectural Grid */
+.circuit-bg-v2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    /* Very subtle */
+    z-index: 1;
+}
+
+.grid-layer {
+    width: 200%;
+    height: 200%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100px 100px;
+    transform-origin: center;
+    animation: slowPan 120s linear infinite;
+}
+
+@keyframes slowPan {
+    0% {
+        transform: translate(-10%, -10%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-15%, -15%) rotate(2deg);
+    }
+}
