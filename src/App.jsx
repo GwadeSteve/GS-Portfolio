@@ -21,9 +21,9 @@ import SEO from './components/SEO/SEO';
 const Portfolio = () => (
     <>
         <SEO
-            title="Software Developer & AI Researcher"
-            description="Portfolio of Gwade Steve, specializing in Computer Vision, Machine Learning, and Full-Stack Development."
-            keywords="Gwade Steve, Computer Vision, AI Researcher, Software Developer, Cameroon"
+            title="ML & FullStack AI Engineer"
+            description="Portfolio of Gwade Steve, a professional ML Engineer and Fullstack AI Engineer specializing in Computer Vision and Deep Learning."
+            keywords="Gwade Steve, ML Engineer, AI Engineer, FullStack AI, Computer Vision, Deep Learning, Cameroon"
         />
         <Hero />
         <About />

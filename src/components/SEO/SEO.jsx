@@ -11,7 +11,7 @@ const SEO = ({
 }) => {
     const siteName = "Gwade Steve";
     const fullTitle = `${title} | ${siteName}`;
-    const defaultDescription = "Explore Gwade Steve's portfolio showcasing expertise in AI, data science, and innovative software development.";
+    const defaultDescription = "Professional ML Engineer and FullStack AI Engineer specializing in Computer Vision, Deep Learning, and innovative software solutions.";
     const defaultImage = "https://gwadesteve.onrender.com/images/logo192.png";
     const canonicalUrl = url || "https://gwadesteve.onrender.com";
 
