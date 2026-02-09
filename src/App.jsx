@@ -16,9 +16,15 @@ import Expertise from './components/Expertise/Expertise';
 import Contact from './components/Contact/Contact';
 import Blog from './components/Blog/Blog';
 import Footer from './components/Footer/Footer';
+import SEO from './components/SEO/SEO';
 
 const Portfolio = () => (
     <>
+        <SEO
+            title="Software Developer & AI Researcher"
+            description="Portfolio of Gwade Steve, specializing in Computer Vision, Machine Learning, and Full-Stack Development."
+            keywords="Gwade Steve, Computer Vision, AI Researcher, Software Developer, Cameroon"
+        />
         <Hero />
         <About />
         <Projects />

@@ -10,6 +10,7 @@ import {
     FaChevronLeft,
     FaChevronRight
 } from 'react-icons/fa';
+import SEO from '../SEO/SEO';
 import './Blog.css';
 
 // --- Sub-Component: Skeleton Image ---
@@ -69,6 +70,31 @@ const Blog = () => {
 
         return (
             <div className="blog-page section">
+                <SEO
+                    title={activePost.title}
+                    description={activePost.excerpt}
+                    image={activePost.image}
+                    url={`https://gwadesteve.onrender.com/blog/${activePost.id}`}
+                    article={true}
+                    keywords={activePost.tags.join(', ')}
+                />
+
+                {/* JSON-LD for rich snippets */}
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "BlogPosting",
+                        "headline": activePost.title,
+                        "image": activePost.image,
+                        "author": {
+                            "@type": "Person",
+                            "name": "Gwade Steve"
+                        },
+                        "datePublished": activePost.date,
+                        "description": activePost.excerpt
+                    })}
+                </script>
+
                 <div className="container article-container">
                     <button onClick={goBlogHome} className="blog-back-btn">
                         <FaArrowLeft /> Back to Insights
@@ -148,6 +174,11 @@ const Blog = () => {
     // --- RENDER: LIST VIEW ---
     return (
         <div className="blog-page section">
+            <SEO
+                title="Insights & Thoughts"
+                description="Exploring the intersection of AI Research and System Architecture through technical deep dives."
+                url="https://gwadesteve.onrender.com/blog"
+            />
             <div className="container">
                 {/* Header */}
                 <div className="blog-header-section">
