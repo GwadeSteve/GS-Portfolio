@@ -2,7 +2,7 @@
   
 # **GWADE STEVE**
 
-### *Software Developer & Aspiring Computer Vision Researcher*
+### *Full-Stack AI Engineer & Aspiring ML Research Engineer*
 
   <a href="https://git.io/typing-svg">
     <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=600&size=22&duration=3000&pause=1000&color=4E64F7&center=true&vCenter=true&random=false&width=435&lines=Computer+Vision+Research;AI+%26+Machine+Learning;Full-Stack+Development;Problem+Solving" alt="Typing SVG" />
@@ -25,7 +25,8 @@
   
   <img src="https://capsule-render.vercel.app/api?type=waving&color=4E64F7&height=80&section=header&fontSize=90" width="100%"/>
 </div>
-  
+
+<div align="center">
   <svg width="100%" height="50" viewBox="0 0 800 50" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="dividerGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -45,74 +46,69 @@
   </svg>
 </div>
 
-<div align="center">
-  <a href="https://github.com/GwadeSteve">
-    <img src="https://github.com/GwadeSteve/GwadeSteve/blob/main/profile-3d-contrib/profile-night-rainbow.svg" width="100%" alt="3D Contribution Calendar" />
-  </a>
-</div>
-
 <details open>
-<summary><h2>👨‍💻 About Me</h2></summary>
+<summary><h2>About Me</h2></summary>
 
 ```python
 #!/usr/bin/env python
 
-class ComputerVisionResearcher:
+class AIResearchEngineer:
     def __init__(self):
         self.name = "Gwade Steve"
         self.education = {
-            "current": "MSc in Data Science & AI @ National Higher Polytechnic School of Douala",
-            "completed": "BSc in Computer Engineering"
-        }
-        self.location = "Cameroon 🇨🇲"
-        self.interests = ["Computer Vision", "Machine Learning", "Software Architecture", "African AI"]
+            "current": "ML Research Engineer & FullStack Developer",
+            "completed": ["BSc in Computer Engineering", "MSc in Data Science and AI"]
+        self.location = "Cameroon"
+        self.focus_areas = [
+            "AI for Health and Well being",
+            "Computer Vision", 
+            "Deep Learning", 
+            "Multi-Task Learning",
+            "Medical Imaging", 
+            "Low-Resource AI"
+        ]
         self.tech_stack = {
             "languages": ["Python", "JavaScript", "TypeScript", "C++", "SQL"],
             "ml_frameworks": ["PyTorch", "TensorFlow", "JAX", "Scikit-learn"],
             "vision_tools": ["OpenCV", "YOLO", "MediaPipe", "CoreML"],
             "web_dev": ["React", "Node.js", "Flask", "FastAPI", "Django"],
             "databases": ["MongoDB", "PostgreSQL", "SQLite", "Firebase"],
-            "devtools": ["Git", "Docker", "AWS", "Render", "CI/CD"]
+            "devtools": ["Git", "Docker", "GCP", "Render", "CI/CD"]
         }
-        self.current_projects = {
-            "EatWise": "CV for nutrition analysis in African contexts",
-            "StudyMate": "AI-powered study assistant with NLP",
-            "PlumVision": "Real-time fruit quality inspection system",
+        self.current_work = {
+            "MSc_thesis": "Multi-Task Transfer Learning for Malaria Detection",
+            "projects": ["EatWise", "StudyMate", "PlumVision"]
         }
-        self.fun_fact = "I participated in the GIZ PADGOF Hackathon as a finalist with an innovative e-governance solution!"
-        
-    def say_hello(self):
-        print("👋 Thanks for stopping by! Let's build something transformative together.")
-        print("🚀 I'm passionate about leveraging AI to solve real challenges in Africa.")
+        self.fun_fact = "Once tried training an AI to pick my outfits. Now it thinks hoodies are business casual :("
         
     def research_interests(self):
         return [
-            "Ethically responsible AI development for diverse populations",
-            "Low-resource computer vision for African contexts",
-            "Edge AI deployment for regions with limited connectivity",
-            "Sustainable and accessible technology solutions"
+            "Generative AI",
+            "Building AI systems that work in resource-constrained environments",
+            "Computer vision for healthcare in low-connectivity regions",
+            "Federated learning for medical diagnostics",
+            "Edge AI optimization for real-world deployment",
+            "Food security and nutrition analysis using computer vision"
         ]
-        
+    
     def current_focus(self):
-        print("📱 Building mobile-first CV applications that work offline")
-        print("🌍 Creating AI models that understand African contexts")
-        print("📊 Developing computer vision for food security and nutrition")
-        print("📚 Researching efficient ML architectures for limited resources")
+        print("SOLVING REAL PROBLEMS USING RESEARCH AS A TOOL")
+        print("Developing offline-capable AI for areas with limited connectivity")
+        print("Researching multi-task learning for medical imaging")
+        print("Building computer vision systems for African contexts")
+        print("Optimizing models for deployment on resource-limited devices")
 
-
-me = ComputerVisionResearcher()
-me.say_hello()
-for interest in me.research_interests()[:2]:  # Show just two research interests
-    print(f"🔬 {interest}")
-me.current_focus()
+researcher = AIResearchEngineer()
+print(f"Building AI that works where it's needed most")
+for interest in researcher.research_interests()[:2]:
+    print(f"  • {interest}")
+researcher.current_focus()
 ```
 </details>
 
-<!-- Project showcase with cards and visual indicators -->
 <details open>
-<summary><h2>🚀 Featured Projects</h2></summary>
+<summary><h2>Featured Projects</h2></summary>
 
-<!-- Custom project cards with hover effects -->
 <div align="center">
   <table>
     <tr>
@@ -127,7 +123,7 @@ me.current_focus()
             </a>  
             <img src="https://img.shields.io/badge/STATUS-In_Development-4F29F0?style=for-the-badge" />
           </p>
-          <p><strong>Python, PyTorch, React Native</strong> - AI-powered nutrition app using computer vision to analyze food in the Cameroonian context</p>
+          <p><strong>Python, PyTorch, React Native</strong> - AI nutrition app using computer vision to analyze food in the Cameroonian context</p>
         </div>
       </td>
       <td width="50%">
@@ -157,13 +153,13 @@ me.current_focus()
             </a>  
             <img src="https://img.shields.io/badge/STATUS-In_Development-4F29F0?style=for-the-badge" />
           </p>
-          <p><strong>Django, React, NLP, Generative AI</strong> - Multi-format study companion that lets users chat with their educational materials</p>
+          <p><strong>Django, React, NLP, Generative AI</strong> - Study companion that lets users chat with their educational materials</p>
         </div>
       </td>
       <td width="50%" align="center">
         <br>
         <h3>More Projects</h3>
-        <p>Check out my portfolio website for more projects including:</p>
+        <p>Check out my portfolio for additional work:</p>
         <ul align="left">
           <li>Insect Splash - Interactive game using computer vision</li>
           <li>FoodHub - Platform to minimize food waste</li>
@@ -179,16 +175,13 @@ me.current_focus()
 </div>
 </details>
 
-<!-- Skills section with visual representation -->
 <details open>
-<summary><h2>🛠️ Technologies & Tools</h2></summary>
+<summary><h2>Technologies & Tools</h2></summary>
 <div align="center">
   <h3>Core Technologies</h3>
-  <!-- Row 1 - Programming Languages -->
   <img src="https://skillicons.dev/icons?i=python,js,typescript,cpp,html,css" />
   
   <h3>AI & Data Science</h3>
-  <!-- Row 2 - AI/ML Tools -->
   <img src="https://skillicons.dev/icons?i=tensorflow,pytorch,opencv" />
   <img src="https://theaisummer.com/static/f90161f13b7ace6a479b5158291e60c2/63868/jax-logo.png" width="48" height="48" alt="JAX" />
   <img src="https://raw.githubusercontent.com/numpy/numpy/main/branding/logo/logomark/numpylogoicon.svg" width="48" height="48" alt="Numpy" />
@@ -196,96 +189,62 @@ me.current_focus()
   <img src="https://image.pngaaa.com/242/4152242-middle.png" width="48" height="48" alt="Matplotlib" />
   
   <h3>Web & App Development</h3>
-  <!-- Row 3 - Web Dev -->
   <img src="https://skillicons.dev/icons?i=react,nodejs,django,flask,fastapi,mongodb,postgresql,tailwind" />
   
   <h3>Tools & Deployment</h3>
-  <!-- Row 4 - Tools -->
   <img src="https://skillicons.dev/icons?i=git,docker,aws,vscode,figma" />
   <img src="https://tse3.mm.bing.net/th/id/OIP.dfQ2h2ynrNLsChU-CgigiwAAAA?rs=1&pid=ImgDetMain" width="48" height="48" alt="Render" />
 </div>
 </details>
 
-<!-- Publications Section -->
 <details open>
-<summary><h2>📚 Publications</h2></summary>
+<summary><h2>Research & Publications</h2></summary>
 <div align="center">
-  <img src="https://img.shields.io/badge/Status-Coming_Soon-4E64F7?style=for-the-badge&logo=googlescholar&logoColor=white" />
   
-  <p>Stay tuned for upcoming research papers and academic contributions in computer vision and AI for African contexts.</p>
+  <h3>Multi-Task Transfer Learning for Malaria Detection</h3>
+  <p><strong>MSc Thesis, 2025</strong></p>
+  
+  <a href="https://github.com/GwadeSteve/MTTL-Research-Malaria" target="_blank">
+    <img src="https://img.shields.io/badge/Repository-View_Code-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  
+  <p>Research on multi-task transfer learning framework applied to malaria diagnosis from thin blood smear microscopy. The unified model performs detection, segmentation, localization, and classification simultaneously, showing significant improvements in robustness over single-task approaches.</p>
+  
+  <p><strong>Tools:</strong> PyTorch, NumPy, OpenCV, Albumentations, Matplotlib</p>
+  
+  <br>
+  
+  <img src="https://img.shields.io/badge/More_Publications-Coming_Soon-4E64F7?style=for-the-badge&logo=googlescholar&logoColor=white" />
   
   <div align="center" style="padding: 15px; border-radius: 10px; border: 1px solid #4E64F7; max-width: 600px; margin: 0 auto;">
-    <p>🔍 Current research focus: <strong>Multitask Transfer Learning, Generative Adversarial Networks, Low-resource computer vision systems, AI in healthcare.</strong></p>
+    <p>Research interests: <strong>Generative AI, Multi-task learning, Computer vision for healthcare, Low-resource AI systems, Federated learning, Edge device optimization</strong></p>
   </div>
 </div>
 </details>
 
-<!-- Stats with custom styling -->
 <details open>
-<summary><h2>📊 GitHub Analytics</h2></summary>
-<div align="center">
-  <div>
-    <!-- Custom themed stats card -->
-    <img src="https://github-readme-stats.vercel.app/api?username=GwadeSteve&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=4E64F7&icon_color=4E64F7&text_color=E5EDF8" alt="GitHub Stats" height="180em" />
-    <!-- Languages card with custom theme -->
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=GwadeSteve&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=4E64F7&text_color=E5EDF8" alt="Top Languages" height="180em" />
-  </div>
-
-  <!-- GitHub streak stats with custom styling -->
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=GwadeSteve&theme=tokyonight&hide_border=true&background=0D1117&stroke=4E64F7&ring=4E64F7&currStreakNum=E5EDF8&sideNums=E5EDF8&currStreakLabel=4E64F7&sideLabels=4E64F7&dates=E5EDF8" alt="GitHub Streak" />
-</div>
+<summary><h2>Achievements</h2></summary>
+<ul>
+  <li><b>1st Place JCIA Hackathon</b>: Built a real-time AI model for automated plum sorting using deep learning and computer vision.</li>
+  <li><b>1st Place AIMS Hackathon</b>: Ideated a federated learning prototype for malaria diagnosis on edge devices.</li>
+  <li><b>GIZ PADGOF Hackathon</b>: Finalist with an e-governance solution for digitizing municipal services.</li>
+</ul>
 </details>
 
-<!-- Achievement showcase with simplified layout -->
-<details open>
-<summary><h2>🏆 Achievements</h2></summary>
 <div align="center">
-  <table border="0" cellspacing="0" cellpadding="10">
-    <tr>
-      <td align="center">
-        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#4E64F7"/>
-        </svg>
-        <h3>JCIA Hackathon</h3>
-        <p>Created a real-time plum classification model for automatic sorting using AI and computer vision</p>
-      </td>
-      <td align="center">
-        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 3H4V7H20V3Z" fill="#4E64F7"/>
-          <path d="M15 10C15 11.66 13.66 13 12 13C10.34 13 9 11.66 9 10H4V21H20V10H15Z" fill="#4E64F7"/>
-        </svg>
-        <h3>AIMS Hackathon</h3>
-        <p>Developed a Federated Learning prototype for malaria diagnosis using edge devices and microscope-mounted smartphones</p>
-      </td>
-      <td align="center">
-        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="9" r="6" fill="#4E64F7"/>
-          <path d="M18 19H6C6 16.79 8.69 15 12 15C15.31 15 18 16.79 18 19Z" fill="#4E64F7"/>
-        </svg>
-        <h3>GIZ PADGOF Hackathon</h3>
-        <p>Finalist with an innovative E-governance solution for municipal communication and digitalization of services</p>
-      </td>
-    </tr>
-  </table>
-</div>
-</details>
-
-<!-- Interactive quote section -->
-<div align="center">
-  <h2>💭 Philosophical Approach</h2>
+  <h2>What Drives My Work</h2>
   <div style="max-width: 600px; margin: 0 auto; padding: 20px; background: linear-gradient(45deg, rgba(14, 23, 42, 0.7), rgba(30, 58, 138, 0.3)); border-radius: 15px; backdrop-filter: blur(10px); border: 1px solid rgba(78, 100, 247, 0.2);">
     <p style="font-size: 18px; font-style: italic; color: #E5EDF8;">
-      "I'm driven by the belief that technology should enhance human capabilities, not replace them. My work focuses on creating accessible AI solutions that address real challenges in Africa, bridging technological gaps while respecting cultural contexts."
+      Technology should solve real problems for real people. My work focuses on building AI systems that actually work in the places they're needed most, bridging gaps while respecting the contexts where they'll be used.
     </p>
-    <p style="font-weight: bold; color: #4E64F7; text-align: right;">— Gwade Steve</p>
+    <p style="font-weight: bold; color: #4E64F7; text-align: right;">Gwade Steve</p>
   </div>
 </div>
 
-<!-- Footer with contact info -->
 <div align="center">
-  <h2>📫 Let's Connect</h2>
+  <h2>Let's Connect</h2>
   
-  <p>I'm always excited to collaborate on projects that make a difference, especially in AI and computer vision. Whether you have a project in mind, want to discuss research opportunities, or just want to say hello—feel free to reach out!</p>
+  <p>Always open to collaborating on projects that make a real difference, especially in AI and computer vision. Got a project idea, research opportunity, or just want to chat? Reach out.</p>
   
   <a href="mailto:gwade.steve.dev@gmail.com"><img src="https://img.shields.io/badge/Email-gwade.steve.dev@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white&labelColor=0F172A" /></a>
   <a href="https://gwadesteve.onrender.com"><img src="https://img.shields.io/badge/Portfolio-gwadesteve.onrender.com-3b82f6?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=0F172A" /></a>
@@ -293,10 +252,9 @@ me.current_focus()
 
   <img src="https://raw.githubusercontent.com/GwadeSteve/GwadeSteve/main/divider.gif" alt="divider" width="100%" />
   
-  <p><b>💡 "The best way to predict the future is to invent it." — Alan Kay</b></p>
+  <p><b>"The best way to predict the future is to invent it."</b></p>
 </div>
 
-<!-- Footer with signature -->
 <br><br>
 <div align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=4E64F7&height=80&section=footer" width="100%"/>
