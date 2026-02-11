@@ -6,8 +6,8 @@ export const portfolioData = {
             fullstack: ["I Architect", "Software & AI", "Grounded In Research"] // Highlight middle
         },
         resume: {
-            ml: "/resume-ml.pdf",
-            fullstack: "/resume-fullstack.pdf",
+            ml: "resume/ML_Resume_GwadeSteve.pdf",
+            fullstack: "resume/FullStack_Resume_GwadeSteve.pdf",
         },
         socials: {
             github: "https://github.com/GwadeSteve",
@@ -114,7 +114,7 @@ export const portfolioData = {
             {
                 title: "EatWise",
                 descriptor: "AI Nutrition Platform",
-                image: "/images/Experience/EatWise.jpg",
+                image: "/images/Experience/EatWise.svg",
                 tags: ["Computer Vision", "Recommender Systems", "Mobile"],
                 details: {
                     problem: "Promoting healthier eating habits in Cameroon through technology.",
