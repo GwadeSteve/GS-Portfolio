@@ -48,7 +48,7 @@ export const portfolioData = {
             {
                 title: "PlumVision",
                 descriptor: "Real-time Agricultural Classification",
-                image: "/images/experience/PlumVision.png",
+                image: "/images/Experience/PlumVision.png",
                 tags: ["Computer Vision", "FastAPI", "WebSocket"],
                 details: {
                     problem: "Manual plum sorting is slow, inconsistent, and hard to scale.",
@@ -61,7 +61,7 @@ export const portfolioData = {
             {
                 title: "Spoof Detector",
                 descriptor: "Deep Learning Security Service",
-                image: "/images/experience/Spoof.png",
+                image: "/images/Experience/Spoof.png",
                 tags: ["Deep Learning", "Security", "API"],
                 details: {
                     problem: "Facial recognition systems are vulnerable to presentation attacks.",
@@ -74,7 +74,7 @@ export const portfolioData = {
             {
                 title: "Insect Splash",
                 descriptor: "Interactive Computer Vision Game",
-                image: "/images/experience/Splash.JPG",
+                image: "/images/Experience/Splash.JPG",
                 tags: ["MediaPipe", "OpenCV", "Game Dev"],
                 details: {
                     problem: "Demonstrating the playful potential of real-time computer vision.",
@@ -87,7 +87,7 @@ export const portfolioData = {
             {
                 title: "Mathematical Morphology",
                 descriptor: "Image Processing from Scratch",
-                image: "/images/experience/Morphology.png",
+                image: "/images/Experience/Morphology.png",
                 tags: ["Numpy", "Image Processing", "Optimization"],
                 details: {
                     problem: "Understanding the core algorithms behind image processing tools.",
@@ -99,7 +99,7 @@ export const portfolioData = {
             }, {
                 title: "MTTL for Malaria Detection",
                 descriptor: "Multi-Task Transfer Learning Framework",
-                image: "/images/experience/MTTL_Architecture.jpg",
+                image: "/images/Experience/MTTL_Architecture.jpg",
                 tags: ["Research", "PyTorch", "Medical AI"],
                 details: {
                     problem: "Single-task models fail to capture the complexity of malaria diagnosis.",
@@ -114,7 +114,7 @@ export const portfolioData = {
             {
                 title: "EatWise",
                 descriptor: "AI Nutrition Platform",
-                image: "/images/experience/EatWise.jpg",
+                image: "/images/Experience/EatWise.jpg",
                 tags: ["Computer Vision", "Recommender Systems", "Mobile"],
                 details: {
                     problem: "Promoting healthier eating habits in Cameroon through technology.",
@@ -126,7 +126,7 @@ export const portfolioData = {
             {
                 title: "StudyMate",
                 descriptor: "Generative AI Study Companion",
-                image: "/images/experience/StudyMate.jpg",
+                image: "/images/Experience/StudyMate.jpg",
                 tags: ["Django", "React", "GenAI", "NLP"],
                 details: {
                     problem: "Students need interactive ways to engage with their study materials.",
@@ -138,7 +138,7 @@ export const portfolioData = {
             {
                 title: "FoodHub",
                 descriptor: "Anti-Food Waste Platform",
-                image: "/images/experience/FoodHub.jpg",
+                image: "/images/Experience/FoodHub.jpg",
                 tags: ["React", "Django", "Facial Authentication", "Payment Gateway"],
                 details: {
                     problem: "Food waste and hunger are simultaneous issues.",
@@ -151,7 +151,7 @@ export const portfolioData = {
             {
                 title: "PolyApps Suite",
                 descriptor: "University AI Club Platform",
-                image: "/images/experience/PolyApps.png",
+                image: "/images/Experience/PolyApps.png",
                 tags: ["Web Dev", "Real-time", "Community"],
                 details: {
                     problem: "Managing AI Club activities and contests.",
