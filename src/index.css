@@ -60,6 +60,10 @@ body {
   position: relative;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 /* Base Noise Texture (Always on top) */
 body::after {
   content: "";

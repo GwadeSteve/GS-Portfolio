@@ -59,6 +59,16 @@ const Navbar = () => {
         setMobileMenuOpen(false);
     }, [location]);
 
+    // Lock body scroll when mobile menu is open
+    useEffect(() => {
+        if (mobileMenuOpen) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+        return () => document.body.classList.remove('no-scroll');
+    }, [mobileMenuOpen]);
+
     const handleLogoClick = (e) => {
         e.preventDefault();
         if (isHomePage) {
