@@ -4,13 +4,17 @@ import { FaTimes, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import './ProjectModal.css';
 
 const ProjectModal = ({ project, onClose }) => {
+    const bodyRef = React.useRef(null);
+
     // Prevent background scroll
     useEffect(() => {
         document.body.style.overflow = 'hidden';
+        // Scroll modal body to top
+        if (bodyRef.current) bodyRef.current.scrollTop = 0;
         return () => {
             document.body.style.overflow = 'unset';
         };
-    }, []);
+    }, [project]);
 
     if (!project) return null;
 
@@ -28,7 +32,7 @@ const ProjectModal = ({ project, onClose }) => {
                     <p className="modal-descriptor">{project.descriptor}</p>
                 </div>
 
-                <div className="modal-body">
+                <div className="modal-body" ref={bodyRef}>
                     {/* Grid Layout: Left Details, Right Visual */}
                     <div className="modal-details">
                         <div className="detail-row">

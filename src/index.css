@@ -182,6 +182,10 @@ button {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
   .text-display {
     font-size: 2.5rem;
     /* Reduced to fit single line */

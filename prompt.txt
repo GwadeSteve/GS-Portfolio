@@ -1,0 +1,7 @@
+
+    //While I was working, i fixed two issues
+    // - I fixed an issue where images where not loaded correctly, I changed the links to reference the images in the public/images/Experiences and same for resumes, they where not pointing to the correct locations
+    // Now i had some questions
+    // - Is that efficient ? Placing assets in public ? I should have moved them to src but making sure they are wee referenced to work in dev and prod environments
+    // What i currently need is 
+    // - A Nice minimal element that will tell people when they are on the hero that the site is dynamic and that resume shows my two personality kindof, It should be very very minimal but intuitive, because they might think this is only a UI change

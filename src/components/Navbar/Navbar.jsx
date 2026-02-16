@@ -28,22 +28,30 @@ const Navbar = () => {
         }
     }, [isHomePage]);
 
-    // Active Section Spy - ONLY on home page
+    // Active Section Spy - scroll-based for reliability with tall sections
     useEffect(() => {
         if (!isHomePage) return;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id);
+        const handleSectionSpy = () => {
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                // A section is "active" if its top is above center of viewport
+                // and its bottom is still in view
+                if (rect.top <= window.innerHeight * 0.4 && rect.bottom > 100) {
+                    current = section.id;
                 }
             });
-        }, { threshold: 0.3 });
 
-        const sections = document.querySelectorAll('section[id]');
-        sections.forEach(section => observer.observe(section));
+            if (current) setActiveSection(current);
+        };
 
-        return () => sections.forEach(section => observer.unobserve(section));
+        window.addEventListener('scroll', handleSectionSpy, { passive: true });
+        handleSectionSpy(); // Run once on mount
+
+        return () => window.removeEventListener('scroll', handleSectionSpy);
     }, [isHomePage]);
 
     // Close mobile menu on route change

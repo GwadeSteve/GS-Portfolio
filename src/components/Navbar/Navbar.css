@@ -162,8 +162,33 @@
 }
 
 .mobile-links a.active {
-    color: var(--text-primary);
-    /* Maybe add a dot or underscore for mobile active too */
+    color: var(--accent-color);
+}
+
+.mobile-links a.active::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--accent-color);
+    margin: 6px auto 0;
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Tablet — compress desktop links to keep active dot visible */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .navbar-links {
+        gap: 1.25rem;
+    }
+
+    .navbar-links a {
+        font-size: 0.82rem;
+    }
+
+    .desktop-actions {
+        gap: 1.25rem;
+    }
 }
 
 @media (max-width: 768px) {

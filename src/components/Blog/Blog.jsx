@@ -103,10 +103,10 @@ const Blog = () => {
                     {/* Article Header */}
                     <div className="article-header">
                         <div className="article-meta">
-                            <span>{activePost.category}</span>
-                            <span>•</span>
+                            <span className="meta-tag">{activePost.category}</span>
+                            <span className="meta-separator"></span>
                             <span>{activePost.date}</span>
-                            <span>•</span>
+                            <span className="meta-separator"></span>
                             <span>{activePost.readTime}</span>
                         </div>
                         <h1 className="article-hero-title">{activePost.title}</h1>
@@ -129,40 +129,47 @@ const Blog = () => {
                             }
                         })}
                     </article>
-
-                    {/* Tags */}
-                    <div className="article-tags">
-                        {activePost.tags.map(tag => (
-                            <span key={tag} className="tag-badge">#{tag}</span>
-                        ))}
-                    </div>
-
-                    {/* Navigation Cards */}
-                    <div className="nav-grid">
-                        {prevPost ? (
-                            <div className="nav-card prev" onClick={() => goToPost(prevPost.id)}>
-                                <FaChevronLeft />
-                                <div>
-                                    <span className="nav-label">Previous Article</span>
-                                    <span className="nav-title">{prevPost.title}</span>
-                                </div>
+                    {/* Bottom Controls */}
+                    <div className="article-bottom">
+                        {/* Tags */}
+                        <div className="article-tags">
+                            <span className="tags-label">Topics</span>
+                            <div className="tags-list">
+                                {activePost.tags.map(tag => (
+                                    <span key={tag} className="tag-badge">#{tag}</span>
+                                ))}
                             </div>
-                        ) : <div className="nav-spacer" />}
+                        </div>
 
-                        {nextPost ? (
-                            <div className="nav-card next" onClick={() => goToPost(nextPost.id)}>
-                                <div>
-                                    <span className="nav-label">Next Article</span>
-                                    <span className="nav-title">{nextPost.title}</span>
+                        {/* Prev / Next Navigation */}
+                        <div className="nav-grid">
+                            {prevPost ? (
+                                <div className="nav-card prev" onClick={() => goToPost(prevPost.id)}>
+                                    <div className="nav-card-icon">
+                                        <FaChevronLeft />
+                                    </div>
+                                    <div className="nav-card-content">
+                                        <span className="nav-label">Previous</span>
+                                        <span className="nav-title">{prevPost.title}</span>
+                                    </div>
                                 </div>
-                                <FaChevronRight />
-                            </div>
-                        ) : <div className="nav-spacer" />}
-                    </div>
+                            ) : <div className="nav-spacer" />}
 
-                    {/* Bottom Back Button */}
-                    <div style={{ marginTop: '3rem', textAlign: 'center' }}>
-                        <button onClick={goBlogHome} className="blog-back-btn">
+                            {nextPost ? (
+                                <div className="nav-card next" onClick={() => goToPost(nextPost.id)}>
+                                    <div className="nav-card-content">
+                                        <span className="nav-label">Next</span>
+                                        <span className="nav-title">{nextPost.title}</span>
+                                    </div>
+                                    <div className="nav-card-icon">
+                                        <FaChevronRight />
+                                    </div>
+                                </div>
+                            ) : <div className="nav-spacer" />}
+                        </div>
+
+                        {/* Back to All */}
+                        <button onClick={goBlogHome} className="blog-back-cta">
                             <FaArrowLeft /> View All Articles
                         </button>
                     </div>

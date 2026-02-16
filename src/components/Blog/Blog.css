@@ -240,7 +240,7 @@
    4. ARTICLE VIEW
    ========================================= */
 .article-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding-top: 1rem;
     /* Reduced from var(--space-lg) */
@@ -262,9 +262,7 @@
     margin-bottom: 2rem;
     color: var(--text-primary);
     text-align: center;
-    /* Center align */
-    max-width: 1000px;
-    /* Constrain width for readability */
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     letter-spacing: -0.03em;
@@ -282,14 +280,32 @@
     flex-wrap: wrap;
 }
 
-/* New Pill Style for Meta */
+/* Refined Meta Row */
 .article-meta span {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.article-meta .meta-separator {
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    display: inline-block;
+    padding: 0;
+    border: none;
+    box-shadow: 0 0 6px var(--accent-glow);
+}
+
+.article-meta .meta-tag {
+    color: var(--accent-color);
     background: rgba(255, 255, 255, 0.05);
     padding: 0.3rem 0.8rem;
     border-radius: 99px;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    display: inline-flex;
-    align-items: center;
+    font-weight: 600;
+    letter-spacing: 0.03em;
 }
 
 .article-hero-image-wrapper {
@@ -367,80 +383,185 @@
     /* Breakout Code Block (optional, kept same width for now to avoid scrolling issues) */
 }
 
-.article-tags {
-    margin-top: 3rem;
+/* =========================================
+   BOTTOM CONTROLS — SOTA Redesign
+   ========================================= */
+.article-bottom {
+    margin-top: 4rem;
     display: flex;
-    gap: 0.75rem;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Tags */
+.article-tags {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tags-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-color);
+    font-weight: 700;
+    white-space: nowrap;
+    padding-top: 0.3rem;
+}
+
+.tags-list {
+    display: flex;
+    gap: 0.5rem;
     flex-wrap: wrap;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tag-badge {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
     color: var(--text-secondary);
-    padding: 0.25rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.25s ease;
+    font-weight: 500;
 }
 
-/* =========================================
-   5. NAVIGATION (PREV/NEXT)
-   ========================================= */
+.tag-badge:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-color);
+    color: var(--text-primary);
+}
+
 /* Navigation Grid */
 .nav-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2rem;
-    /* Reduced from 4rem */
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 1rem;
 }
 
 .nav-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     gap: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     text-align: left;
     color: var(--text-primary);
+    overflow: hidden;
+}
+
+.nav-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%), var(--accent-glow) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.nav-card:hover::before {
+    opacity: 0.15;
+}
+
+.nav-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.5);
 }
 
 .nav-card.next {
     text-align: right;
-    justify-content: flex-end;
-    /* Removed row-reverse to keep Text -> Icon order */
 }
 
-.nav-card:hover {
+.nav-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--text-tertiary);
+    font-size: 0.75rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav-card:hover .nav-card-icon {
+    background: var(--accent-color);
+    color: #000;
     border-color: var(--accent-color);
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-card-content {
+    flex: 1;
+    min-width: 0;
 }
 
 .nav-label {
     display: block;
-    font-size: 0.75rem;
+    font-size: 0.68rem;
     text-transform: uppercase;
-    color: var(--text-tertiary);
-    margin-bottom: 0.25rem;
-    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 0.35rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
 }
 
 .nav-title {
-    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.3;
+    font-size: 0.95rem;
+    color: var(--text-primary);
 }
 
-/* .nav-spacer { } */
+.nav-spacer {
+    display: none;
+}
+
+/* Back CTA */
+.blog-back-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 0 auto;
+    padding: 0.85rem 2rem;
+    border-radius: 99px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-body);
+    letter-spacing: 0.02em;
+}
+
+.blog-back-cta:hover {
+    background: var(--accent-color);
+    color: #000;
+    border-color: var(--accent-color);
+    box-shadow: 0 8px 25px -8px var(--accent-glow);
+}
 
 
 /* =========================================
@@ -502,13 +623,15 @@
     }
 
     .article-container {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
     }
 
     .article-hero-title {
         font-size: 2.4rem;
         margin-bottom: 2rem;
         line-height: 1.1;
+        padding: 0;
+        max-width: 100%;
     }
 
     .article-hero-image-wrapper {
@@ -542,26 +665,40 @@
 
     .nav-grid {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
-        margin-top: 3rem;
-    }
-
-    .nav-card,
-    .nav-card.next {
-        text-align: center;
-        flex-direction: column;
-        justify-content: center;
-        padding: 2rem;
         gap: 0.75rem;
     }
 
-    .nav-title {
-        font-size: 1.1rem;
+    .nav-card {
+        padding: 1.25rem;
     }
 
-    .blog-back-btn {
-        margin-bottom: 2.5rem;
-        font-size: 1rem;
+    .nav-card.next {
+        text-align: right;
+    }
+
+    .nav-card-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .nav-title {
+        font-size: 0.88rem;
+    }
+
+    .article-tags {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .article-bottom {
+        gap: 3rem;
+        margin-top: 3.5rem;
+    }
+
+    .blog-back-cta {
+        width: 100%;
+        font-size: 0.85rem;
+        padding: 0.9rem;
     }
 
     .article-quote {

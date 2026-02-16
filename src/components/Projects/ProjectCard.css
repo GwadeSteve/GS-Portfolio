@@ -68,8 +68,14 @@
     font-weight: 300;
 }
 
+.card-main {
+    flex: 1;
+    min-height: 0;
+}
+
 .card-footer {
-    margin-top: 1.5rem;
+    margin-top: auto;
+    padding-top: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
