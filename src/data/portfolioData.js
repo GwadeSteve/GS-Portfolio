@@ -72,19 +72,6 @@ export const portfolioData = {
                 }
             },
             {
-                title: "Insect Splash",
-                descriptor: "Interactive Computer Vision Game",
-                image: "/images/Experience/Splash.JPG",
-                tags: ["MediaPipe", "OpenCV", "Game Dev"],
-                details: {
-                    problem: "Demonstrating the playful potential of real-time computer vision.",
-                    role: "Computer Vision Engineer",
-                    how: "Used MediaPipe for hand-tracking to create an insect-squashing game.",
-                    outcome: "Engaging interactive experience.",
-                    link: "https://github.com/GwadeSteve/Insect-Splash"
-                }
-            },
-            {
                 title: "Mathematical Morphology",
                 descriptor: "Image Processing from Scratch",
                 image: "/images/Experience/Morphology.png",
@@ -107,6 +94,19 @@ export const portfolioData = {
                     how: "Used Multi-Task Transfer Learning (MTTL) and PEFT to train a unified model for detection, segmentation, and heatmap generation.",
                     outcome: "Achieved up to 34% improvement in F1-score over YOLOv8-Small on infected cell detection.",
                     link: "https://github.com/GwadeSteve/MTTL-Research-Malaria"
+                }
+            },
+            {
+                title: "Insect Splash",
+                descriptor: "Interactive Computer Vision Game",
+                image: "/images/Experience/Splash.JPG",
+                tags: ["MediaPipe", "OpenCV", "Game Dev"],
+                details: {
+                    problem: "Demonstrating the playful potential of real-time computer vision.",
+                    role: "Computer Vision Engineer",
+                    how: "Used MediaPipe for hand-tracking to create an insect-squashing game.",
+                    outcome: "Engaging interactive experience.",
+                    link: "https://github.com/GwadeSteve/Insect-Splash"
                 }
             }
         ],
