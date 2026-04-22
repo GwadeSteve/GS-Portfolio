@@ -1,4 +1,4 @@
-name: Deploy to Render
+name: CI/CD Pipeline
 
 on:
   push:
@@ -6,15 +6,38 @@ on:
       - main
 
 jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run Tests
+        env:
+          CI: true
+        run: npm test
+        
+      - name: Build App
+        run: npm run build
+
   deploy:
-    name: Deploy
+    name: Deploy to Render
+    needs: build-and-test
     runs-on: ubuntu-latest
     
-    # This creates the "Deployment" status in the GitHub UI
     environment:
       name: production
-      # UPDATE THIS: Change to your actual Render URL so the "View deployment" button works
-      url: https://your-portfolio.onrender.com 
+      url: https://gwadesteve.onrender.com
 
     steps:
       - name: Trigger Render Deploy Hook
