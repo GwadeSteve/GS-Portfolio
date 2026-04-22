@@ -1,11 +1,11 @@
 import React from 'react';
-import { useMode } from '../../context/ModeContext';
+// import { useMode } from '../../context/ModeContext';
 import { portfolioData } from '../../data/portfolioData';
 import { withIds } from '../../utils/dataUtils';
 import './Expertise.css';
 
 const Expertise = () => {
-    const { mode } = useMode();
+    // const { mode } = useMode();
     const skills = withIds(portfolioData.expertise, 'exp');
 
     return (
