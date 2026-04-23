@@ -19,8 +19,8 @@ export const portfolioData = {
         photoUrl: "/images/BlackandWhite.jpg",
         // Dynamic text for "Human" connection
         text: {
-            ml: "I’ve spent 3 years working on machine learning problems, mostly in computer vision but also around automation, LLM-based systems, and applied research. I’ve trained models from scratch, fine-tuned existing ones, designed objectives, and run large experiment cycles under real constraints like limited data, limited compute, and noisy labels. I care about understanding the problem first, then building models that actually make sense for the business and can be deployed without falling apart.",
-            fullstack: "I have 2+ years of full-stack experience building and shipping software products end to end. I’ve built APIs, web and mobile backends, integrated ML models into production, handled data, auth, and deployment, and maintained systems used by real people. I focus on clarity, performance, and reliability, and I like systems that stay simple even as they grow."
+            ml: "I've spent about 3 years working on machine learning — mostly computer vision, but also LLM-based tools and applied research. I've trained models from scratch, fine-tuned others, run experiment cycles under real constraints (limited data, limited compute, noisy labels), and pushed things to production. I like understanding the problem first, then building something that actually holds up once it's deployed.",
+            fullstack: "I've been building and shipping software for over 2 years now. APIs, backends, frontend work, ML integrations, the full picture. Right now I'm freelancing on a conversational AI module for a B2B travel platform while doing research engineering at JIANTS. I try to keep things simple and clean, even as projects grow."
         }
 
     },
@@ -112,6 +112,18 @@ export const portfolioData = {
         ],
         fullstack: [
             {
+                title: "Conversational Booking Bot",
+                descriptor: "WhatsApp AI Module (Freelance)",
+                image: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+                tags: ["Python", "AWS", "FastAPI", "Redis", "WhatsApp API"],
+                details: {
+                    problem: "A B2B travel platform needed an interactive WhatsApp channel so employees could book flights through conversation instead of email.",
+                    role: "Lead Developer (sole contributor on this module)",
+                    how: "Built a conversational pipeline with LLM-driven intent understanding, OTP authentication, multi-language support (FR/EN), and an approval workflow with concurrency handling. Integrated into the existing backend via event-driven messaging.",
+                    outcome: "Cut average booking request time by over 90% compared to the previous email-based flow. Improved user adoption and streamlined the approval process."
+                }
+            },
+            {
                 title: "EatWise",
                 descriptor: "AI Nutrition Platform",
                 image: "/images/Experience/EatWise.svg",
@@ -164,11 +176,18 @@ export const portfolioData = {
     },
     timeline: [
         {
+            year: "Apr 2026 – Present (Freelance)",
+            type: "role",
+            title: "Backend Engineer",
+            org: "MITS SARL",
+            impact: "Sole developer on a conversational WhatsApp module for a B2B travel platform. Cut booking request time by over 90% vs. the legacy email flow."
+        },
+        {
             year: "Jan 2025 – Present",
             type: "role",
             title: "Research Engineer",
-            org: "Jiants",
-            impact: "Contributing to internal research and productionizing models."
+            org: "JIANTS",
+            impact: "Contributing to internal research, internal software development and productionizing models."
         },
         {
             year: "Dec 2025",
@@ -199,18 +218,18 @@ export const portfolioData = {
             impact: "Winner with PlumVision."
         },
         {
-            year: "Mar 2023 – Dec 2024",
+            year: "Mar 2023 – Dec 2024 (Part-time)",
             type: "role",
             title: "Software Engineer",
             org: "TGNix",
-            impact: "Full-stack development and microservices architecture."
+            impact: "Repsonsible of full-stack development of client-based projects, and other internal projects."
         },
         {
-            year: "Jun 2023 – Nov 2023",
+            year: "Jun 2023 – Nov 2023 (Full-time)",
             type: "role",
             title: "Intern AI/Backend",
             org: "AITECAF",
-            impact: "Assisted in data pipeline optimization."
+            impact: "Assisted in internal backend services, internal ML models and data pipeline optimization."
         }
     ],
     research: [
@@ -231,7 +250,7 @@ export const portfolioData = {
     ],
     expertise: [
         { category: "Model Engineering", items: ["PyTorch", "TensorFlow", "HuggingFace", "LangChain"] },
-        { category: "Data & Ops", items: ["PostgreSQL", "MongoDB", "Docker", "Kubernetes", "AWS"] },
+        { category: "Data & Ops", items: ["PostgreSQL", "MongoDB", "Redis", "Docker", "Kubernetes", "AWS"] },
         { category: "Full-Stack", items: ["React", "Next.js", "TypeScript", "TailwindCSS", "Node.js"] },
         { category: "Research", items: ["Latex", "Arxiv Pipeline", "Experiment Tracking", "W&B"] }
     ]
