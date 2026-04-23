@@ -19,7 +19,7 @@ export const portfolioData = {
         photoUrl: "/images/BlackandWhite.jpg",
         // Dynamic text for "Human" connection
         text: {
-            ml: "I've spent about 3 years working on machine learning — mostly computer vision, but also LLM-based tools and applied research. I've trained models from scratch, fine-tuned others, run experiment cycles under real constraints (limited data, limited compute, noisy labels), and pushed things to production. I like understanding the problem first, then building something that actually holds up once it's deployed.",
+            ml: "I've spent about 3 years working on machine learning, mostly computer vision, but also LLM-based tools and applied research. I've trained models from scratch, fine-tuned others, run experiment cycles under real constraints (limited data, limited compute, noisy labels), and pushed things to production. I like understanding the problem first, then building something that actually holds up once it's deployed.",
             fullstack: "I've been building and shipping software for over 2 years now. APIs, backends, frontend work, ML integrations, the full picture. Right now I'm freelancing on a conversational AI module for a B2B travel platform while doing research engineering at JIANTS. I try to keep things simple and clean, even as projects grow."
         }
 
@@ -186,7 +186,7 @@ export const portfolioData = {
             year: "Jan 2025 – Present",
             type: "role",
             title: "Research Engineer",
-            org: "JIANTS",
+            org: "JIANTS (Part-time)",
             impact: "Contributing to internal research, internal software development and productionizing models."
         },
         {
@@ -218,14 +218,14 @@ export const portfolioData = {
             impact: "Winner with PlumVision."
         },
         {
-            year: "Mar 2023 – Dec 2024 (Part-time)",
+            year: "Mar 2023 – Dec 2024",
             type: "role",
             title: "Software Engineer",
             org: "TGNix",
             impact: "Repsonsible of full-stack development of client-based projects, and other internal projects."
         },
         {
-            year: "Jun 2023 – Nov 2023 (Full-time)",
+            year: "Jun 2023 – Nov 2023",
             type: "role",
             title: "Intern AI/Backend",
             org: "AITECAF",
@@ -249,9 +249,9 @@ export const portfolioData = {
         }
     ],
     expertise: [
-        { category: "Model Engineering", items: ["PyTorch", "TensorFlow", "HuggingFace", "LangChain"] },
-        { category: "Data & Ops", items: ["PostgreSQL", "MongoDB", "Redis", "Docker", "Kubernetes", "AWS"] },
-        { category: "Full-Stack", items: ["React", "Next.js", "TypeScript", "TailwindCSS", "Node.js"] },
+        { category: "Model Engineering", items: ["PyTorch", "TensorFlow", "HuggingFace", "LangChain", "LangGraph"] },
+        { category: "Data & Ops", items: ["PostgreSQL", "MongoDB", "Redis", "Docker", "AWS"] },
+        { category: "Full-Stack", items: ["ReactJS", "React Native", "TailwindCSS", "Node.js", "FastAPI"] },
         { category: "Research", items: ["Latex", "Arxiv Pipeline", "Experiment Tracking", "W&B"] }
     ]
 };
