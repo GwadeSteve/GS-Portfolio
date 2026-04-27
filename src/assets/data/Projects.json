@@ -8,11 +8,12 @@
     },
     {
         "type": "Personal",
-        "title": "StudyMate",
-        "description": "StudyMate is a next-gen study companion that allows users to upload PDFs, text files, PowerPoints, Word documents, YouTube links, and audio files. Users can chat with their uploads, generate flashcards, quizzes, summaries, and more, making studying interactive and efficient.",
+        "title": "VERO",
+        "description": "VERO is a full-stack AI research workspace for ingesting documents, URLs, and GitHub repositories, then answering with hybrid retrieval, reranking, and grounded citations inside project-scoped chat sessions.",
         "status": "In Development",
-        "image": "/images/Experience/StudyMate.jpg",
-        "tools": ["Django", "React", "React Native", "NLP", "Generative AI"]
+        "link_github": "https://github.com/GwadeSteve/VERO",
+        "image": "/images/Experience/VERO-DEMO.png",
+        "tools": ["FastAPI", "React", "ChromaDB", "RAG", "Hybrid Search"]
     },
     {
         "type": "Open Source",

@@ -6,8 +6,8 @@ export const portfolioData = {
             fullstack: ["I Architect", "Software & AI", "Grounded In Research"] // Highlight middle
         },
         resume: {
-            ml: "resume/ML_Resume_GwadeSteve.pdf",
-            fullstack: "resume/FullStack_Resume_GwadeSteve.pdf",
+            ml: "resume/F.MLEng_GwadeSteve.pdf",
+            fullstack: "resume/F.FullStack_GwadeSteve.pdf",
         },
         socials: {
             github: "https://github.com/GwadeSteve",
@@ -25,8 +25,7 @@ export const portfolioData = {
 
     },
     projects: {
-        ml: [
-            {
+        ml: [{
                 title: "LINA",
                 descriptor: "Multimodal Assistive Vision System",
                 image: "https://lina-bgjd.onrender.com/images/Proto.png",
@@ -56,6 +55,19 @@ export const portfolioData = {
                     how: "Built a real-time vision system with PyTorch, FastAPI, and WebSockets for live feedback.",
                     outcome: "Delivers robust classification for medium-to-large scale businesses.",
                     link: "https://github.com/GwadeSteve/JCIA_Plum_Challenge/"
+                }
+            },
+            {
+                title: "VERO",
+                descriptor: "Grounded Retrieval Workspace",
+                image: "/images/Experience/VERO-DEMO.png",
+                tags: ["RAG", "Hybrid Search", "Reranking", "ChromaDB"],
+                details: {
+                    problem: "General AI chat tools often fail to stay grounded in project-specific documents and repositories.",
+                    role: "ML / Retrieval Engineer",
+                    how: "Built a hybrid retrieval pipeline with dense search, BM25-style keyword matching, reciprocal rank fusion, cross-encoder reranking, and citation-aware answer generation across isolated research workspaces.",
+                    outcome: "Turns private documents, links, and repositories into traceable knowledge bases for reliable question answering.",
+                    link: "https://github.com/GwadeSteve/VERO"
                 }
             },
             {
@@ -110,8 +122,7 @@ export const portfolioData = {
                 }
             }
         ],
-        fullstack: [
-            {
+        fullstack: [{
                 title: "Conversational Booking Bot",
                 descriptor: "WhatsApp AI Module (Freelance)",
                 image: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
@@ -136,15 +147,16 @@ export const portfolioData = {
                 }
             },
             {
-                title: "StudyMate",
-                descriptor: "Generative AI Study Companion",
-                image: "/images/Experience/StudyMate.jpg",
-                tags: ["Django", "React", "GenAI", "NLP"],
+                title: "VERO",
+                descriptor: "Full-Stack Research Workspace",
+                image: "/images/Experience/VERO-DEMO.png",
+                tags: ["FastAPI", "React", "SQLite", "ChromaDB", "LLMs"],
                 details: {
-                    problem: "Students need interactive ways to engage with their study materials.",
-                    role: "Full-Stack Engineer",
-                    how: "Allows chatting with PDF/Word/Audio uploads, generating quizzes and flashcards.",
-                    outcome: "Turns static documents into interactive study sessions."
+                    problem: "Researchers and builders need a workspace that can ingest their own sources without losing traceability.",
+                    role: "Full-Stack AI Engineer",
+                    how: "Built a FastAPI and React product with project isolation, file/URL/repository ingestion, background indexing, persistent chat sessions, discovery views, and activity dashboards.",
+                    outcome: "Delivers an end-to-end grounded AI workspace instead of a thin chat wrapper.",
+                    link: "https://github.com/GwadeSteve/VERO"
                 }
             },
             {
@@ -174,20 +186,19 @@ export const portfolioData = {
             }
         ]
     },
-    timeline: [
-        {
-            year: "Apr 2026 – Present (Freelance)",
+    timeline: [{
+            year: "Mar 2026 – Apr 2026 (Freelance)",
             type: "role",
             title: "Backend Engineer",
             org: "MITS SARL",
             impact: "Sole developer on a conversational WhatsApp module for a B2B travel platform. Cut booking request time by over 90% vs. the legacy email flow."
         },
         {
-            year: "Jan 2025 – Present",
+            year: "Jan 2025 – Jan 2026",
             type: "role",
             title: "Research Engineer",
             org: "JIANTS (Part-time)",
-            impact: "Contributing to internal research, internal software development and productionizing models."
+            impact: "Contributing to internal research, experiments, software development and productionizing models."
         },
         {
             year: "Dec 2025",
@@ -232,8 +243,7 @@ export const portfolioData = {
             impact: "Assisted in internal backend services, internal ML models and data pipeline optimization."
         }
     ],
-    research: [
-        {
+    research: [{
             year: "2025",
             title: "Multi-Task Transfer Learning for Malaria Detection",
             journal: "MSc Thesis • Polytechnic School of Douala",

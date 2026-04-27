@@ -103,17 +103,17 @@ Full-stack engineer and applied ML engineer based in Cameroon. I build software 
     </tr>
     <tr>
       <td width="50%">
-        <h3 align="center">StudyMate</h3>
+        <h3 align="center">VERO</h3>
         <div align="center">  
-          <a href="https://github.com/GwadeSteve/StudyMate" target="_blank"><img src="https://github.com/GwadeSteve/GwadeSteve/blob/main/Images/StudyMate.jpg" alt="StudyMate Project" width="100%" /></a>
+          <a href="https://github.com/GwadeSteve/VERO" target="_blank"><img src="https://github.com/GwadeSteve/VERO/blob/main/docs/VERO-DEMO.png?raw=1" alt="VERO Project" width="100%" /></a>
           <br>
           <p>
-            <a href="https://github.com/GwadeSteve/StudyMate" target="_blank">
+            <a href="https://github.com/GwadeSteve/VERO" target="_blank">
               <img src="https://img.shields.io/badge/REPO-181717?style=for-the-badge&logo=github&logoColor=white" />
             </a>  
             <img src="https://img.shields.io/badge/STATUS-In_Development-4F29F0?style=for-the-badge" />
           </p>
-          <p><strong>Django, React, NLP, Generative AI</strong> — Study companion that lets users chat with their educational materials</p>
+          <p><strong>FastAPI, React, ChromaDB, Hybrid Retrieval</strong> — Grounded research workspace for ingesting sources and answering with citations</p>
         </div>
       </td>
       <td width="50%" align="center">
