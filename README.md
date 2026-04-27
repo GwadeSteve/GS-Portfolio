@@ -53,10 +53,10 @@ Full-stack engineer and applied ML engineer based in Cameroon. I build software 
 
 ## Experience
 
-**Lead Backend Developer (Freelance)** | MITS SARL · Apr 2026 - Present
+**Lead Backend Developer (Freelance)** | MITS SARL · Mar 2026 - Apr 2026
 > Designed and built a conversational WhatsApp module for a B2B SaaS travel platform. Architected the full booking flow: LLM-driven intent understanding, OTP auth, bilingual support (FR/EN), and an approval pipeline with concurrency control. Sole developer on the module, from system design through to production deployment on AWS.
 
-**Research Engineer (Full-Stack & Applied AI)** | JIANTS · Jan 2025 - Present
+**Research Engineer (Full-Stack & Applied AI)** | JIANTS · Jan 2025 - Jan 2026
 > Built AI-powered internal platforms that cut prototype-to-deployment cycles by roughly 30%. Contributed to LINA, an assistive vision system for blind users that won 1st Prize globally at the Huawei ICT Competition.
 
 **Software Engineer (Full-Stack & AI)** | TGNix · Mar 2023 - Dec 2024
