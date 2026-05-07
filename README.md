@@ -24,7 +24,7 @@
 
 ## About Me
 
-Full-stack engineer and applied ML engineer based in Cameroon. I build software that ships: backends, APIs, ML pipelines, and the infrastructure around them. On the research side, I work on computer vision for healthcare, with a focus on low-resource and constrained environments.
+Applied ML engineer with a Full-Stack background based in Cameroon. I build software that ships: backends, APIs, ML pipelines, and the infrastructure around them. On the research side, I work on computer vision for healthcare, with a focus on low-resource and constrained environments.
 
 **Right now:** Building a conversational AI module for a B2B travel platform (freelance, under NDA) · Research engineering at JIANTS · Finishing MSc thesis on multi-task learning for malaria detection.
 
@@ -53,7 +53,7 @@ Full-stack engineer and applied ML engineer based in Cameroon. I build software 
 
 ## Experience
 
-**Lead Backend Developer (Freelance)** | MITS SARL · Mar 2026 - Apr 2026
+**Lead Backend Developer (Freelance)** | MITS SARL · Mar 2026 - May 2026
 > Designed and built a conversational WhatsApp module for a B2B SaaS travel platform. Architected the full booking flow: LLM-driven intent understanding, OTP auth, bilingual support (FR/EN), and an approval pipeline with concurrency control. Sole developer on the module, from system design through to production deployment on AWS.
 
 **Research Engineer (Full-Stack & Applied AI)** | JIANTS · Jan 2025 - Jan 2026
