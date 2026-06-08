@@ -6,8 +6,8 @@ export const portfolioData = {
             fullstack: ["I Architect", "Software & AI", "Grounded In Research"] // Highlight middle
         },
         resume: {
-            ml: "resume/F.MLEng_GwadeSteve.pdf",
-            fullstack: "resume/F.FullStack_GwadeSteve.pdf",
+            ml: "resume/GwadeSteve_MLResearch.pdf",
+            fullstack: "resume/GwadeSteve_FullStack.pdf",
         },
         socials: {
             github: "https://github.com/GwadeSteve",

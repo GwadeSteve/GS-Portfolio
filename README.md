@@ -26,7 +26,7 @@
 
 Applied ML engineer with a Full-Stack background based in Cameroon. I build software that ships: backends, APIs, ML pipelines, and the infrastructure around them. On the research side, I work on computer vision for healthcare, with a focus on low-resource and constrained environments.
 
-**Right now:** Building a conversational AI module for a B2B travel platform (freelance, under NDA) · Research engineering at JIANTS · Finishing MSc thesis on multi-task learning for malaria detection.
+**Right now:** Building a conversational AI module for a B2B travel platform (freelance, under NDA) · Research engineering at JIANTS · Finished MSc thesis on multi-task learning for malaria detection.
 
 ---
 
@@ -59,7 +59,7 @@ Applied ML engineer with a Full-Stack background based in Cameroon. I build soft
 **Research Engineer (Full-Stack & Applied AI)** | JIANTS · Jan 2025 - Jan 2026
 > Built AI-powered internal platforms that cut prototype-to-deployment cycles by roughly 30%. Contributed to LINA, an assistive vision system for blind users that won 1st Prize globally at the Huawei ICT Competition.
 
-**Software Engineer (Full-Stack & AI)** | TGNix · Mar 2023 - Dec 2024
+**Software Engineer (Full-Stack & AI)** | TGNix · Mar 2024 - Dec 2024
 > Delivered end-to-end web and AI solutions for clients across healthcare, agriculture, and consumer sectors. Built scalable Django/DRF backends, integrated ML models into live systems, and managed Docker deployments.
 
 **Junior AI Backend Engineer (Intern)** | AITECAF · Jun 2023 - Nov 2023
